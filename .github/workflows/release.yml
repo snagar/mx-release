@@ -94,16 +94,15 @@ jobs:
           
           echo -e "TARGET_BRANCH - ${TARGET_BRANCH}"
           
+          echo -e "\ngithub.ref - ${{ github.ref }} \n"
           
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v2
-        if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            ${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}*.zip
-          prerelease: ${{ contains(github.ref_name, '-') }}
-          
+            ${{ github.workspace }}/release/${{ steps.strings.outputs.plugin-name }}*.zip
+          prerelease: ${{ contains(github.ref_name, '-beta-') }}
 
 #          git checkout -b ${TARGET_BRANCH}
 #          git config --global user.email "snagar.dev@protonmail.com"
@@ -115,6 +114,15 @@ jobs:
 #          git commit -m "new ${TARGET_BRANCH} - ${TAG}"
 #          git push -f -u origin ${TARGET_BRANCH}
 
+#
+#      - name: Release
+#        uses: softprops/action-gh-release@v1
+#        if: startsWith(github.ref, 'refs/tags/')
+#        with:
+#          body_path: ${{ github.workspace }}/README.md
+#          files: |
+#            ${{ github.workspace }}/build/xa-snow.zip
+#          prerelease: ${{ contains(github.ref_name, '-') }}
 
 #
 #      # Optional: Add steps here to create a release, upload artifacts, etc.
