@@ -93,6 +93,18 @@ jobs:
           fi
           
           echo -e "TARGET_BRANCH - ${TARGET_BRANCH}"
+          
+          
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            ${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}*.zip
+          prerelease: ${{ contains(github.ref_name, '-') }}
+          
+
 #          git checkout -b ${TARGET_BRANCH}
 #          git config --global user.email "snagar.dev@protonmail.com"
 #          git config --global user.name "SN Release"
