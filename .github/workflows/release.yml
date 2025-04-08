@@ -110,14 +110,16 @@ jobs:
           
           git config --global user.email "snagar.dev@gmail.com"
           git config --global user.name "snagar"
-          git add .
-          # git add release/${{ steps.strings.outputs.plugin-name }}
+          #git add .
+          
+          
+          git add release/${{ steps.strings.outputs.plugin-name }}
           # # force add otherwise ignored directories
-          # git add -f release/${{ steps.strings.outputs.plugin-name }}/*_x64/*.xpl
-          # git add -f release/${{ steps.strings.outputs.plugin-name }}/win_x64/*.dll
+          git add -f release/${{ steps.strings.outputs.plugin-name }}/*_x64/*.xpl
+          git add -f release/${{ steps.strings.outputs.plugin-name }}/win_x64/*.dll
           # git add -f release/${{ steps.strings.outputs.plugin-name }}/libs/64/*.zip
-          # git add -f release/${{ steps.strings.outputs.plugin-name }}/templates/*.zip
-          # git add -f release/${{ steps.strings.outputs.plugin-name }}/*.zip
+          git add -f release/${{ steps.strings.outputs.plugin-name }}/templates/*.zip
+          git add -f release/${{ steps.strings.outputs.plugin-name }}/*.zip
           git commit -m "new ${TARGET_BRANCH} - ${TAG}"
           
           git remote add authenticated-origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
