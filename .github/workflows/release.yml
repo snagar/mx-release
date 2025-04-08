@@ -138,12 +138,6 @@ jobs:
 #          git commit -m "new ${TARGET_BRANCH} - ${TAG}"
 #          git push -f -u origin ${TARGET_BRANCH}
 
-#    permissions:
-#      contents: write
-#      pull-requests: write
-#      issues: read
-#      packages: none
-
 #
 #      - name: Release
 #        uses: softprops/action-gh-release@v1
