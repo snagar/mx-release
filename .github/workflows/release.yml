@@ -11,8 +11,8 @@ on:
 
 
 jobs:
-  build_and_copy:
-#    Execute only if we have "push + tag name that starts with "v"
+  release:
+#    Execute only if we have "push + tag name" that starts with "v"
 #    if: github.event_name == 'push' && startsWith(github.ref_name, 'v')
     runs-on: ubuntu-latest
 
@@ -20,22 +20,34 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Create Release Folder
-        run: mkdir -p missionx
-
-      - name: Copy Files to Release Folder
+      - name: setup crc32 tool
+        shell: bash
         run: |
-          cp -r ./* missionx/
-          # Exclude the .git directory if you don't need it in the release
-          rm -rf missionx/.git
+          sudo apt-get install -y libarchive-zip-perl
+#          sudo apt-get update
+          TAG=${GITHUB_REF##*/}
+          if [ ! -z "$TAG" ]; then
+            echo "VERSION=$TAG" > version.mak
+          fi
 
-      - name: List Contents of Release Folder
-        run: ls -R missionx/
+          echo -e "The content of version.mak\:" < version.mak
 
-      # Optional: Add steps here to create a release, upload artifacts, etc.
-      # For example, to create a simple artifact:
-      - name: Upload Release Folder as Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: missionx-${github.ref_name}
-          path: missionx
+#      - name: Create Release Folder
+#        run: mkdir -p release/missionx
+#
+#      - name: Copy Files to Release Folder
+#        run: |
+#          cp -r ./* missionx/
+#          # Exclude the .git directory if you don't need it in the release
+#          rm -rf missionx/.git
+#
+#      - name: List Contents of Release Folder
+#        run: ls -R missionx/
+#
+#      # Optional: Add steps here to create a release, upload artifacts, etc.
+#      # For example, to create a simple artifact:
+#      - name: Upload Release Folder as Artifact
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: missionx-${github.ref_name}
+#          path: missionx
