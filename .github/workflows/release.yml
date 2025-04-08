@@ -67,7 +67,13 @@ jobs:
             echo "$modified_file|$filesize" >> ${RELEASE_FOLDER}/skunkcrafts_updater_sizeslist.txt
           done
           
+          echo -e "Skunkcrafts updater:\n--------------->"
           cat ${RELEASE_FOLDER}/skunkcrafts_updater.cfg
+          echo -e "<--------------"
+
+          echo -e "\n\nSkunkcrafts sizelist - crc32:\n--------------->"
+          cat ${RELEASE_FOLDER}/skunkcrafts_updater_sizeslist.txt
+          echo -e "<--------------"
 
           touch ${RELEASE_FOLDER}/skunkcrafts_updater_blacklist.txt
           
