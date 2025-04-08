@@ -54,8 +54,6 @@ jobs:
           ## skunkcrafts
             sed -e "s|@VERSION@|${VERSION}|g" \
                 skunkcrafts_updater.cfg.template > "${RELEASE_FOLDER}/skunkcrafts_updater.cfg"
-#            sed -e "s|@VERSION@|${VERSION}|g" \
-#              skunkcrafts_updater_beta.cfg.template > "${RELEASE_FOLDER}/skunkcrafts_updater_beta.cfg"
 
           find ${RELEASE_FOLDER}/ -type f ! \( -name '*skunkcrafts_updater*' -o -path '*skunkcrafts_updater*' \) -print0 | while IFS= read -r -d '' file; do
             checksum_hex=$(crc32 "$file")
@@ -69,7 +67,6 @@ jobs:
             echo "$modified_file|$filesize" >> ${RELEASE_FOLDER}/skunkcrafts_updater_sizeslist.txt
           done
           
-          # debug               
           cat ${RELEASE_FOLDER}/skunkcrafts_updater.cfg
 
           touch ${RELEASE_FOLDER}/skunkcrafts_updater_blacklist.txt
@@ -89,7 +86,6 @@ jobs:
             TARGET_BRANCH="beta"
           fi
           
-          #debug     
           echo -e "TARGET_BRANCH - ${TARGET_BRANCH}"
 #          git checkout -b ${TARGET_BRANCH}
 #          git config --global user.email "snagar.dev@protonmail.com"
@@ -102,20 +98,6 @@ jobs:
 #          git push -f -u origin ${TARGET_BRANCH}
 
 
-
-#          sudo apt-get update  ## Add this at the start of the crc32 tool
-#      - name: Create Release Folder
-#
-#        run: mkdir -p release/missionx
-#
-#      - name: Copy Files to Release Folder
-#        run: |
-#          cp -r ./* missionx/
-#          # Exclude the .git directory if you don't need it in the release
-#          rm -rf missionx/.git
-#
-#      - name: List Contents of Release Folder
-#        run: ls -R missionx/
 #
 #      # Optional: Add steps here to create a release, upload artifacts, etc.
 #      # For example, to create a simple artifact:
