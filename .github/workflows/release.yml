@@ -20,6 +20,12 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Set reusable strings
+        id: strings
+        shell: bash
+        run: |
+          echo "plugin-name=missionx" >> "$GITHUB_OUTPUT" 
+
       - name: setup crc32 tool
         shell: bash
         run: |
@@ -27,10 +33,25 @@ jobs:
           TAG=${GITHUB_REF##*/}
           if [ ! -z "$TAG" ]; then
             echo "VERSION=$TAG" > version.mak
+          else 
+            TAG=25.x
+            echo "VERSION=$TAG" > version.mak
           fi
 
-          echo -e "The content of version.mak\:" < version.mak
+          echo -e "TAG: ${TAG}\nThe content of version.mak is"
+          cat version.mak
+
+      - name: Prepare Skunkcrafts Updater
+        shell: bash
+        run: |
+          # at this point version.mak should have the version number
+          source version.mak
+          RELEASE_FOLDER=release/${{ steps.strings.outputs.plugin-name }}
+          cp -rdp ./plugin/* "${RELEASE_FOLDER}/"
+          ls -lR release
           
+
+
 #          sudo apt-get update  ## Add this at the start of the crc32 tool
 #      - name: Create Release Folder
 #
