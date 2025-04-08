@@ -47,10 +47,11 @@ jobs:
           # at this point version.mak should have the version number
           source version.mak
           RELEASE_FOLDER=release/${{ steps.strings.outputs.plugin-name }}
+          mkdir -p ${RELEASE_FOLDER}
           cp -rdp ./plugin/* "${RELEASE_FOLDER}/"
           ls -lR release
           
-
+          
 
 #          sudo apt-get update  ## Add this at the start of the crc32 tool
 #      - name: Create Release Folder
