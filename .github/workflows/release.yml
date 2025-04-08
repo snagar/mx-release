@@ -110,7 +110,11 @@ jobs:
           git add -f release/${{ steps.strings.outputs.plugin-name }}/templates/*.zip
           git add -f release/${{ steps.strings.outputs.plugin-name }}/*.zip
           git commit -m "new ${TARGET_BRANCH} - ${TAG}"
-          git push -f -u origin ${TARGET_BRANCH}          
+          
+          git remote add authenticated-origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+          git push authenticated-origin release --force
+          
+          # git push -f -u origin ${TARGET_BRANCH} ## will fail since there is no TOKEN          
           
           echo -e "TARGET_BRANCH - ${TARGET_BRANCH}"
           echo -e "\ngithub.ref - ${{ github.ref }} - ${{ github.ref_name }} \n"
