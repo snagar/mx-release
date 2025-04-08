@@ -49,7 +49,7 @@ jobs:
           RELEASE_FOLDER=release/${{ steps.strings.outputs.plugin-name }}
           mkdir -p ${RELEASE_FOLDER}
           cp -rdp ./plugin/* "${RELEASE_FOLDER}/"
-#          ls -lR release
+          # ls -lR release
           
           ## skunkcrafts
             sed -e "s|@VERSION@|${VERSION}|g" \
