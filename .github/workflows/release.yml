@@ -94,7 +94,7 @@ jobs:
           
           echo -e "TARGET_BRANCH - ${TARGET_BRANCH}"
           
-          echo -e "\ngithub.ref - ${{ github.ref }} \n"
+          echo -e "\ngithub.ref - ${{ github.ref }} - ${{ github.ref_name }} \n"
           
       - name: Create Release
         id: create_release
