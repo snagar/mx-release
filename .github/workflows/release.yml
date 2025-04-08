@@ -16,6 +16,11 @@ jobs:
 #    if: github.event_name == 'push' && startsWith(github.ref_name, 'v')
 #    runs-on: ubuntu-latest
     runs-on: macos-13
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: read
+      packages: none
 
     steps:
       - name: Checkout Repository
