@@ -51,7 +51,57 @@ jobs:
           cp -rdp ./plugin/* "${RELEASE_FOLDER}/"
           ls -lR release
           
+          ## skunkcrafts
+            sed -e "s|@VERSION@|${VERSION}|g" \
+                skunkcrafts_updater.cfg.template > "${RELEASE_FOLDER}/skunkcrafts_updater.cfg"
+#            sed -e "s|@VERSION@|${VERSION}|g" \
+#              skunkcrafts_updater_beta.cfg.template > "${RELEASE_FOLDER}/skunkcrafts_updater_beta.cfg"
+
+          find ${RELEASE_FOLDER}/ -type f ! \( -name '*skunkcrafts_updater*' -o -path '*skunkcrafts_updater*' \) -print0 | while IFS= read -r -d '' file; do
+            checksum_hex=$(crc32 "$file")
+            # Convert hex checksum to uint32 decimal
+            checksum_decimal=$((16#$checksum_hex))
+            # Remove "release/" prefix from $file
+            modified_file="${file#${RELEASE_FOLDER}/}"
+            echo "$modified_file|$checksum_decimal" >> ${RELEASE_FOLDER}/skunkcrafts_updater_whitelist.txt
+            # Get file size in bytes
+            filesize=$(stat -c%s "$file")
+            echo "$modified_file|$filesize" >> ${RELEASE_FOLDER}/skunkcrafts_updater_sizeslist.txt
+          done
           
+          # debug               
+          cat ${RELEASE_FOLDER}/skunkcrafts_updater.cfg
+
+          touch ${RELEASE_FOLDER}/skunkcrafts_updater_blacklist.txt
+          
+          (cd ./release && 7z a "${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}-${VERSION}.zip" *)
+               
+               
+          TAG=${GITHUB_REF##*/}
+          TARGET_BRANCH="release"
+          if [[ $TAG == *"-test-"* ]]     # if TAG contains -test-
+          then
+            echo "This is a just a build test"
+            TARGET_BRANCH="build-test"
+          elif [[ $TAG == *"-beta-"* ]]        # if TAG contains -beta-
+          then
+            echo "This is a beta release"
+            TARGET_BRANCH="beta"
+          fi
+          
+          #debug     
+          echo -e "TARGET_BRANCH - ${TARGET_BRANCH}"
+#          git checkout -b ${TARGET_BRANCH}
+#          git config --global user.email "snagar.dev@protonmail.com"
+#          git config --global user.name "SN Release"
+#          git add release/
+#          # force add otherwise ignored directories
+#          git add -f release/${{ steps.strings.outputs.plugin-name }}/*_x64/*.xpl
+#          git add -f release/${{ steps.strings.outputs.plugin-name }}/win_x64/*.dll
+#          git commit -m "new ${TARGET_BRANCH} - ${TAG}"
+#          git push -f -u origin ${TARGET_BRANCH}
+
+
 
 #          sudo apt-get update  ## Add this at the start of the crc32 tool
 #      - name: Create Release Folder
