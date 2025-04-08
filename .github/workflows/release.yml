@@ -101,7 +101,12 @@ jobs:
           
           ## Create target branch
           git checkout -b ${TARGET_BRANCH}
-          git rm -r -f  ${TARGET_BRANCH}/*
+          
+          if [ -d "$DIRECTORY" ]; then
+            echo "$DIRECTORY does exist."
+            git rm -r -f  ${TARGET_BRANCH}/*
+          fi
+          
           
           git config --global user.email "snagar.dev@gmail.com"
           git config --global user.name "snagar"
