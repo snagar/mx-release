@@ -11,41 +11,31 @@ on:
 
 
 jobs:
-  runs-on:
-    - uses: actions/checkout@v4
+  build_and_copy:
+#    Execute only if we have "push + tag name that starts with "v"
+#    if: github.event_name == 'push' && startsWith(github.ref_name, 'v')
+    runs-on: ubuntu-latest
 
-    - name: Set reusable strings
-      id: strings
-      shell: bash
-      run: |
-        echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-    - name: Configure CMake
-      run: >
-        cmake -B ${{ steps.strings.outputs.build-output-dir }}
-        -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
-        -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
-        -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
-        -S ${{ github.workspace }}
+      - name: Create Release Folder
+        run: mkdir -p missionx
 
-    - name: Build Executable
-      shell: bash
-      env:
-        OS: ${{ matrix.os }}
-      run: |
-        TAG=${GITHUB_REF##*/}
-        if [ ! -z "$TAG" ]; then
-          echo "VERSION=$TAG" > version.mak
-        fi
+      - name: Copy Files to Release Folder
+        run: |
+          cp -r ./* missionx/
+          # Exclude the .git directory if you don't need it in the release
+          rm -rf missionx/.git
 
-        cd build
-        make
+      - name: List Contents of Release Folder
+        run: ls -R missionx/
 
-    - name: Upload Build Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: build-${{ matrix.os }}
-        path: |
-          build/test_yaml
-
-
+      # Optional: Add steps here to create a release, upload artifacts, etc.
+      # For example, to create a simple artifact:
+      - name: Upload Release Folder as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: missionx-${github.ref_name}
+          path: missionx
