@@ -56,6 +56,10 @@ jobs:
           ## skunkcrafts
             sed -e "s|@VERSION@|${VERSION}|g" skunkcrafts_updater.cfg.template > "${RELEASE_FOLDER}/skunkcrafts_updater.cfg"
 
+          # create crc32 checksum for all values and write to skunkcrafts_updater_whitelist.txt
+          # format is <filename>|<crc32 checksum>
+          # include subdirectories
+          rm -f ${RELEASE_FOLDER}/skunkcrafts_updater_whitelist.txt
           find ${RELEASE_FOLDER}/ -type f ! \( -name '*skunkcrafts_updater*' -o -path '*skunkcrafts_updater*' \) -print0 | while IFS= read -r -d '' file; do
             checksum_hex=$(crc32 "$file")
             # Convert hex checksum to uint32 decimal
@@ -64,16 +68,16 @@ jobs:
             modified_file="${file#${RELEASE_FOLDER}/}"
             echo "$modified_file|$checksum_decimal" >> ${RELEASE_FOLDER}/skunkcrafts_updater_whitelist.txt
             # Get file size in bytes
-            filesize=$(stat -c%s "$file")
-            echo "$modified_file|$filesize" >> ${RELEASE_FOLDER}/skunkcrafts_updater_sizeslist.txt
+            # filesize=$(stat -c%s "$file")
+            # echo "$modified_file|$checksum_decimal" >> ${RELEASE_FOLDER}/skunkcrafts_updater_sizeslist.txt
           done
           
           echo -e "Skunkcrafts updater:\n--------------->"
           cat ${RELEASE_FOLDER}/skunkcrafts_updater.cfg
           echo -e "<--------------"
 
-          echo -e "\n\nSkunkcrafts sizelist - crc32:\n--------------->"
-          cat ${RELEASE_FOLDER}/skunkcrafts_updater_sizeslist.txt
+          echo -e "\n\nSkunkcrafts whitelist - crc32:\n--------------->"
+          cat ${RELEASE_FOLDER}/skunkcrafts_updater_whitelist.txt
           echo -e "<--------------"
 
           touch ${RELEASE_FOLDER}/skunkcrafts_updater_blacklist.txt
