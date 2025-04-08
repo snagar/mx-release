@@ -66,10 +66,7 @@ jobs:
             checksum_decimal=$((16#$checksum_hex))
             # Remove "release/" prefix from $file
             modified_file="${file#${RELEASE_FOLDER}/}"
-            echo "$modified_file|$checksum_decimal" >> ${RELEASE_FOLDER}/skunkcrafts_updater_whitelist.txt
-            # Get file size in bytes
-            # filesize=$(stat -c%s "$file")
-            # echo "$modified_file|$checksum_decimal" >> ${RELEASE_FOLDER}/skunkcrafts_updater_sizeslist.txt
+            echo "$modified_file|$checksum_decimal" >> ${RELEASE_FOLDER}/skunkcrafts_updater_whitelist.txt            
           done
           
           echo -e "Skunkcrafts updater:\n--------------->"
