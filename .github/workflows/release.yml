@@ -14,7 +14,8 @@ jobs:
   release:
 #    Execute only if we have "push + tag name" that starts with "v"
 #    if: github.event_name == 'push' && startsWith(github.ref_name, 'v')
-    runs-on: ubuntu-latest
+#    runs-on: ubuntu-latest
+    runs-on: macos-13
 
     steps:
       - name: Checkout Repository
@@ -52,8 +53,7 @@ jobs:
           # ls -lR release
           
           ## skunkcrafts
-            sed -e "s|@VERSION@|${VERSION}|g" \
-                skunkcrafts_updater.cfg.template > "${RELEASE_FOLDER}/skunkcrafts_updater.cfg"
+            sed -e "s|@VERSION@|${VERSION}|g" skunkcrafts_updater.cfg.template > "${RELEASE_FOLDER}/skunkcrafts_updater.cfg"
 
           find ${RELEASE_FOLDER}/ -type f ! \( -name '*skunkcrafts_updater*' -o -path '*skunkcrafts_updater*' \) -print0 | while IFS= read -r -d '' file; do
             checksum_hex=$(crc32 "$file")
@@ -98,9 +98,9 @@ jobs:
           
           ## Create target branch
           git checkout -b ${TARGET_BRANCH}
-          git config --global user.email "snagar.dev@protonmail.com"
-          git config --global user.name "SN Release"
-          git add release/
+          git config --global user.email "snagar.dev@gmail.com"
+          git config --global user.name "snagar"
+          git add release/${{ steps.strings.outputs.plugin-name }}
           # force add otherwise ignored directories
           git add -f release/${{ steps.strings.outputs.plugin-name }}/*_x64/*.xpl
           git add -f release/${{ steps.strings.outputs.plugin-name }}/win_x64/*.dll
