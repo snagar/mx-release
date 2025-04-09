@@ -14,8 +14,8 @@ jobs:
   release:
     # Execute only if we have "push + tag name" that starts with "v"
     # if: github.event_name == 'push' && startsWith(github.ref_name, 'v')
-    # runs-on: macos-13
-    runs-on: ubuntu-latest
+    runs-on: macos-13
+    # runs-on: ubuntu-latest
     
     steps:
       - name: Checkout Repository
@@ -93,24 +93,33 @@ jobs:
             echo "This is a beta release"
             TARGET_BRANCH="beta"
           fi
-               
-          ls -lR release
+          
+          # debug which files are part of the branch     
+          # ls -lR release
           
           echo -e "TARGET_BRANCH - ${TARGET_BRANCH}"
           
           ## Create target branch
           git checkout -b ${TARGET_BRANCH}
           
-          if [ -d "$DIRECTORY" ]; then
-            echo "$DIRECTORY does exist."
+          if [ -d "TARGET_BRANCH" ]; then
+            echo "Directory ${TARGET_BRANCH} does exist."
             git rm -r -f  ${TARGET_BRANCH}/*
+          else 
+            echo "Directory '${TARGET_BRANCH}' doesn't exist."
           fi
           
-          
+          echo -e "Configuring git before pushing branch '${TARGET_BRANCH}' ."
           git config --global user.email "snagar.dev@gmail.com"
           git config --global user.name "snagar"
-          #git add .
-          
+
+          # Display branches
+          echo "-----"
+          echo -e "Display Branches"
+          git -a branch
+          # display folders
+          echo "-----"
+          ls -l          
           
           git add release/${{ steps.strings.outputs.plugin-name }}
           # # force add otherwise ignored directories
@@ -129,13 +138,13 @@ jobs:
           echo -e "TARGET_BRANCH - ${TARGET_BRANCH}"
           echo -e "\ngithub.ref - ${{ github.ref }} - ${{ github.ref_name }} \n"
           
-      - name: Create Release
-        id: create_release
-        uses: softprops/action-gh-release@v2
-        with:
-          files: |
-            ${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}*.zip
-          prerelease: ${{ contains(github.ref_name, '-beta-') }}
+#      - name: Create Release
+#        id: create_release
+#        uses: softprops/action-gh-release@v2
+#        with:
+#          files: |
+#            ${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}*.zip
+#          prerelease: ${{ contains(github.ref_name, '-beta') }}
 
 
 #
