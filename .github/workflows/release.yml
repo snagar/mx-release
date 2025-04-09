@@ -12,10 +12,10 @@ on:
 
 jobs:
   release:
-#    Execute only if we have "push + tag name" that starts with "v"
-#    if: github.event_name == 'push' && startsWith(github.ref_name, 'v')
-#    runs-on: ubuntu-latest
-    runs-on: macos-13
+    # Execute only if we have "push + tag name" that starts with "v"
+    # if: github.event_name == 'push' && startsWith(github.ref_name, 'v')
+    runs-on: ubuntu-latest
+    # runs-on: macos-13
 
 
     steps:
@@ -85,11 +85,11 @@ jobs:
                
           TAG=${GITHUB_REF##*/}
           TARGET_BRANCH="release"
-          if [[ $TAG == *"-test-"* ]]     # if TAG contains -test-
+          if [[ $TAG == *"-test"* ]]     # if TAG contains -test-
           then
             echo "This is a just a build test"
             TARGET_BRANCH="build-test"
-          elif [[ $TAG == *"-beta-"* ]]        # if TAG contains -beta-
+          elif [[ $TAG == *"-beta"* ]]        # if TAG contains -beta-
           then
             echo "This is a beta release"
             TARGET_BRANCH="beta"
@@ -138,25 +138,6 @@ jobs:
             ${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}*.zip
           prerelease: ${{ contains(github.ref_name, '-beta-') }}
 
-#          git checkout -b ${TARGET_BRANCH}
-#          git config --global user.email "snagar.dev@protonmail.com"
-#          git config --global user.name "SN Release"
-#          git add release/
-#          # force add otherwise ignored directories
-#          git add -f release/${{ steps.strings.outputs.plugin-name }}/*_x64/*.xpl
-#          git add -f release/${{ steps.strings.outputs.plugin-name }}/win_x64/*.dll
-#          git commit -m "new ${TARGET_BRANCH} - ${TAG}"
-#          git push -f -u origin ${TARGET_BRANCH}
-
-#
-#      - name: Release
-#        uses: softprops/action-gh-release@v1
-#        if: startsWith(github.ref, 'refs/tags/')
-#        with:
-#          body_path: ${{ github.workspace }}/README.md
-#          files: |
-#            ${{ github.workspace }}/build/xa-snow.zip
-#          prerelease: ${{ contains(github.ref_name, '-') }}
 
 #
 #      # Optional: Add steps here to create a release, upload artifacts, etc.
