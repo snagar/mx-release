@@ -170,7 +170,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            ${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}*${VERSION}.*
+            ${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}*7z*
           prerelease: ${{ contains(github.ref_name, '-beta') }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
