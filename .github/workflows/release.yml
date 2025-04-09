@@ -158,37 +158,49 @@ jobs:
         shell: bash
         run: |
           # Prepare the release compressed file
+          
+          file_size_mb() {
+            local file="$1"
+            if [[ -f "$file" ]]; then
+            stat -f "%z" "$file" # Get size in bytes
+            # Calculate megabytes with higher precision
+            local bytes=$(stat -f "%z" "$file")
+            echo $(echo "scale=2; $bytes / (1024 * 1024)" | bc -l)
+            else
+            echo "0.00"
+            fi
+          }
+          
+          
           echo -e "\n---------"
-          echo -e "Prepare the plugin as a set of compress files, in the root folder"
-          (cd ./release && 7z a -t7z -v98m "${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}-${VERSION}.7z" *)
-          echo -e "\n---- Check 1st Compression Output Files -----"
-          ls -l
-          echo -e "\n---------"
-          echo -e "\n---- test 7z size -----"
-          total_split_size_bytes=0
-          if ls "$archive_split".* > /dev/null 2>&1 
+          
+          folder_to_compress="${{ github.workspace }}/release"
+          output_file="${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}-${VERSION}.7z"
+          split_size="60m"
+          
+          echo "Compressing '$folder_to_compress' to '$output_file'..."
+          (cd ./release && 7z a -t7z "${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}-${VERSION}.7z" *)
+          
+          # Check the size of the compressed file
+          compressed_size=$(file_size_mb "$output_file")
+          echo "Initial compressed file size: ${compressed_size}M"
+          
+          # Check if the size is greater than 98M
+          if (( $(echo "$compressed_size > 98" | bc -l) )); 
           then
-            while IFS= read -r -d $'\0' file; do
-              total_split_size_bytes=$((total_split_size_bytes + $(du -sb "$file" | awk '{print $1}')))
-            done < <(find . -maxdepth 1 -name "$archive_split.*" -print0)
+            echo "Compressed file size exceeds 98M."
+            # Delete the previous compressed file
+            echo "Deleting previous compressed file: '$output_file'"
+            rm -f "$output_file"
+            
+            # Compress again with splitting
+            echo "Compressing '$folder_to_compress' to '$output_base.7z.001' with volume size ${split_size}..."
+            (cd ./release && 7z a -t7z -v"$split_size" "${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}-${VERSION}.7z" *)
+            
+            echo "Folder compressed into multiple volumes with a maximum size of ${split_size} each."
+          else
+            echo "Folder compressed successfully to '$output_file'."          
           fi
-          
-          let split_size_mb=98
-          total_split_size_mb=$(echo "scale=2; $total_split_size_bytes / (1024 * 1024)" | bc)
-          echo -e "** Check if compressed files are less than 98M **"
-          if (( $(echo "$total_split_size_mb < $split_size_mb" | bc -l) )); then
-            echo "Total size of split compressed files ($total_split_size_mb MB) is less than $split_size_mb MB."
-            echo "Deleting the split compressed files."
-            rm -f "${{ steps.strings.outputs.plugin-name }}*7z*"
-            echo "Compressing again without splitting."
-            (cd ./release && 7z a -t7z "${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}-${VERSION}.7z" *)
-            echo -e "\n---- Check Files After Re-Compress -----"
-            ls -l
-            echo -e "\n---------"
-
-          fi
-          
-
 
 
       - name: Create Release
