@@ -124,8 +124,13 @@ jobs:
           echo "Preparing branch: ${TARGET_BRANCH}"
           
           git add .
-          echo "!!Delete the large compressed file!!"
+          echo "!!Delete the large compressed file [${{ steps.strings.outputs.plugin-name }}*.zip]"
           git rm -f ${{ steps.strings.outputs.plugin-name }}*.zip
+          rm -f ${{ steps.strings.outputs.plugin-name }}*.zip
+          
+          echo -e "\n--------->"
+          ls -lR .
+          echo -e "\n<---------"
           
           # git add release/${{ steps.strings.outputs.plugin-name }}
           # # force add otherwise ignored directories
