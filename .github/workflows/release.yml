@@ -138,7 +138,7 @@ jobs:
           
           git remote add authenticated-origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
           echo -e "\nPushing ${TARGET_BRANCH}\n---------------------"
-          git push authenticated-origin release --force
+          git push authenticated-origin ${TARGET_BRANCH} --force
           
           # git push -f -u origin ${TARGET_BRANCH} ## will fail since there is no TOKEN          
           
