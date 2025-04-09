@@ -81,7 +81,7 @@ jobs:
 
           touch ${RELEASE_FOLDER}/skunkcrafts_updater_blacklist.txt
           
-#          (cd ./release && 7z a "${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}-${VERSION}.zip" *)
+          #(cd ./release && 7z a "${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}-${VERSION}.zip" *)
                
                
           TAG=${GITHUB_REF##*/}
