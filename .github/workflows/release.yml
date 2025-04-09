@@ -156,7 +156,7 @@ jobs:
           # Prepare the release compressed file
           echo -e "\n---------"
           echo -e "Prepare the plugin as a set of compress files, in the root folder"
-          (cd ./release && 7z a -t7z -v90m "${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}-${VERSION}.7z" *)
+          (cd ./release && 7z a -t7z -v98m "${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}-${VERSION}.7z" *)
           echo -e "\n---------"
           ls -l
           echo -e "\n---------"
