@@ -153,14 +153,41 @@ jobs:
           echo -e "TARGET_BRANCH - ${TARGET_BRANCH}"
           echo -e "\ngithub.ref - ${{ github.ref }} - ${{ github.ref_name }} \n"
 
+
+      - name: Compress Plugin Files
+        shell: bash
+        run: |
           # Prepare the release compressed file
           echo -e "\n---------"
           echo -e "Prepare the plugin as a set of compress files, in the root folder"
           (cd ./release && 7z a -t7z -v98m "${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}-${VERSION}.7z" *)
-          echo -e "\n---------"
+          echo -e "\n---- Check 1st Compression Output Files -----"
           ls -l
           echo -e "\n---------"
+          echo -e "\n---- test 7z size -----"
+          total_split_size_bytes=0
+          if ls "$archive_split".* > /dev/null 2>&1 
+          then
+            while IFS= read -r -d $'\0' file; do
+              total_split_size_bytes=$((total_split_size_bytes + $(du -sb "$file" | awk '{print $1}')))
+            done < <(find . -maxdepth 1 -name "$archive_split.*" -print0)
+          fi
+          
+          let split_size_mb=98
+          total_split_size_mb=$(echo "scale=2; $total_split_size_bytes / (1024 * 1024)" | bc)
+          echo -e "** Check if compressed files are less than 98M **"
+          if (( $(echo "$total_split_size_mb < $split_size_mb" | bc -l) )); then
+            echo "Total size of split compressed files ($total_split_size_mb MB) is less than $split_size_mb MB."
+            echo "Deleting the split compressed files."
+            rm -f "${{ steps.strings.outputs.plugin-name }}*7z*"
+            echo "Compressing again without splitting."
+            (cd ./release && 7z a -t7z "${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}-${VERSION}.7z" *)
+            echo -e "\n---- Check Files After Re-Compress -----"
+            ls -l
+            echo -e "\n---------"
 
+          fi
+          
 
 
 
