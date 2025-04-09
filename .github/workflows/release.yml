@@ -160,19 +160,36 @@ jobs:
           # Prepare the release compressed file
           source version.mak
           echo -e "\nVERSION=${VERSION}\n"
+                    
+          #file_size_mb() {
+          #  local file="$1"
+          #  if [[ -f "$file" ]]; then
+          #  stat -f "%z" "$file" # Get size in bytes
+          #  # Calculate megabytes with higher precision
+          #  local bytes=$(stat -f "%z" "$file")
+          #  echo $(echo "scale=2; $bytes / (1024 * 1024)" | bc -l)
+          #  else
+          #  echo "0.00"
+          #  fi
+          #}
           
           file_size_mb() {
-            local file="$1"
-            if [[ -f "$file" ]]; then
-            stat -f "%z" "$file" # Get size in bytes
-            # Calculate megabytes with higher precision
-            local bytes=$(stat -f "%z" "$file")
-            echo $(echo "scale=2; $bytes / (1024 * 1024)" | bc -l)
+            file="$1"
+        
+            local bytes
+            if [[ "$OSTYPE" == "darwin"* ]]; then
+            # macOS
+            bytes=$(stat -f "%z" "$file")
+            elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+            # Linux
+            bytes=$(stat -c "%s" "$file")
             else
-            echo "0.00"
+            echo "Error: Unsupported operating system for file size check."
+            return 1
             fi
+                    
+            echo $(echo "scale=2; $bytes / (1024 * 1024)" | bc -l)
           }
-          
           
           echo -e "\n---------"
           
