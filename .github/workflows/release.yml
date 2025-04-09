@@ -116,10 +116,12 @@ jobs:
           # Display branches
           echo "-----"
           echo -e "Display Branches"
-          git -a branch
+          git branch -a
           # display folders
           echo "-----"
           ls -l          
+          echo "-----"
+          echo "Preparing branch: ${TARGET_BRANCH}"
           
           git add release/${{ steps.strings.outputs.plugin-name }}
           # # force add otherwise ignored directories
