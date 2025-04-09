@@ -44,8 +44,6 @@ jobs:
 
       - name: Prepare Skunkcrafts Updater
         shell: bash
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # at this point version.mak should have the version number
           source version.mak
