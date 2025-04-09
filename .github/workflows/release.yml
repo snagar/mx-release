@@ -185,7 +185,8 @@ jobs:
           
           # Check the size of the compressed file
           compressed_size=$(file_size_mb "$output_file")
-          echo "Initial compressed file size: ${compressed_size}M"
+          echo -e "\n>> Initial compressed file size: ${compressed_size}M \n"
+          echo -e "[${compressed_size}]\n<<"
           
           # Check if the size is greater than 98M
           if (( $(echo "$compressed_size > 98" | bc -l) )); 
