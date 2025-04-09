@@ -44,6 +44,8 @@ jobs:
 
       - name: Prepare Skunkcrafts Updater
         shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # at this point version.mak should have the version number
           source version.mak
@@ -79,7 +81,7 @@ jobs:
 
           touch ${RELEASE_FOLDER}/skunkcrafts_updater_blacklist.txt
           
-          (cd ./release && 7z a "${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}-${VERSION}.zip" *)
+#          (cd ./release && 7z a "${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}-${VERSION}.zip" *)
                
                
           TAG=${GITHUB_REF##*/}
@@ -121,8 +123,9 @@ jobs:
           echo "-----"
           ls -l          
           echo "-----"
-          echo "Preparing branch: ${TARGET_BRANCH}"
           
+          echo "Preparing branch: ${TARGET_BRANCH}"          
+          echo "-----"
           git add .
           echo "!!Delete the large compressed file [${{ steps.strings.outputs.plugin-name }}*.zip]"
           git rm -f ${{ steps.strings.outputs.plugin-name }}*.zip
@@ -151,15 +154,28 @@ jobs:
           
           echo -e "TARGET_BRANCH - ${TARGET_BRANCH}"
           echo -e "\ngithub.ref - ${{ github.ref }} - ${{ github.ref_name }} \n"
-          
-#      - name: Create Release
-#        id: create_release
-#        uses: softprops/action-gh-release@v2
-#        with:
-#          files: |
-#            ${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}*.zip
-#          prerelease: ${{ contains(github.ref_name, '-beta') }}
 
+          # Prepare the release compressed file
+          echo -e "\n---------"
+          echo -e "Prepare the plugin as a set of compress files, in the root folder"
+          (cd ./release && 7z a -t7z -v90m "${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}-${VERSION}.7z" *)
+          echo -e "\n---------"
+          ls -l
+          echo -e "\n---------"
+
+
+
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            ${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}*${VERSION}.*
+          prerelease: ${{ contains(github.ref_name, '-beta') }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 #
 #      # Optional: Add steps here to create a release, upload artifacts, etc.
