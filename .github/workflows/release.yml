@@ -11,7 +11,7 @@ on:
 
 
 jobs:
-  release:
+  build:
     # Execute only if we have "push + tag name" that starts with "v"
     # if: github.event_name == 'push' && startsWith(github.ref_name, 'v')
     runs-on: macos-13
@@ -30,7 +30,7 @@ jobs:
       - name: setup crc32 tool
         shell: bash
         run: |
-          sudo apt install -y libarchive-zip-perl
+          # sudo apt install -y libarchive-zip-perl
           TAG=${GITHUB_REF##*/}
           if [ ! -z "$TAG" ]; then
             echo "VERSION=$TAG" > version.mak
