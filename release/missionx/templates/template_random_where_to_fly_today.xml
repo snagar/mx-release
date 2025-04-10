@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEMPLATE version="301" plane_type="" > 
+
+  <content>
+    <medevac list="goal_medevac,goal_land" plane_type="helos">Assist in evacuating an injured person with an helicopter</medevac>
+    <medevac list="goal_medevac,goal_land,goal_delivery" plane_type="helos">Hello pilot.;Use the helicopter to assist in evacuating an injured person</medevac>
+    <delivery list="goal_delivery,goal_delivery|optional=50%,goal_delivery,goal_land," plane_type="prop">Today you will fly to few locations to deliver some mechanical parts.;Check the generated flight plan and pick the correct plane for this mission.;;Use your 'inventory' to move items from/to your plane.</delivery>
+    <delivery list="goal_delivery,goal_delivery" plane_type="prop">Today you will fly to few locations to deliver some mechanical parts.;Check the generated flight plan and pick the correct plane for this mission.;;Use your 'inventory' to move items from/to your plane.</delivery>       
+    <delivery list="goal_delivery,deliver_medevac_set|optional=20%,goal_delivery,goal_back_to_start" plane_type="prop">Today you will fly to few locations.;You might be asked to deliver some medic staff too.;;Check the generated flight plan and pick the correct plane for this mission.</delivery>       
+  </content>
+
+
+  <mission_info template_image_file_name="template_where_do_you_want_to_fly.png" written_by="Saar N. (snagar)" plane_desc="Helicopter or Prop based plane" estimate_time="~30 Minutes." difficulty="Easy" other_settings="" weather_settings="By Simmer" scenery_settings="Rescue-X, R2 Library, 3D people library, OpenSceneryX and MisterX libraries (all should be available through X-Plane Org)" short_desc="In this template we will create a random mission for medevac (helos) or delivery (prop) based on plane position. You can continue generating missions until you you are satisfied with the type of mission.;Enjoy." />  
+  
+  <!-- [plane | xy] {element name that holds points} -->
+  <briefer_and_start_location location_type="plane" elev_ft="0" heading_psi="" > 
+    <![CDATA[Welcome pilot, in this mission you will have to fly to a location on your GPS. ]]>
+  </briefer_and_start_location>
+
+
+  <!-- plugin will probe location and will decide if it is water or ground --> <!-- location_value = random_pick_target_in_area -->
+  <goal_medevac template="hover,land" name="" >
+    <expected_location location_type="xy" location_value="nm=25"   />    
+    <display_object_set random_tag="object_sets" set_name="medevac" />  
+  </goal_medevac>
+
+  <goal_medevac template="hover,land" name="" >
+    <expected_location location_type="xy" location_value="nm=14"   />      
+    <display_object_set random_tag="object_sets" set_name="medevac" />   
+  </goal_medevac>
+
+  <goal_delivery template="land" name="" >
+    <expected_location location_type="xy" location_value="nm=80"   />      
+    <display_object_set random_tag="object_sets" set_name="delivery" />   
+  </goal_delivery>
+
+  <goal_delivery template="land" name="" >
+    <expected_location location_type="xy" location_value="nm=50"   />      
+    <display_object_set random_tag="object_sets" set_name="delivery" />   
+  </goal_delivery>
+
+  
+  <!-- when "location_type = "start" you will return to starting coordinate. Start is a special case -->
+  <goal_back_to_start template="start" name="" >
+    <expected_location location_type="land" location_value=""   />      
+    <display_object name="marker" instance_name="" target_marker_b="yes" replace_elev_above_ground_ft="60" />      
+    <desc>It is time to fly back. Fly to: {navaid_name}.</desc>  
+  </goal_back_to_start>
+
+  <goal_land template="land" name="" >
+    <expected_location location_type="xy" location_value="nm=20"  /> 
+    <display_object name="marker" instance_name="" target_marker_b="yes" replace_elev_above_ground_ft="60" />      
+  </goal_land>
+
+  <goal_land template="land,start" name="" >
+    <expected_location location_type="xy,near" location_value="nm=20,nm=_"  /> 
+    <display_object name="marker" instance_name="" target_marker_b="yes" replace_elev_above_ground_ft="60" />      
+  </goal_land>
+
+
+  <deliver_medevac_set>
+    <leg template="land" name="" >    
+      <expected_location location_type="icao" location_value="nm=20"   />      
+      <display_object name="marker" skewed_name="marker_q" instance_name="" target_marker_b="yes" replace_elev_above_ground_ft="60" />      
+    </leg>
+    <leg template="land" name="" >    
+      <expected_location location_type="icao" location_value="nm=20"   />      
+      <display_object name="marker" skewed_name="marker_q" instance_name="" target_marker_b="yes" replace_elev_above_ground_ft="60" />      
+    </leg>
+  </deliver_medevac_set>
+  
+  <object_templates>
+    <!-- markers -->
+    <obj3d  name="marker" file_name="marker_five_parts_02.obj" />
+    <obj3d  name="marker_q" file_name="marker01_q.obj" />     
+    <obj3d  name="land_hover_marker" file_name="land_hover01.obj" />
+    <!-- cars -->
+    <obj3d  name="ambulance" file_name="" random_tag="ambulance_select"   />    
+    <obj3d  name="random_thing" file_name="" random_tag="people_at_location"  />    
+
+  </object_templates>
+  
+  
+  <object_sets>
+    <medevac>
+      <display_object  name="random_ambulance" file_name=""  random_tag="ambulance_select"  random_water_tag="water_replace_ambulance"    limit_to_terrain_slope="20" />    
+      <display_object  name="random_car"       file_name=""  random_tag="crashed_car"       relative_pos_bearing_deg_distance_mt="360|10" random_water_tag="blank" limit_to_terrain_slope="20" />    
+      <display_object  name="random_sign"      file_name=""  random_tag="clutter"           relative_pos_bearing_deg_distance_mt="180|10" random_water_tag="blank" />    
+      <display_object  name="marker"           skewed_name="marker_q" target_marker_b="yes" replace_elev_above_ground_ft="60" />
+    </medevac>
+
+    <medevac>
+      <display_object  name="random_ambulance" file_name=""  random_tag="ambulance_select"  random_water_tag="water_replace_ambulance"    limit_to_terrain_slope="20" />    
+      <display_object  name="aider01"          file_name=""  random_tag="push_wealchair"    relative_pos_bearing_deg_distance_mt="45|05"  random_water_tag="blank" limit_to_terrain_slope="20" />    
+      <display_object  name="wealchair01"      file_name=""  random_tag="wealchairs"        relative_pos_bearing_deg_distance_mt="45|06"  random_water_tag="blank" limit_to_terrain_slope="20" />    
+      <display_object  name="random_car"       file_name=""  random_tag="crashed_car"       relative_pos_bearing_deg_distance_mt="360|10" random_water_tag="blank" limit_to_terrain_slope="20" />    
+      <display_object  name="random_sign"      file_name=""  random_tag="clutter"           relative_pos_bearing_deg_distance_mt="180|10" random_water_tag="blank" />    
+      <display_object  name="firetruck01"      file_name=""  random_tag="firetruck"         relative_pos_bearing_deg_distance_mt="270|5"  random_water_tag="blank" />    
+      <display_object  name="fireman01"        file_name=""  random_tag="fireman"           relative_pos_bearing_deg_distance_mt="295|4"  random_water_tag="blank" />   
+      <display_object  name="marker"           skewed_name="marker_q" target_marker_b="yes" replace_elev_above_ground_ft="60" />      
+    </medevac>
+
+    <medevac>
+      <display_object  name="random_police_car" file_name=""    random_tag="police_car"         random_water_tag="water_replace_ambulance"    limit_to_terrain_slope="20" />    
+      <display_object  name="random_car"        file_name=""    random_tag="crashed_car"        relative_pos_bearing_deg_distance_mt="360|10" random_water_tag="blank" limit_to_terrain_slope="20" />    
+      <display_object  name="random_police01"   file_name=""    random_tag="policeman"          relative_pos_bearing_deg_distance_mt="360|5"  random_water_tag="blank" limit_to_terrain_slope="" />    
+      <display_object  name="random_police02"   file_name=""    random_tag="policeman"          relative_pos_bearing_deg_distance_mt="345|5"  random_water_tag="blank" limit_to_terrain_slope="" />    
+      <display_object  name="random_person1"    file_name=""    random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="10|10"  random_water_tag="blank" limit_to_terrain_slope="" />    
+      <display_object  name="random_person2"    file_name=""    random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="15|10"  random_water_tag="blank" limit_to_terrain_slope="" />    
+      <display_object  name="random_sign"       file_name=""    random_tag="clutter"              relative_pos_bearing_deg_distance_mt="180|10" random_water_tag="blank" />   
+      <display_object  name="marker"            skewed_name="marker_q" target_marker_b="yes" replace_elev_above_ground_ft="60" />
+    </medevac>
+
+    <medevac_slope>
+      <display_object  name="random_person1"  file_name=""   random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="10|10"  random_water_tag="blank" limit_to_terrain_slope="" />    
+      <display_object  name="random_person2"  file_name=""   random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="15|10"  random_water_tag="blank" limit_to_terrain_slope="" optional="70%" />    
+      <display_object  name="random_sign"     file_name=""   random_tag="clutter"              relative_pos_bearing_deg_distance_mt="180|10" random_water_tag="blank" optional="50%" />    
+      <display_object  name="marker"          skewed_name="marker_q" target_marker_b="yes" replace_elev_above_ground_ft="60" />
+    </medevac_slope>
+
+    <medevac_slope>
+      <display_object  name="random_person1"  file_name=""     random_tag="people_at_location" relative_pos_bearing_deg_distance_mt=""       random_water_tag="blank" limit_to_terrain_slope="" optional="70%" />    
+      <display_object  name="random_person2"  file_name=""     random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="10|10"  random_water_tag="blank" limit_to_terrain_slope="" />    
+      <display_object  name="random_person3"  file_name=""     random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="15|10"  random_water_tag="blank" limit_to_terrain_slope="" optional="70%" />    
+      <display_object  name="random_sign"     file_name=""     random_tag="clutter"              relative_pos_bearing_deg_distance_mt="180|10" random_water_tag="blank" optional="50%" /> 
+      <display_object  name="marker"          skewed_name="marker_q" target_marker_b="yes" replace_elev_above_ground_ft="60" />      
+    </medevac_slope>
+    
+    <delivery>
+    
+    </delivery>
+    
+  </object_sets>
+  
+  <!-- the name attribute is not important -->
+  <blank>
+    <obj3d  name="blank" file_name="" />    <!-- disable 3D Object -->
+  </blank>
+  
+  <ambulance_select>
+    <obj3d  name="ambulance1" file_name="../../../RescueX_Lib/cars/RTW_01.obj" />    
+    <obj3d  name="ambulance2" file_name="../../../RescueX_Lib/cars/RTW_02.obj" />    
+    <obj3d  name="ambulance3" file_name="../../../RescueX_Lib/cars/RTW_03.obj" />    
+    <obj3d  name="ambulance4" file_name="../../../RescueX_Lib/cars/RTW_04.obj" />    
+    <obj3d  name="ambulance5" file_name="USAmbulance.obj" />        
+  </ambulance_select>
+  
+  <police_car>
+    <obj3d  name="police01" file_name="../../../RescueX_Lib/cars/Polizei_FuStw_01.obj" />    
+    <obj3d  name="police01" file_name="../../../RescueX_Lib/cars/Polizei_FuStw_01_lit.obj" />    
+    <obj3d  name="police01" file_name="../../../RescueX_Lib/cars/Polizei_FuStw_01_lit_open.obj" />        
+  </police_car>
+  
+  <policeman>
+    <obj3d  name="person01" file_name="../../../3D_people_library/policeman_1.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/policeman_1_walking.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/policeman_2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/policeman3.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/policeman4.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/policeman5.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/policeman6.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/policeman7.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/policeman8.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/policeman_motorcyclist.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/police.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/police_officer.obj" />  
+    <obj3d  name="person01" file_name="../../../3D_people_library/sheriff.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/sheriff_walking.obj" />
+  </policeman>
+  
+  
+  <crashed_car>
+    <obj3d  name="car01" file_name="../../../RescueX_Lib/cars/NEF_Passat_sb1099.obj" />    
+    <obj3d  name="car02" file_name="../../../RescueX_Lib/cars/crashed_CLK.obj" />      
+    <obj3d  name="car03" file_name="../../../RescueX_Lib/cars/crashed_CLK.obj" />      
+    <obj3d  name="car04" file_name="../../../RescueX_Lib/cars/crashed_CLK.obj" />      
+  </crashed_car>
+  
+  <wealchairs>
+    <obj3d  name="person01" file_name="../../../3D_people_library/wheelchair.obj" />  
+  </wealchairs>
+
+  <push_wealchair>
+      <obj3d  name="person01" file_name="../../../3D_people_library/woman_push_wheelchair.obj" />    
+  </push_wealchair>
+  
+  
+  <cars>
+    <obj3d  name="car01" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_alto.obj"/>
+    <obj3d  name="car02" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_daihatsu_tanto.obj"/>
+    <obj3d  name="car03" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_Datsun_620-73.obj"/>
+    <obj3d  name="car04" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_datsunGO.obj"/>
+    <obj3d  name="car05" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_datsunGOPlus.obj"/>
+    <obj3d  name="car06" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_fordRangerWhite.obj"/>
+    <obj3d  name="car07" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_gmc_airport.obj"/>
+    <obj3d  name="car08" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_gmc_old.obj"/>
+    <obj3d  name="car09" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_KiaSuv.obj"/>
+    <obj3d  name="car10" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_LandRover107.obj"/>
+    <obj3d  name="car11" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_lexus.obj"/>
+    <obj3d  name="car12" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_mitshubishiTbox.obj"/>
+    <obj3d  name="car13" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_mitsubishi_pack.obj"/>
+    <obj3d  name="car14" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_nissanStanzaWG.obj"/>
+    <obj3d  name="car15" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_old_pickup.obj"/>
+    <obj3d  name="car16" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_Pajero.obj"/>
+    <obj3d  name="car17" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_peugeotrossa.obj"/>
+    <obj3d  name="car18" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_postTruck.obj"/>
+    <obj3d  name="car19" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_sinca.obj"/>
+    <obj3d  name="car20" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_subaru_wagon.obj"/>
+    <obj3d  name="car21" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_suzuki_cappuccino.obj"/>
+    <obj3d  name="car22" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_suzukiCarry.obj"/>
+    <obj3d  name="car23" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_SuzukiCarry_pickup.obj"/>
+    <obj3d  name="car24" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_SuzukiCarry2.obj"/>
+    <obj3d  name="car25" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_toyota_camry.obj"/>
+    <obj3d  name="car26" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_toyota_corolla.obj"/>
+    <obj3d  name="car27" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_toyota_corolla_old.obj"/>
+    <obj3d  name="car28" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_toyotaRed_old_pickup.obj"/>
+    <obj3d  name="car29" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_toyotaTacoma.obj"/>
+    <obj3d  name="car30" file_name="../../../RescueX_Lib/cars/CamiDeBellis/CDBambassador_carblack.obj"/>
+    <obj3d  name="car31" file_name="../../../RescueX_Lib/cars/CamiDeBellis/CDBcar_van.obj"/>
+    <obj3d  name="car32" file_name="../../../RescueX_Lib/cars/CamiDeBellis/CDBhummer.obj"/>     
+   
+    <obj3d  name="r2lib" file_name="../../../R2_Library/doprava/vozidla/s105-red.obj" />
+    <obj3d  name="r2lib" file_name="../../../R2_Library/doprava/vozidla/s105-blue.obj" />
+    <obj3d  name="r2lib" file_name="../../../R2_Library/doprava/vozidla/s105-green.obj" />   
+    <obj3d  name="r2lib" file_name="../../../R2_Library/doprava/vozidla/avia.obj" />
+    <obj3d  name="r2lib" file_name="../../../R2_Library/doprava/vozidla/skoda_favorit_blue.obj" />
+    <obj3d  name="r2lib" file_name="../../../R2_Library/doprava/vozidla/skoda_favorit_red.obj" />
+    <obj3d  name="r2lib" file_name="../../../R2_Library/doprava/vozidla/skoda_favorit_white.obj" />
+    <obj3d  name="r2lib" file_name="../../../R2_Library/doprava/vozidla/skoda_favorit_yellow.obj" />
+    <obj3d  name="r2lib" file_name="../../../R2_Library/doprava/vozidla/T815.obj" /> <!-- truck -->
+    <obj3d  name="r2lib" file_name="../../../R2_Library/doprava/vozidla/z7745.obj" /> <!-- traktor -->
+    <obj3d  name="r2lib" file_name="../../../R2_Library/doprava/vozidla/bus_mhd.obj" />
+    <obj3d  name="r2lib" file_name="../../../R2_Library/doprava/vozidla/DAF55.obj" />
+    <obj3d  name="r2lib" file_name="../../../R2_Library/doprava/vozidla/bus_2.obj" />   
+  </cars>
+  
+  <clutter>
+    <obj3d  name="sign01" file_name="../../../RescueX_Lib/objects/OBJ_Faltdreieck.obj"/>            
+    <obj3d  name="sign02" file_name="../../../RescueX_Lib/objects/OBJ_Faltdreieck_Leuchte.obj"/>            
+    <obj3d  name="sign03" file_name="../../../RescueX_Lib/objects/OBJ_Leuchte.obj"/>                
+    <obj3d  name="r2lib" file_name="../../../R2_Library/airport/accessories/oznaceni_letiste.obj" />
+    <obj3d  name="r2lib" file_name="../../../R2_Library/airport/accessories/oznaceni_letiste_dlouhe.obj" />
+    <obj3d  name="r2lib" file_name="../../../R2_Library/airport/accessories/sudy_CB_letiste.obj" />
+    <obj3d  name="r2lib" file_name="../../../R2_Library/airport/accessories/sudy_letiste.obj" />
+    <obj3d  name="r2lib" file_name="../../../R2_Library/airport/accessories/kuzel_cerveny.obj" />
+    <obj3d  name="r2lib" file_name="../../../R2_Library/airport/accessories/kuzel_modry.obj" />
+    <obj3d  name="r2lib" file_name="../../../R2_Library/airport/accessories/kuzely_cervene.obj" />
+    <obj3d  name="r2lib" file_name="../../../R2_Library/airport/accessories/kuzely_modre.obj" />
+    <obj3d  name="r2lib" file_name="../../../R2_Library/airport/accessories/znaceni_letiste_prkna.obj" />    
+  </clutter>
+
+  <people_aiders>
+    <obj3d  name="person01" file_name="../../../3D_people_library/first_aider.obj" />
+  </people_aiders>
+  
+  <people_at_location>
+    <!-- People -->
+    <obj3d  name="hicker01" file_name="../../../MisterX_Library/People/Airport_Worker_4.obj" /> 
+    <obj3d  name="hicker02" file_name="../../../MisterX_Library/People/Man_Shirt_1.obj" /> 
+    <obj3d  name="hicker03" file_name="../../../MisterX_Library/People/Man_Shirt_2.obj" /> 
+    <obj3d  name="Woman01" file_name="../../../MisterX_Library/People/Woman_1.obj" /> 
+    <obj3d  name="Woman02" file_name="../../../MisterX_Library/People/Woman_4.obj" />    
+    <obj3d  name="person01" file_name="../../../3D_people_library/biker2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/biker3.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/biker.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/boy_shouting.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/boy_sitting.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/business_woman.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/child.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/Crew_female_a1.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/Crew_female_a2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/Crew_female_a3.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/Crew_male_a1.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/Crew_male_a2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/Crew_male_a3.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/Crew_male_b1.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/Crew_male_b2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/Crew_male_b3.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/cyclist.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/cyclist_standing.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/dog_handler.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/door_supervisor.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/farm10.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/farm10_walking.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/farm11.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/farm11_walking.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/farm1.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/farm1_walking.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/farm2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/farm2_walking.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/farm2_with_spade.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/farm3.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/farm3_walking.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/farm4.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/farm4_walking.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/farm5.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/farm5_walking.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/farm6.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/farm6_walking.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/farm6_with_hay_fork.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/farm7.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/farm7_walking.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/farm7_with_scythe.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/farm8.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/farm8_walking.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/farm9.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/farm9_walking.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/female1.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/female2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/female3.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/girl_sitting_2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/Ground_crew_female1.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/Ground_crew_female2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/Ground_crew_female3.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/ground_crew_male_10.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/ground_crew_male_10_walking.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/ground_crew_male_1.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/Ground_crew_male1.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/ground_crew_male_2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/ground_crew_male_3.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/ground_crew_male_4.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/ground_crew_male_security.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/Ground_crew_with_extinguisher.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/Ground_crew_with_toolbox_2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/Ground_crew_with_toolbox.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/Male_with_jerry_can.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_1_sport.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_arms_crossed.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_baseball_cap.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_blue_shirt.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_blue_T_shirt.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_bodyguard.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_brown_suit.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_brown_top.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_camo_trousers.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_casual.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_check_shirt2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_check_shirt.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_cloth_cap.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_cool_dude.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_green_shirt.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_green_tshirt2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_green_tshirt.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/Man_grey_coat.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_grey_jumper.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_grey_shirt.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_greytop.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_hand_in_pocket.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_hawaiin_shirt.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_holding_elbow.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_jeans.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_mobile_2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_mobile.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_odd_hat.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_old_2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_old.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_overcoat.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_purple_shirt.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_red_tshirt.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_running.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_sfpd.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_shirt_jeans.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_smiling.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_10.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_11.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_12.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_13.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_14.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_15.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_16.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_17.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_18.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_19.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_20.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_21.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_22.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_23.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_24.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_25.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_26.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_27.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_28.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_29.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_30.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_31.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_32.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_33.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_34.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_35.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_36.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_37.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_3.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_4.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_5.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_6.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_7.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_8.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing_9.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_standing.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_striped_jacket.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_striped_shirt.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_tatoo.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_tattoo2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_walking_2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_walking_37.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_walking_3.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_walking.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_white_shirt.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_with_beard.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_with_mobile.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_with_sunglasses.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_woollen_hat.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_yellow.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/mechanic.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/stewardess_2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/stewardess.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/teenager_sitting2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/teenager_sitting.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/teenager_standing.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/teenager_with_dog.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/watchman.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_5.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_backpack.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_black_skirt.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_black_skirt_walking.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_brown_shoulder_bag.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_business.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_checking_in.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_chinese_top.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_denim.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_flowerytop.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_hand_on_hip.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_jeans_2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_pony_tail.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_purple_top.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_reclining.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_standing10.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_standing11.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_standing12.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_standing14.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_standing2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_standing3.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_standing4.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_standing5.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_standing7.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_standing8.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_standing9.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_standing.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_walking2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_walking_brown.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_walking_dog.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_walking.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_yellow_top.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/worker.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/workers_manhole.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/worker_stop_sign.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/worker_walking_2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/worker_walking.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/worker_waving.obj" />
+  </people_at_location>
+  
+  <fireman>
+    <obj3d  name="person01" file_name="../../../3D_people_library/fireman2.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/fireman3.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/fireman4.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/Fireman.obj" />  
+  </fireman>
+
+  
+  <firetruck>
+   
+    <obj3d  name="r2lib" file_name="../../../R2_Library/doprava/vozidla/liaz101cas25.obj" />
+    <obj3d  name="r2lib" file_name="../../../R2_Library/doprava/vozidla/liaz101cas25-o.obj" />
+    <obj3d  name="r2lib" file_name="../../../R2_Library/doprava/vozidla/liaz101cas25+S.obj" />
+    <obj3d  name="r2lib" file_name="../../../R2_Library/doprava/vozidla/liaz101cas25+SM.obj" />
+    <obj3d  name="r2lib" file_name="../../../R2_Library/doprava/vozidla/liaz101cas25-o+S.obj" />
+    <obj3d  name="r2lib" file_name="../../../R2_Library/doprava/vozidla/liaz101cas25-o+SM.obj" />    
+  </firetruck>
+
+  <water_replace_ambulance>                                                                           
+    <obj3d  name="boat01" file_name="../../../OpenSceneryX/objects/vehicles/boats_ships/fishing/10/object.obj" />    
+    <obj3d  name="boat01" file_name="../../../OpenSceneryX/objects/vehicles/boats_ships/canoes_kayaks/3/object.obj" />    
+    <obj3d  name="boat01" file_name="../../../OpenSceneryX/objects/vehicles/boats_ships/canoes_kayaks/4/object.obj" />    
+    <obj3d  name="boat01" file_name="../../../OpenSceneryX/objects/vehicles/boats_ships/canoes_kayaks/6/object.obj" />    
+    <obj3d  name="boat01" file_name="../../../OpenSceneryX/objects/vehicles/boats_ships/fishing/11/object.obj" />    
+    <obj3d  name="boat01" file_name="../../../OpenSceneryX/objects/vehicles/boats_ships/fishing/9/object.obj" />    
+    <obj3d  name="boat01" file_name="../../../OpenSceneryX/objects/vehicles/boats_ships/sail/10/object.obj" />    
+    <obj3d  name="boat01" file_name="../../../OpenSceneryX/objects/vehicles/boats_ships/sail/11/object.obj" />    
+    <obj3d  name="boat01" file_name="../../../OpenSceneryX/objects/vehicles/boats_ships/sail/13/object.obj" />    
+    <obj3d  name="boat01" file_name="../../../OpenSceneryX/objects/vehicles/boats_ships/sail/9/object.obj" />    
+    <obj3d  name="boat01" file_name="../../../OpenSceneryX/objects/vehicles/boats_ships/tour/1/object.obj" />    
+    <obj3d  name="boat01" file_name="../../../OpenSceneryX/objects/vehicles/boats_ships/tour/2/object.obj" />    
+    <obj3d  name="boat01" file_name="../../../OpenSceneryX/objects/vehicles/boats_ships/tour/3/object.obj" />    
+    <obj3d  name="boat01" file_name="../../../MisterX_Library/Vehicles/Boats/Yacht_1.obj" />    
+    <obj3d  name="boat01" file_name="../../../MisterX_Library/Vehicles/Boats/Fishing_Boat_1.obj" />   </water_replace_ambulance>
+  
+  <something_in_water>
+    <!-- People -->
+    <obj3d  name="person01" file_name="../../../3D_people_library/man_swimming.obj" />
+    <obj3d  name="person01" file_name="../../../3D_people_library/woman_bikini.obj" />
+  </something_in_water>
+
+  
+    <!-- inventory items to pick randomly from -->
+  <item_blueprints>
+    <item barcode="staff02" name="Staff_5kg"   weight_kg="5" />      
+    <item barcode="staff01" name="Staff_10kg"  weight_kg="10" />      
+    <item barcode="staff03" name="Staff_25kg"  weight_kg="25" />      
+    <item barcode="staff04" name="Staff_20kg"  weight_kg="20" />      
+    <item barcode="staff05" name="Staff_30kg"  weight_kg="30" />      
+    <item barcode="staff06" name="Staff_15kg"  weight_kg="15" />      
+    <item barcode="staff07" name="Staff_50kg"  weight_kg="50" />      
+    <item barcode="staff11" name="Medic_Staff_10kg"  weight_kg="10" />      
+    <item barcode="staff12" name="Medic_Staff_20kg"  weight_kg="20" />      
+  </item_blueprints>
+  
+  
+  <!- ------ -->
+
+  
+</TEMPLATE>
+
+
+<MAPPING>
+
+  <global_settings>
+    <folders sound_folder_name="sound" obj3d_folder_name="obj" />
+    <start_time day_in_year="" hours_local="" min="00" />
+    <base_weights_kg pilot_base_weight="85" passengers_base_weight="" storage_base_weight="5"/>
+    <scoring>
+        <pitch best="-10|15|0.5" good="-15|18|0.4" average="-20|20|0.25" />
+        <roll best="-25|25|0.5" good="-30|30|0.4" average="-35|35|0.25" />
+        <gforce best="-0.5|1.55|0.5" good="1.55|1.82|0.4" average="1.82|1.95|0.25" />
+        <center_line best="-1.0|1.0|0.5" good="-1.8|1.8|0.35" average="-2.3|2.3|0.25" />
+    </scoring>
+  </global_settings>
+
+  <leg name="" title="" next_leg=""  > 
+    <start_leg_message name="" />    
+    <link_to_objective name="" />
+    <desc/>    
+    <post_leg_message name="" />
+  </leg>
+  
+  <objective name="" title="" />
+  <task name="" base_on_trigger="" base_on_script="" eval_success_for_n_sec="3" mandatory="true" force_evaluation=""/>        
+
+  <trigger name="" type="rad" rearm="" post_script="" >
+    <conditions plane_on_ground="true" cond_script="" />
+    <outcome message_name_when_fired="" message_name_when_left="" script_name_when_fired="" script_name_when_left="" commands_to_exec_when_fired="" commands_to_exec_when_left="" dataref_to_modify_when_fired=""  dataref_to_modify_when_left=""  />
+    <loc_and_elev_data> 
+      <radius length_mt="40" />
+      <point lat="" long="" />  
+      <elevation_volume  elev_lower_upper_ft="" />    
+    </loc_and_elev_data>
+  </trigger>
+
+  
+  <message name="" is_mxpad="yes">         
+      <mix track_type="text"  mute_xplane_narrator="" hide_text="" override_seconds_to_display_text="" override_seconds_calc_per_line="" mxpad_label="radio" mxpad_label_color="yellow" />
+  </message>
+
+  <end_mission>
+    <success_image file_name="success.png"  />
+    <success_msg ><![CDATA[well done pilot. Have a nice day and see you tomorrow. ]]></success_msg>
+    <success_sound sound_file="" sound_vol="" />
+    <fail_image file_name="fail.png"  />
+    <fail_msg ><![CDATA[You failed !!!]]></fail_msg>
+    <fail_sound sound_file="" sound_vol="" />
+  </end_mission>
+    
+
+  <inventory name="" type="rad" >
+    <item name="" barcode="" quantity="1"  weight_kg="20"/>
+    <loc_and_elev_data>
+      <radius length_mt="100" />
+      <point lat="" long=""/>
+    </loc_and_elev_data>
+  </inventory>
+  
+  <item name="" barcode="" quantity="1"  weight_kg="20"/>
+  
+  <point lat="" long=""/> 
+    
+</MAPPING>
