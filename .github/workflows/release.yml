@@ -30,22 +30,22 @@ jobs:
       - name: setup crc32 tool
         shell: bash
         run: |
-          # sudo apt install -y libarchive-zip-perl
+          # For Linux: sudo apt install -y libarchive-zip-perl
           TAG=${GITHUB_REF##*/}
           
           if [ ! -z "$TAG" ]; then
             VERSION="$TAG"
           
-            # Check if VERSION starts with "r", "b", or "t" and replace with "v"          
-            if [[ "$VERSION" == r* || "$VERSION" == b* || "$VERSION" == t* ]]; then
-              VERSION="v${VERSION:1}"
-              echo "VERSION after initial character replacement: $VERSION"
-            fi      
-          
-            # Check for and remove "-release", "-beta", or "-test"
-            VERSION="${VERSION/-release/}"
-            VERSION="${VERSION/-beta/}"
-            VERSION="${VERSION/-test/}"
+            ## Check if VERSION starts with "r", "b", or "t" and replace with "v"          
+            #if [[ "$VERSION" == r* || "$VERSION" == b* || "$VERSION" == t* ]]; then
+            #  VERSION="v${VERSION:1}"
+            #  echo "VERSION after initial character replacement: $VERSION"
+            #fi      
+
+            ## Check for and remove "-release", "-beta", or "-test"
+            #VERSION="${VERSION/-release/}"
+            #VERSION="${VERSION/-beta/}"
+            #VERSION="${VERSION/-test/}"
                               
             echo "VERSION=${VERSION}" > version.mak
           
@@ -96,21 +96,21 @@ jobs:
           #(cd ./release && 7z a "${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}-${VERSION}.zip" *)
                
                
-          TAG=${GITHUB_REF##*/}          
+          # TAG=${GITHUB_REF##*/}          
           TARGET_BRANCH=""
-          if [[ $TAG == *"-test"* || $TAG == t* ]]     # if TAG contains -test or starts with "t"
+          if [[ $VERSION == *"-test"* || $VERSION == t* ]]     # if TAG contains -test or starts with "t"
           then
             echo "This is a just a build test"
             TARGET_BRANCH="build-test"
-          elif [[ $TAG == *"-beta"* || $TAG == b* ]]        # if TAG contains -beta or starts with "b"
+          elif [[ $VERSION == *"-beta"* || $VERSION == b* ]]        # if TAG contains -beta or starts with "b"
           then
             echo "This is a beta release"
             TARGET_BRANCH="beta"
-          elif [[ $TAG == *"-release"* || $TAG == r* ]]        # if TAG contains -release or starts with "r"
+          elif [[ $VERSION == *"-release"* || $VERSION == r* ]]        # if TAG contains -release or starts with "r"
           then
             echo "This is a 'release'"
             TARGET_BRANCH="release"
-          elif [[ $TAG == 0* ]]        # if TAG starts with "0" means that we only do a dry run without pushing to github
+          elif [[ $VERSION == 0* ]]        # if TAG starts with "0" means that we only do a dry run without pushing to github
           then
             TARGET_BRANCH="dry-run"
           fi
@@ -153,7 +153,7 @@ jobs:
 
           
           echo -e "\nCommit branch ${TARGET_BRANCH}\n---------------------"
-          git commit -m "new ${TARGET_BRANCH} - ${TAG}"
+          git commit -m "new ${TARGET_BRANCH} - ${VERSION}"
           
           git remote add authenticated-origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
           
