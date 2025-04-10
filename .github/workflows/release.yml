@@ -96,18 +96,26 @@ jobs:
           #(cd ./release && 7z a "${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}-${VERSION}.zip" *)
                
                
-          TAG=${GITHUB_REF##*/}
-          TARGET_BRANCH="release"
-          if [[ $TAG == *"-test"* ]]     # if TAG contains -test-
+          TAG=${GITHUB_REF##*/}          
+          TARGET_BRANCH=""
+          if [[ $TAG == *"-test"* || $TAG == t* ]]     # if TAG contains -test or starts with "t"
           then
             echo "This is a just a build test"
             TARGET_BRANCH="build-test"
-          elif [[ $TAG == *"-beta"* ]]        # if TAG contains -beta-
+          elif [[ $TAG == *"-beta"* || $TAG == b* ]]        # if TAG contains -beta or starts with "b"
           then
             echo "This is a beta release"
             TARGET_BRANCH="beta"
+          elif [[ $TAG == *"-release"* || $TAG == r* ]]        # if TAG contains -release or starts with "r"
+          then
+            echo "This is a 'release'"
+            TARGET_BRANCH="release"
+          elif [[ $TAG == 0* ]]        # if TAG starts with "0" means that we only do a dry run without pushing to github
+          then
+            TARGET_BRANCH="dry-run"
           fi
-          
+                    
+                  
           # debug which files are part of the branch     
           # ls -lR release
           
@@ -148,13 +156,20 @@ jobs:
           git commit -m "new ${TARGET_BRANCH} - ${TAG}"
           
           git remote add authenticated-origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
-          echo -e "\nPushing ${TARGET_BRANCH}\n---------------------"
-          git push authenticated-origin ${TARGET_BRANCH} --force
           
-          # git push -f -u origin ${TARGET_BRANCH} ## will fail since there is no TOKEN          
+          ### Push the branch back.. or not
+          if [[ $TARGET_BRANCH != "dry-run" ]]; then          
+            echo -e "\nPushing ${TARGET_BRANCH}\n---------------------"
+            git push authenticated-origin ${TARGET_BRANCH} --force
+            
+            # git push -f -u origin ${TARGET_BRANCH} ## will fail since there is no TOKEN          
+            
+            echo -e "TARGET_BRANCH - ${TARGET_BRANCH}"
+            echo -e "\ngithub.ref - ${{ github.ref }} - ${{ github.ref_name }} \n"
+          else
+            echo "Will not push back the '$TARGET_BRANCH'. It is only for tests."
+          fi
           
-          echo -e "TARGET_BRANCH - ${TARGET_BRANCH}"
-          echo -e "\ngithub.ref - ${{ github.ref }} - ${{ github.ref_name }} \n"
 
 
       - name: Compress Plugin Files
