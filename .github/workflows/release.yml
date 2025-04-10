@@ -69,6 +69,7 @@ jobs:
           
           ## skunkcrafts
             sed -e "s|@VERSION@|${VERSION}|g" skunkcrafts_updater.cfg.template > "${RELEASE_FOLDER}/skunkcrafts_updater.cfg"
+            sed -e "s|@VERSION@|${VERSION}|g" skunkcrafts_updater_beta.cfg.template > "${RELEASE_FOLDER}/skunkcrafts_updater_beta.cfg"
 
           # create crc32 checksum for all values and write to skunkcrafts_updater_whitelist.txt
           # format is <filename>|<crc32 checksum>
