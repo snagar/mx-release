@@ -13,7 +13,7 @@ on:
 jobs:
   build:
     # Execute only if we have "push + tag name" that starts with "v"
-    if: github.event_name == 'push' && ( startsWith(github.ref_name, 'v') || startsWith(github.ref_name, 'r') || startsWith(github.ref_name, 'b') || startsWith(github.ref_name, '0.') || contains(github.ref_name, '-rel') || contains(github.ref_name, '-beta') || contains(github.ref_name, '-test') )
+    if: github.event_name == 'push' && ( startsWith(github.ref_name, 'v') || startsWith(github.ref_name, 'r') || startsWith(github.ref_name, 'b') || startsWith(github.ref_name, '0.') )
     runs-on: macos-13
     # runs-on: ubuntu-latest
     
@@ -32,11 +32,25 @@ jobs:
         run: |
           # sudo apt install -y libarchive-zip-perl
           TAG=${GITHUB_REF##*/}
+          
           if [ ! -z "$TAG" ]; then
-            echo "VERSION=$TAG" > version.mak
+            VERSION="$TAG"
+          
+            # Check if VERSION starts with "r", "b", or "t" and replace with "v"          
+            if [[ "$VERSION" == r* || "$VERSION" == b* || "$VERSION" == t* ]]; then
+              VERSION="v${VERSION:1}"
+              echo "VERSION after initial character replacement: $VERSION"
+            fi      
+          
+            # Check for and remove "-release", "-beta", or "-test"
+            VERSION="${VERSION/-release/}"
+            VERSION="${VERSION/-beta/}"
+            VERSION="${VERSION/-test/}"
+                              
+            echo "VERSION=${VERSION}" > version.mak
+          
           else 
-            TAG=25.x
-            echo "VERSION=$TAG" > version.mak
+            exit -1  ## abort script
           fi
 
           echo -e "TAG: ${TAG}\nThe content of version.mak is"
@@ -156,14 +170,14 @@ jobs:
         
             local bytes
             if [[ "$OSTYPE" == "darwin"* ]]; then
-            # macOS
-            bytes=$(stat -f "%z" "$file")
+              # macOS
+              bytes=$(stat -f "%z" "$file")
             elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-            # Linux
-            bytes=$(stat -c "%s" "$file")
+              # Linux
+              bytes=$(stat -c "%s" "$file")
             else
-            echo "Error: Unsupported operating system for file size check."
-            return 1
+              echo "Error: Unsupported operating system for file size check."
+              return 1
             fi
                     
             echo $(echo "scale=2; $bytes / (1024 * 1024)" | bc -l)
@@ -208,7 +222,6 @@ jobs:
         id: create_release
         uses: softprops/action-gh-release@v2
         if: ( startsWith(github.ref_name, 'r') || startsWith(github.ref_name, 'b') || startsWith(github.ref_name, 't') || contains(github.ref_name, '-rel') || contains(github.ref_name, '-beta') || contains(github.ref_name, '-test') )
-        #if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
             ${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}*7z*
