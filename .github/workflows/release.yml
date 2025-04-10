@@ -92,9 +92,7 @@ jobs:
           cat ${RELEASE_FOLDER}/skunkcrafts_updater_whitelist.txt
           echo -e "<--------------"
 
-          touch ${RELEASE_FOLDER}/skunkcrafts_updater_blacklist.txt
-          
-          #(cd ./release && 7z a "${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}-${VERSION}.zip" *)
+          touch ${RELEASE_FOLDER}/skunkcrafts_updater_blacklist.txt                  
                
                
           # TAG=${GITHUB_REF##*/}          
@@ -107,7 +105,7 @@ jobs:
           then
             echo "This is a beta release"
             TARGET_BRANCH="beta"
-          elif [[ $VERSION == *"-release"* || $VERSION == r* ]]        # if TAG contains -release or starts with "r"
+          elif [[ $VERSION == *"-release"* || $VERSION == r* || $VERSION == v* ]]        # if TAG contains -release or starts with "r"
           then
             echo "This is a 'release'"
             TARGET_BRANCH="release"
