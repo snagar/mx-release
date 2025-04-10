@@ -144,25 +144,13 @@ jobs:
 
 
       - name: Compress Plugin Files
-        if: contains(github.ref_name, 'release') || contains(github.ref_name, 'beta') || contains(github.ref_name, 'test')
+        if: ( startsWith(github.ref_name, 'v') || startsWith(github.ref_name, 'r') || startsWith(github.ref_name, 'b') || startsWith(github.ref_name, '0.') || contains(github.ref_name, '-rel') || contains(github.ref_name, '-beta') || contains(github.ref_name, '-test') )
         shell: bash
         run: |
           # Prepare the release compressed file
           source version.mak
           echo -e "\nVERSION=${VERSION}\n"
-                    
-          #file_size_mb() {
-          #  local file="$1"
-          #  if [[ -f "$file" ]]; then
-          #  stat -f "%z" "$file" # Get size in bytes
-          #  # Calculate megabytes with higher precision
-          #  local bytes=$(stat -f "%z" "$file")
-          #  echo $(echo "scale=2; $bytes / (1024 * 1024)" | bc -l)
-          #  else
-          #  echo "0.00"
-          #  fi
-          #}
-          
+                             
           file_size_mb() {
             file="$1"
         
