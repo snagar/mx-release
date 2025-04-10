@@ -6,14 +6,14 @@ name: Mission-X for Skunkcrafts
 on:
   push:
     tags:
-      - 'v*'
+      - '*'
   workflow_dispatch:
 
 
 jobs:
   build:
     # Execute only if we have "push + tag name" that starts with "v"
-    # if: github.event_name == 'push' && startsWith(github.ref_name, 'v')
+    if: github.event_name == 'push' && ( startsWith(github.ref_name, 'v') || startsWith(github.ref_name, 'r') || startsWith(github.ref_name, 'b') || startsWith(github.ref_name, '0.') || contains(github.ref_name, '-rel') || contains(github.ref_name, '-beta') || contains(github.ref_name, '-test') )
     runs-on: macos-13
     # runs-on: ubuntu-latest
     
@@ -124,22 +124,11 @@ jobs:
           
           echo "Preparing branch: ${TARGET_BRANCH}"          
           echo "-----"
-          git add .
-          # echo "!!Delete the large compressed file [${{ steps.strings.outputs.plugin-name }}*.zip]"
-          # git rm -f ${{ steps.strings.outputs.plugin-name }}*.zip
-          # rm -f ${{ steps.strings.outputs.plugin-name }}*.zip
-          
+          git add .         
           echo -e "\n--------->"
           ls -lR .
           echo -e "\n<---------"
-          
-          # git add release/${{ steps.strings.outputs.plugin-name }}
-          # # force add otherwise ignored directories
-          # git add -f release/${{ steps.strings.outputs.plugin-name }}/*_x64/*.xpl
-          # git add -f release/${{ steps.strings.outputs.plugin-name }}/win_x64/*.dll
-          # git add -f release/${{ steps.strings.outputs.plugin-name }}/libs/64/*.zip
-          # git add -f release/${{ steps.strings.outputs.plugin-name }}/templates/*.zip
-          # git add -f release/${{ steps.strings.outputs.plugin-name }}/*.zip
+
           
           echo -e "\nCommit branch ${TARGET_BRANCH}\n---------------------"
           git commit -m "new ${TARGET_BRANCH} - ${TAG}"
@@ -155,6 +144,7 @@ jobs:
 
 
       - name: Compress Plugin Files
+        if: contains(github.ref_name, 'release') || contains(github.ref_name, 'beta') || contains(github.ref_name, 'test')
         shell: bash
         run: |
           # Prepare the release compressed file
@@ -229,7 +219,8 @@ jobs:
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v2
-        if: startsWith(github.ref, 'refs/tags/')
+        if: ( startsWith(github.ref_name, 'r') || startsWith(github.ref_name, 'b') || startsWith(github.ref_name, 't') || contains(github.ref_name, '-rel') || contains(github.ref_name, '-beta') || contains(github.ref_name, '-test') )
+        #if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
             ${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}*7z*
