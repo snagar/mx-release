@@ -56,6 +56,9 @@ jobs:
           # ls -lR release
           mkdir -p "${RELEASE_FOLDER}/db"
           mkdir -p "${RELEASE_FOLDER}/save"
+          # add hidden files in Unix based OSes. Needed to keep the folder.
+          touch "${RELEASE_FOLDER}/db/.db_folder"
+          touch "${RELEASE_FOLDER}/save/.save_folder"
           
           ## skunkcrafts
             sed -e "s|@VERSION@|${VERSION}|g" skunkcrafts_updater.cfg.template > "${RELEASE_FOLDER}/skunkcrafts_updater.cfg"
