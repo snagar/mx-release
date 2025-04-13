@@ -10,6 +10,19 @@ Installation:
 !!! Remember to read the README.txt file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+v25.04.1
+=========
+1. [skunkcrafts] Added skunkcrafts support.
+2. [ui] Moved most of the "mission" settings into the popup windows where there was one to better streamlined the flow of "random mission creation".
+3. [ui] Modified ILS screen.
+4. [ui] Implemented "cargo" in the "External Flight Plan" and "ILS" screens.
+5. [internal] Modified the "cargo_data.xml" file and added more inventory options.
+6. [random] Added more images for the new "cargo data".
+
+
+
+
+
 v25.03.3
 =========
 1. [new] Added Simbrief support. You have to add your "pilot id" in the setup screen.
@@ -20,9 +33,6 @@ v25.03.3
 6. [ui] Minor redesign the "FLight plan + Notes" screen.
 7. [ui] Added "commit + close" and "cg" to the Inventory screen.
 8. [bug] DME/VOR data failed to fetch due to wrong "container" sent to "format" function.
-
-
-
 
 v25.03.2
 =========
@@ -41,9 +51,6 @@ v25.03.1
 8. Some grammar fixes.
 9. [template] Added "mission_file_format" to the <template> node. It will be used in the target mission file "version" attribute <MISSION version=''>.
 10. [save/load] Better support for inventory layout during save and load checkpoints.
-
-
-
 
 
 v25.02.1
