@@ -35,17 +35,6 @@ jobs:
           
           if [ ! -z "$TAG" ]; then
             VERSION="$TAG"
-          
-            ## Check if VERSION starts with "r", "b", or "t" and replace with "v"          
-            #if [[ "$VERSION" == r* || "$VERSION" == b* || "$VERSION" == t* ]]; then
-            #  VERSION="v${VERSION:1}"
-            #  echo "VERSION after initial character replacement: $VERSION"
-            #fi      
-
-            ## Check for and remove "-release", "-beta", or "-test"
-            #VERSION="${VERSION/-release/}"
-            #VERSION="${VERSION/-beta/}"
-            #VERSION="${VERSION/-test/}"
                               
             echo "VERSION=${VERSION}" > version.mak
           
@@ -63,9 +52,10 @@ jobs:
           source version.mak
           RELEASE_FOLDER=release/${{ steps.strings.outputs.plugin-name }}
           mkdir -p ${RELEASE_FOLDER}
-          # cp -rdp ./plugin/* "${RELEASE_FOLDER}/"
           cp -r ./plugin/* "${RELEASE_FOLDER}/"
           # ls -lR release
+          mkdir -p "${RELEASE_FOLDER}/db"
+          mkdir -p "${RELEASE_FOLDER}/save"
           
           ## skunkcrafts
             sed -e "s|@VERSION@|${VERSION}|g" skunkcrafts_updater.cfg.template > "${RELEASE_FOLDER}/skunkcrafts_updater.cfg"
