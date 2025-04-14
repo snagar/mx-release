@@ -97,8 +97,12 @@ jobs:
             checksum_decimal=$((16#$checksum_hex))
             # Remove "release/" prefix from $file
             modified_file="${file#${RELEASE_FOLDER}/}"
-            echo "$modified_file|$checksum_decimal" >> ${RELEASE_FOLDER}/skunkcrafts_updater_whitelist.txt            
-            echo "$modified_file|$file_size_in_bytes" >> ${RELEASE_FOLDER}/skunkcrafts_updater_sizeslist.txt            
+            # Remove the first character (should be "/")
+            if [[ "$modified_file" == /* ]]; then
+              modified_file="${modified_file:1}"
+            fi                        
+            echo "${modified_file}|$checksum_decimal" >> ${RELEASE_FOLDER}/skunkcrafts_updater_whitelist.txt            
+            echo "${modified_file}|$file_size_in_bytes" >> ${RELEASE_FOLDER}/skunkcrafts_updater_sizeslist.txt            
           done
           
           echo -e "SkunkCrafts updater:\n--------------->"
