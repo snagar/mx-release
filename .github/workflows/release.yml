@@ -16,7 +16,7 @@ jobs:
     if: github.event_name == 'push' && ( startsWith(github.ref_name, 'v') || startsWith(github.ref_name, 'r') || startsWith(github.ref_name, 'b') || startsWith(github.ref_name, 't') || startsWith(github.ref_name, '0.') )
     runs-on: macos-13
     # runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -45,7 +45,7 @@ jobs:
           echo -e "TAG: ${TAG}\nThe content of version.mak is"
           cat version.mak
 
-      - name: Prepare Skunkcrafts Updater
+      - name: Prepare SkunkCrafts Updater
         shell: bash
         run: |
           # at this point version.mak should have the version number
@@ -60,7 +60,26 @@ jobs:
           touch "${RELEASE_FOLDER}/db/.db_folder"
           touch "${RELEASE_FOLDER}/save/.save_folder"
           
-          ## skunkcrafts
+          
+          file_size_bytes() {
+            file="$1"
+            local bytes
+            if [[ "$OSTYPE" == "darwin"* ]]; then
+            # macOS
+            bytes=$(stat -f "%z" "$file")
+            elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+            # Linux
+            bytes=$(stat -c "%s" "$file")
+            else
+          echo "Error: Unsupported operating system for file size check."
+            return 1
+            fi
+          
+            echo $bytes            
+          }
+          
+          
+          ## SkunkCrafts
             sed -e "s|@VERSION@|${VERSION}|g" skunkcrafts_updater.cfg.template > "${RELEASE_FOLDER}/skunkcrafts_updater.cfg"
             sed -e "s|@VERSION@|${VERSION}|g" skunkcrafts_updater_beta.cfg.template > "${RELEASE_FOLDER}/skunkcrafts_updater_beta.cfg"
 
@@ -68,21 +87,30 @@ jobs:
           # format is <filename>|<crc32 checksum>
           # include subdirectories
           rm -f ${RELEASE_FOLDER}/skunkcrafts_updater_whitelist.txt
+          rm -f ${RELEASE_FOLDER}/skunkcrafts_updater_sizeslist.txt
           find ${RELEASE_FOLDER}/ -type f ! \( -name '*skunkcrafts_updater*' -o -path '*skunkcrafts_updater*' \) -print0 | while IFS= read -r -d '' file; do
             checksum_hex=$(crc32 "$file")
+            # get file size in bytes
+            file_size_in_bytes=$(file_size_bytes "$output_file")
+          
             # Convert hex checksum to uint32 decimal
             checksum_decimal=$((16#$checksum_hex))
             # Remove "release/" prefix from $file
             modified_file="${file#${RELEASE_FOLDER}/}"
             echo "$modified_file|$checksum_decimal" >> ${RELEASE_FOLDER}/skunkcrafts_updater_whitelist.txt            
+            echo "$modified_file|$file_size_in_bytes" >> ${RELEASE_FOLDER}/skunkcrafts_updater_sizeslist.txt            
           done
           
-          echo -e "Skunkcrafts updater:\n--------------->"
+          echo -e "SkunkCrafts updater:\n--------------->"
           cat ${RELEASE_FOLDER}/skunkcrafts_updater.cfg
           echo -e "<--------------"
 
-          echo -e "\n\nSkunkcrafts whitelist - crc32:\n--------------->"
+          echo -e "\n\nSkunkCrafts whitelist - crc32:\n--------------->"
           cat ${RELEASE_FOLDER}/skunkcrafts_updater_whitelist.txt
+          echo -e "<--------------"
+
+          echo -e "\n\nSkunkCrafts sizelist - bytes:\n--------------->"
+          cat ${RELEASE_FOLDER}/skunkcrafts_updater_sizeslist.txt
           echo -e "<--------------"
 
           touch ${RELEASE_FOLDER}/skunkcrafts_updater_blacklist.txt                  
@@ -172,7 +200,7 @@ jobs:
           VERSION=${GITHUB_REF##*/}
           #source version.mak
           echo -e "\nVERSION=${VERSION}\n"
-                             
+                    
           file_size_mb() {
             file="$1"
         
@@ -200,7 +228,7 @@ jobs:
           echo "Compressing '$folder_to_compress' to '$output_file'..."
           (cd ./release && 7z a -t7z "${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}-${VERSION}.7z" *)
           
-          # Check the size of the compressed file
+          # Check the size of the compressed file          
           compressed_size=$(file_size_mb "$output_file")
           echo -e "\n>> Initial compressed file size: ${compressed_size}M <<\n"          
           
