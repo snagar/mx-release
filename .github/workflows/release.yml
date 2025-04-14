@@ -91,7 +91,7 @@ jobs:
           find ${RELEASE_FOLDER}/ -type f ! \( -name '*skunkcrafts_updater*' -o -path '*skunkcrafts_updater*' \) -print0 | while IFS= read -r -d '' file; do
             checksum_hex=$(crc32 "$file")
             # get file size in bytes
-            file_size_in_bytes=$(file_size_bytes "$output_file")
+            file_size_in_bytes=$(file_size_bytes "$file")
           
             # Convert hex checksum to uint32 decimal
             checksum_decimal=$((16#$checksum_hex))
