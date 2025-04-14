@@ -22,35 +22,25 @@
     </item_blueprints>
 
     <item_blueprints type="Private Jets Cargo">
-      <item name="Small Luggage"  barcode="small_luggage1"   quantity="10"   weight_kg="7"   image_file_name="img/small_luggage_1.jpg"  />
-      <item name="Small Bag"      barcode="small_bag1"       quantity="10"   weight_kg="6"   image_file_name="img/small_bagpack_icon.jpg"  />
-      <item name="Passenger"      barcode="passenger01"      quantity="3"    weight_kg="55"  image_file_name="img/passengers_03.jpg"  />
-      <item name="Passenger"      barcode="passenger02"      quantity="3"    weight_kg="70"  image_file_name="img/passengers_02.jpg"  />
-      <item name="Passenger"      barcode="passenger03"      quantity="2"    weight_kg="95"  image_file_name="img/passengers_01.jpg"  />
-      <item name="Medium Luggage" barcode="med_luggage3"     quantity="12"   weight_kg="14"  image_file_name="img/medium_luggage_3.jpg"  />
-      <item name="Medium Luggage" barcode="med_luggage4"     quantity="12"   weight_kg="15"  image_file_name="img/medium_luggage_4.jpg"  />
-      <item name="drink cans pv"                  barcode="drink_cans_pv_01"               quantity="4"     weight_kg="3"     image_file_name="img/drink_cans_pv_01.jpg" />
-      <item name="drink cans pv"                  barcode="drink_cans_pv_02"               quantity="3"     weight_kg="2"     image_file_name="img/drink_cans_pv_02.jpg" />
-      <item name="drink cans pv"                  barcode="drink_cans_pv_03"               quantity="5"     weight_kg="2"     image_file_name="img/drink_cans_pv_03.jpg" />
-      <item name="drink cans pv"                  barcode="drink_cans_pv_04"               quantity="4"     weight_kg="6"     image_file_name="img/drink_cans_pv_04.jpg" />
-      <item name="drink cans pv"                  barcode="drink_cans_pv_05.1"             quantity="4"     weight_kg="6"     image_file_name="img/drink_cans_pv_05.1.jpg" />
-      <item name="drink cans pv"                  barcode="drink_cans_pv_05.2"             quantity="4"     weight_kg="6"     image_file_name="img/drink_cans_pv_05.2.jpg" />
-      <item name="drink cans pv"                  barcode="drink_cans_pv_06"               quantity="4"     weight_kg="8"     image_file_name="img/drink_cans_pv_06.jpg" />
-      <item name="drink cans pv"                  barcode="drink_cans_pv_07"               quantity="10"     weight_kg="6"     image_file_name="img/drink_cans_pv_07.jpg" />
-      <item name="flight attendant woman"         barcode="flight_attendant_woman_01"      quantity="3"     weight_kg="56"     image_file_name="img/flight_attendant_woman_01.jpg" />
-      <item name="flight attendant woman"         barcode="flight_attendant_woman_02"      quantity="3"     weight_kg="50"     image_file_name="img/flight_attendant_woman_02.jpg" />
-      <item name="flight attendant woman"         barcode="flight_attendant_woman_03"      quantity="3"     weight_kg="54"     image_file_name="img/flight_attendant_woman_03.jpg" />
-      <item name="flight attendant woman man"     barcode="flight_attendant_woman_man_01"  quantity="1"     weight_kg="140"     image_file_name="img/flight_attendant_woman_man_01.jpg" />
-      <item name="flight attendant woman man"     barcode="flight_attendant_woman_man_02"  quantity="1"     weight_kg="140"     image_file_name="img/flight_attendant_woman_man_02.jpg" />
-      <item name="Large Bag"      barcode="large_bag1"       quantity="8"    weight_kg="16"  image_file_name="img/large_luggage_1.jpg"  />
-      <item name="private jet catering"           barcode="private_jet_catering_01"        quantity="3"     weight_kg="16"     image_file_name="img/private_jet_catering_01.jpg" />
-      <item name="private jet catering"           barcode="private_jet_catering_02"        quantity="3"     weight_kg="26"     image_file_name="img/private_jet_catering_02.jpg" />
-      <item name="private jet catering"           barcode="private_jet_catering_03"        quantity="3"     weight_kg="16"     image_file_name="img/private_jet_catering_03.jpg" />
-      <item name="Private Jet Catering"           barcode="Private_Jet_Catering_04"        quantity="3"     weight_kg="20"     image_file_name="img/Private_Jet_Catering_04.jpg" />
-      <item name="Private Jet Catering"           barcode="Private_Jet_Catering_05"        quantity="2"     weight_kg="26"     image_file_name="img/Private_Jet_Catering_05.jpg" />
-      <item name="private jet snacks"             barcode="private_jet_snacks_01"          quantity="10"     weight_kg="5"     image_file_name="img/private_jet_snacks_01.jpg" />
-      <item name="Medium Luggage" barcode="med_luggage1"     quantity="12"   weight_kg="14"  image_file_name="img/medium_luggage_1.jpg"  />
-      <item name="Medium Luggage" barcode="med_luggage2"     quantity="12"   weight_kg="13"  image_file_name="img/medium_luggage_2.jpg"  />
+      <item name="drink cans pv"                barcode="drink_cans_pv_01"               quantity="10"   weight_kg="6"    image_file_name="img/drink_cans_pv_01.jpg" />
+      <item name="drink cans pv"                barcode="drink_cans_pv_02"               quantity="10"   weight_kg="6"    image_file_name="img/drink_cans_pv_02.jpg" />
+      <item name="drink cans pv"                barcode="drink_cans_pv_03"               quantity="10"   weight_kg="6"    image_file_name="img/drink_cans_pv_03.jpg" />
+      <item name="drink cans pv"                barcode="drink_cans_pv_04"               quantity="10"   weight_kg="6"    image_file_name="img/drink_cans_pv_04.jpg" />
+      <item name="drink cans pv"                barcode="drink_cans_pv_05.1"             quantity="10"   weight_kg="6"    image_file_name="img/drink_cans_pv_05.1.jpg" />
+      <item name="drink cans pv"                barcode="drink_cans_pv_05.2"             quantity="10"   weight_kg="6"    image_file_name="img/drink_cans_pv_05.2.jpg" />
+      <item name="drink cans pv"                barcode="drink_cans_pv_06"               quantity="10"   weight_kg="6"    image_file_name="img/drink_cans_pv_06.jpg" />
+      <item name="drink cans pv"                barcode="drink_cans_pv_07"               quantity="10"   weight_kg="6"    image_file_name="img/drink_cans_pv_07.jpg" />
+      <item name="flight attendant woman"       barcode="flight_attendant_woman_01"      quantity="10"   weight_kg="6"    image_file_name="img/flight_attendant_woman_01.jpg" />
+      <item name="flight attendant woman"       barcode="flight_attendant_woman_02"      quantity="10"   weight_kg="6"    image_file_name="img/flight_attendant_woman_02.jpg" />
+      <item name="flight attendant woman"       barcode="flight_attendant_woman_03"      quantity="10"   weight_kg="6"    image_file_name="img/flight_attendant_woman_03.jpg" />
+      <item name="flight attendant woman man"   barcode="flight_attendant_woman_man_01"  quantity="10"   weight_kg="6"    image_file_name="img/flight_attendant_woman_man_01.jpg" />
+      <item name="flight attendant woman man"   barcode="flight_attendant_woman_man_02"  quantity="10"   weight_kg="6"    image_file_name="img/flight_attendant_woman_man_02.jpg" />
+      <item name="private jet catering"         barcode="private_jet_catering_01"        quantity="10"   weight_kg="6"    image_file_name="img/private_jet_catering_01.jpg" />
+      <item name="private jet catering"         barcode="private_jet_catering_02"        quantity="10"   weight_kg="6"    image_file_name="img/private_jet_catering_02.jpg" />
+      <item name="private jet catering"         barcode="private_jet_catering_03"        quantity="10"   weight_kg="6"    image_file_name="img/private_jet_catering_03.jpg" />
+      <item name="Private Jet Catering"         barcode="Private_Jet_Catering_04"        quantity="10"   weight_kg="6"    image_file_name="img/Private_Jet_Catering_04.jpg" />
+      <item name="Private Jet Catering"         barcode="Private_Jet_Catering_05"        quantity="10"   weight_kg="6"    image_file_name="img/Private_Jet_Catering_05.jpg" />
+      <item name="private jet snacks"           barcode="private_jet_snacks_01"          quantity="10"   weight_kg="6"    image_file_name="img/private_jet_snacks_01.jpg" />
     </item_blueprints>
 
 
