@@ -120,6 +120,8 @@ jobs:
           if [[ ! -e ${RELEASE_FOLDER}/skunkcrafts_updater_blacklist.txt ]]; then
             echo -e "Need to create the skunkcrafts_updater_blacklist.txt file"
             touch ${RELEASE_FOLDER}/skunkcrafts_updater_blacklist2.txt
+          else 
+            echo -e "\n--> skunkcrafts_updater_blacklist.txt file exists <--\n"
           fi
                
                
