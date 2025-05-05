@@ -117,6 +117,7 @@ jobs:
           cat ${RELEASE_FOLDER}/skunkcrafts_updater_sizeslist.txt
           echo -e "<--------------"
 
+          cp -p "skunkcrafts_updater_blacklist.txt" "${RELEASE_FOLDER}" 
           if [[ ! -e ${RELEASE_FOLDER}/skunkcrafts_updater_blacklist.txt ]]; then
             touch ${RELEASE_FOLDER}/skunkcrafts_updater_blacklist.txt
           fi
