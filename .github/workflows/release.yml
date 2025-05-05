@@ -116,10 +116,10 @@ jobs:
           echo -e "\n\nSkunkCrafts sizelist - bytes:\n--------------->"
           cat ${RELEASE_FOLDER}/skunkcrafts_updater_sizeslist.txt
           echo -e "<--------------"
-
-          cp -p "skunkcrafts_updater_blacklist.txt" "${RELEASE_FOLDER}" 
+           
           if [[ ! -e ${RELEASE_FOLDER}/skunkcrafts_updater_blacklist.txt ]]; then
-            touch ${RELEASE_FOLDER}/skunkcrafts_updater_blacklist.txt
+            echo -e "Need to create the skunkcrafts_updater_blacklist.txt file"
+            touch ${RELEASE_FOLDER}/skunkcrafts_updater_blacklist2.txt
           fi
                
                
