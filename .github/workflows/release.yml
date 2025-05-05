@@ -117,7 +117,9 @@ jobs:
           cat ${RELEASE_FOLDER}/skunkcrafts_updater_sizeslist.txt
           echo -e "<--------------"
 
-          touch ${RELEASE_FOLDER}/skunkcrafts_updater_blacklist.txt                  
+          if [[ ! -e ${RELEASE_FOLDER}/skunkcrafts_updater_blacklist.txt ]]; then
+            touch ${RELEASE_FOLDER}/skunkcrafts_updater_blacklist.txt
+          fi
                
                
           # TAG=${GITHUB_REF##*/}          
