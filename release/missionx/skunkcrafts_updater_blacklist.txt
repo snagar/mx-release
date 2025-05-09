@@ -1,0 +1,15 @@
+mac_x64\missionx.mac_v25.04.1D.zip
+mac_x64\missionx.mac_v25.04.2D.zip
+win_x64\missionx.win_v25.04.1D.7z
+win_x64\missionx.win_v25.04.2D.7z
+lin_x64\missionx.lin_v25.04.1D.7z
+lin_x64\missionx.lin_v25.04.2D.7z
+mac_x64\missionx.mac_v25.03.1D.zip
+mac_x64\missionx.mac_v25.03.2D.zip
+mac_x64\missionx.mac_v25.03.3D.zip
+win_x64\missionx.win_v25.03.1D.7z
+win_x64\missionx.win_v25.03.2D.7z
+win_x64\missionx.win_v25.03.3D.7z
+lin_x64\missionx.lin_v25.03.1D.7z
+lin_x64\missionx.lin_v25.03.2D.7z
+lin_x64\missionx.lin_v25.03.3D.7z
