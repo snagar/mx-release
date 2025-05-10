@@ -12,15 +12,34 @@ Installation:
 
 v25.04.1
 =========
+1. [compatibility] Plugin should run on Ubuntu 22.04 and above (before it ran on Ubuntu 24.04 and up).
+2. [ui] "Advance Screen": Time of mission now supports "minutes" too.
+3. [new] "FPLN/Simbrief", You can generate a mission from the external "FPLN/Simbrief" flight plan screen.
+4. [ui] When generating a mission based on External flight plan, the popup window will hold most of the preference settings to generate the mission.
+5. [ui] There is a granular control how to generate the GPS way-points.
+    a. "Generate GPS", will generate FMS file and other external flight plan files based on the "fpln_folders.ini" file.
+    b. [only from FPLN/Simbrief] "Add route way-points", will add the "route waypoints" field information to the GPS/FMS file.
+    c. "Auto Load Route", On mission start, Will try and write the "way-points" into your GPS. Best used with G1000, G5xx/G4xx navigation computers, not advisable for FMS/MCDUs.
+6. [bug] Fixed inventory behaviour.
+
+7. [internal] Lots of internal modification to support older Linux builds.
+8. [internal] The "git" build string is now part of the version of the plugin. Might help with ironing bugs.
+
+
+
+
+
+
+
+
+v25.04.1
+=========
 1. [skunkcrafts] Added skunkcrafts support.
 2. [ui] Moved most of the "mission" settings into the popup windows where there was one to better streamlined the flow of "random mission creation".
 3. [ui] Modified ILS screen.
 4. [ui] Implemented "cargo" in the "External Flight Plan" and "ILS" screens.
 5. [internal] Modified the "cargo_data.xml" file and added more inventory options.
 6. [random] Added more images for the new "cargo data".
-
-
-
 
 
 v25.03.3
@@ -33,6 +52,7 @@ v25.03.3
 6. [ui] Minor redesign the "FLight plan + Notes" screen.
 7. [ui] Added "commit + close" and "cg" to the Inventory screen.
 8. [bug] DME/VOR data failed to fetch due to wrong "container" sent to "format" function.
+
 
 v25.03.2
 =========
