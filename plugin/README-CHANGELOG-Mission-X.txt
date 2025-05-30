@@ -10,7 +10,20 @@ Installation:
 !!! Remember to read the README.txt file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-v25.04.1
+v25.05.1-beta-1
+=========
+1. [gps] Revised GPS integration. Do not confuse with FMS/MCDUs, those flight computers are not supported by the plugin.
+2. [bug fix] GPS waypoints won't load even if the UI checkbox is marked as "yes".
+3. [ui] More informative messages at the starting of the mission and in the briefer description.
+4. [bug fixed] CTD could occur if you picked the last "cargo sub category".
+5. [overpass] Updated overpass URLs.
+
+
+
+
+
+
+v25.04.2
 =========
 1. [compatibility] Plugin should run on Ubuntu 22.04 and above (before it ran on Ubuntu 24.04 and up).
 2. [ui] "Advance Screen": Time of mission now supports "minutes" too.
@@ -24,12 +37,6 @@ v25.04.1
 
 7. [internal] Lots of internal modification to support older Linux builds.
 8. [internal] The "git" build string is now part of the version of the plugin. Might help with ironing bugs.
-
-
-
-
-
-
 
 
 v25.04.1
