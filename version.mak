@@ -1,0 +1,1 @@
+VERSION=v25.05.1-beta-1
