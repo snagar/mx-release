@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ASCII"?>
+<osm>
+    <analyze>
+        <q id="highway"><![CDATA[[out:xml][timeout:15];
+(
+wr["highway"]({{bbox}});
+);
+out count;]]></q>
+
+        <q id="building"><![CDATA[[out:xml][timeout:15];
+(
+wr["building"]({{bbox}});
+);
+out count;]]></q>
+
+        <q id="landuse"><![CDATA[[out:xml][timeout:15];
+(
+wr["landuse"]({{bbox}});
+);
+out count;]]></q>
+
+        <q id="natural"><![CDATA[[out:xml][timeout:15];
+(
+wr["natural"~"wood|heath|grassland|fell|bare_rock|shrubbery|water"]({{bbox}});
+);
+out count;]]></q>
+
+    </analyze>
+
+    <highway>
+        <!--
+         surface=dirt //highway=residential,tertiary
+        way["highway"]["surface"="asphalt"]["name"];
+        (._;>;);
+        -->
+        <q subject="road" ><![CDATA[[out:xml][timeout:15][bbox:{{bbox}}];
+way["highway"]["name"];
+out body;
+out;]]></q>
+
+        <q subject="path" ><![CDATA[
+[out:xml][timeout:15][bbox:{{bbox}}];
+way["highway"="path"]["name"][!foot][!bicycle][!segregated];
+out body;]]></q>
+
+        <q subject="mountain trail" ><![CDATA[
+[out:xml][timeout:25][bbox:{{bbox}}];
+(
+  way["highway"="path"]["sac_scale"]; 
+);
+out body;
+]]></q>
+
+
+    </highway>
+
+</osm>

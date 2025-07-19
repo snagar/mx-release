@@ -10,6 +10,14 @@ Installation:
 !!! Remember to read the README.txt file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+v25.06.1-beta-1 + 2
+===============
+1. [bug] Fixed a bug where checking equality between two empty "icao" values would return a true instead of false, since empty strings in this equality case is illegal.
+2. [bug] Template "last nav point" was overriden by x-plane nearest "nav point" if both "ID" field was empty.
+3. [bug] Fixed template based mission do not set the <GPS> node correctly.
+4. First implementation of the "Surprise Me OS" feature.
+
+
 v25.05.1-beta-1
 =========
 1. [gps] Revised GPS integration. Do not confuse with FMS/MCDUs, those flight computers are not supported by the plugin.
@@ -17,10 +25,6 @@ v25.05.1-beta-1
 3. [ui] More informative messages at the starting of the mission and in the briefer description.
 4. [bug fixed] CTD could occur if you picked the last "cargo sub category".
 5. [overpass] Updated overpass URLs.
-
-
-
-
 
 
 v25.04.2
