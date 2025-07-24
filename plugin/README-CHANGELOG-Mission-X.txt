@@ -10,12 +10,15 @@ Installation:
 !!! Remember to read the README.txt file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-v25.06.1-beta-1 + 2
-===============
+v25.06.1-beta-1 + 2 + 3
+=======================
 1. [bug] Fixed a bug where checking equality between two empty "icao" values would return a true instead of false, since empty strings in this equality case is illegal.
 2. [bug] Template "last nav point" was overriden by x-plane nearest "nav point" if both "ID" field was empty.
 3. [bug] Fixed template based mission do not set the <GPS> node correctly.
-4. First implementation of the "Surprise Me OS" feature.
+4. Continue implementation of the "Surprise Me OS" feature.
+5. [ui] Added "extended information" to the "Simbrief" screen.
+
+
 
 
 v25.05.1-beta-1
