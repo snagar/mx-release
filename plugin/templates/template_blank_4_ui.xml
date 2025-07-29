@@ -103,17 +103,16 @@
   </blank>
   
   <ambulance_select>
-    <obj3d  name="ambulance1" file_name="RescueX/cars/RTW_01.obj" />
-    <obj3d  name="ambulance2" file_name="RescueX/cars/RTW_02.obj" />
-    <obj3d  name="ambulance3" file_name="RescueX/cars/RTW_03.obj" />
-    <obj3d  name="ambulance4" file_name="RescueX/cars/RTW_04.obj" />
-    <!-- <obj3d  name="ambulance5" file_name="USAmbulance.obj" /> -->
+    <obj3d  name="ambulance1" file_name="../../../RescueX_Lib/cars/RTW_01.obj" />
+    <obj3d  name="ambulance2" file_name="../../../RescueX_Lib/cars/RTW_02.obj" />
+    <obj3d  name="ambulance3" file_name="../../../RescueX_Lib/cars/RTW_03.obj" />
+    <obj3d  name="ambulance4" file_name="../../../RescueX_Lib/cars/RTW_04.obj" />
   </ambulance_select>
   
   <police_car>
-    <obj3d  name="police01" file_name="RescueX/cars/Polizei_FuStw_01.obj" />
-    <obj3d  name="police01" file_name="RescueX/cars/Polizei_FuStw_01_lit.obj" />
-    <obj3d  name="police01" file_name="RescueX/cars/Polizei_FuStw_01_lit_open.obj" />
+    <obj3d  name="police01" file_name="../../../RescueX_Lib/cars/Polizei_FuStw_01.obj" />
+    <obj3d  name="police01" file_name="../../../RescueX_Lib/cars/Polizei_FuStw_01_lit.obj" />
+    <obj3d  name="police01" file_name="../../../RescueX_Lib/cars/Polizei_FuStw_01_lit_open.obj" />
   </police_car>
   
   <policeman>
@@ -135,10 +134,10 @@
   
   
   <crashed_car>
-    <obj3d  name="car01" file_name="RescueX/cars/NEF_Passat_sb1099.obj" />
-    <obj3d  name="car02" file_name="RescueX/cars/crashed_CLK.obj" />
-    <obj3d  name="car03" file_name="RescueX/cars/crashed_CLK.obj" />
-    <obj3d  name="car04" file_name="RescueX/cars/crashed_CLK.obj" />
+    <obj3d  name="car01" file_name="../../../RescueX_Lib/cars/NEF_Passat_sb1099.obj" />
+    <obj3d  name="car02" file_name="../../../RescueX_Lib/cars/crashed_CLK.obj" />
+    <obj3d  name="car03" file_name="../../../RescueX_Lib/cars/crashed_CLK.obj" />
+    <obj3d  name="car04" file_name="../../../RescueX_Lib/cars/crashed_CLK.obj" />
   </crashed_car>
   
   <wealchairs>
@@ -151,38 +150,38 @@
   
   
   <cars>
-    <obj3d  name="car01" file_name="RescueX/cars/CamiDeBellis/car_alto.obj"/>
-    <obj3d  name="car02" file_name="RescueX/cars/CamiDeBellis/car_daihatsu_tanto.obj"/>
-    <obj3d  name="car03" file_name="RescueX/cars/CamiDeBellis/car_Datsun_620-73.obj"/>
-    <obj3d  name="car04" file_name="RescueX/cars/CamiDeBellis/car_datsunGO.obj"/>
-    <obj3d  name="car05" file_name="RescueX/cars/CamiDeBellis/car_datsunGOPlus.obj"/>
-    <obj3d  name="car06" file_name="RescueX/cars/CamiDeBellis/car_fordRangerWhite.obj"/>
-    <obj3d  name="car07" file_name="RescueX/cars/CamiDeBellis/car_gmc_airport.obj"/>
-    <obj3d  name="car08" file_name="RescueX/cars/CamiDeBellis/car_gmc_old.obj"/>
-    <obj3d  name="car09" file_name="RescueX/cars/CamiDeBellis/car_KiaSuv.obj"/>
-    <obj3d  name="car10" file_name="RescueX/cars/CamiDeBellis/car_LandRover107.obj"/>
-    <obj3d  name="car11" file_name="RescueX/cars/CamiDeBellis/car_lexus.obj"/>
-    <obj3d  name="car12" file_name="RescueX/cars/CamiDeBellis/car_mitshubishiTbox.obj"/>
-    <obj3d  name="car13" file_name="RescueX/cars/CamiDeBellis/car_mitsubishi_pack.obj"/>
-    <obj3d  name="car14" file_name="RescueX/cars/CamiDeBellis/car_nissanStanzaWG.obj"/>
-    <obj3d  name="car15" file_name="RescueX/cars/CamiDeBellis/car_old_pickup.obj"/>
-    <obj3d  name="car16" file_name="RescueX/cars/CamiDeBellis/car_Pajero.obj"/>
-    <obj3d  name="car17" file_name="RescueX/cars/CamiDeBellis/car_peugeotrossa.obj"/>
-    <obj3d  name="car18" file_name="RescueX/cars/CamiDeBellis/car_postTruck.obj"/>
-    <obj3d  name="car19" file_name="RescueX/cars/CamiDeBellis/car_sinca.obj"/>
-    <obj3d  name="car20" file_name="RescueX/cars/CamiDeBellis/car_subaru_wagon.obj"/>
-    <obj3d  name="car21" file_name="RescueX/cars/CamiDeBellis/car_suzuki_cappuccino.obj"/>
-    <obj3d  name="car22" file_name="RescueX/cars/CamiDeBellis/car_suzukiCarry.obj"/>
-    <obj3d  name="car23" file_name="RescueX/cars/CamiDeBellis/car_SuzukiCarry_pickup.obj"/>
-    <obj3d  name="car24" file_name="RescueX/cars/CamiDeBellis/car_SuzukiCarry2.obj"/>
-    <obj3d  name="car25" file_name="RescueX/cars/CamiDeBellis/car_toyota_camry.obj"/>
-    <obj3d  name="car26" file_name="RescueX/cars/CamiDeBellis/car_toyota_corolla.obj"/>
-    <obj3d  name="car27" file_name="RescueX/cars/CamiDeBellis/car_toyota_corolla_old.obj"/>
-    <obj3d  name="car28" file_name="RescueX/cars/CamiDeBellis/car_toyotaRed_old_pickup.obj"/>
-    <obj3d  name="car29" file_name="RescueX/cars/CamiDeBellis/car_toyotaTacoma.obj"/>
-    <obj3d  name="car30" file_name="RescueX/cars/CamiDeBellis/CDBambassador_carblack.obj"/>
-    <obj3d  name="car31" file_name="RescueX/cars/CamiDeBellis/CDBcar_van.obj"/>
-    <obj3d  name="car32" file_name="RescueX/cars/CamiDeBellis/CDBhummer.obj"/>
+    <obj3d  name="car01" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_alto.obj"/>
+    <obj3d  name="car02" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_daihatsu_tanto.obj"/>
+    <obj3d  name="car03" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_Datsun_620-73.obj"/>
+    <obj3d  name="car04" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_datsunGO.obj"/>
+    <obj3d  name="car05" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_datsunGOPlus.obj"/>
+    <obj3d  name="car06" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_fordRangerWhite.obj"/>
+    <obj3d  name="car07" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_gmc_airport.obj"/>
+    <obj3d  name="car08" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_gmc_old.obj"/>
+    <obj3d  name="car09" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_KiaSuv.obj"/>
+    <obj3d  name="car10" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_LandRover107.obj"/>
+    <obj3d  name="car11" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_lexus.obj"/>
+    <obj3d  name="car12" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_mitshubishiTbox.obj"/>
+    <obj3d  name="car13" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_mitsubishi_pack.obj"/>
+    <obj3d  name="car14" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_nissanStanzaWG.obj"/>
+    <obj3d  name="car15" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_old_pickup.obj"/>
+    <obj3d  name="car16" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_Pajero.obj"/>
+    <obj3d  name="car17" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_peugeotrossa.obj"/>
+    <obj3d  name="car18" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_postTruck.obj"/>
+    <obj3d  name="car19" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_sinca.obj"/>
+    <obj3d  name="car20" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_subaru_wagon.obj"/>
+    <obj3d  name="car21" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_suzuki_cappuccino.obj"/>
+    <obj3d  name="car22" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_suzukiCarry.obj"/>
+    <obj3d  name="car23" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_SuzukiCarry_pickup.obj"/>
+    <obj3d  name="car24" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_SuzukiCarry2.obj"/>
+    <obj3d  name="car25" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_toyota_camry.obj"/>
+    <obj3d  name="car26" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_toyota_corolla.obj"/>
+    <obj3d  name="car27" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_toyota_corolla_old.obj"/>
+    <obj3d  name="car28" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_toyotaRed_old_pickup.obj"/>
+    <obj3d  name="car29" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_toyotaTacoma.obj"/>
+    <obj3d  name="car30" file_name="../../../RescueX_Lib/cars/CamiDeBellis/CDBambassador_carblack.obj"/>
+    <obj3d  name="car31" file_name="../../../RescueX_Lib/cars/CamiDeBellis/CDBcar_van.obj"/>
+    <obj3d  name="car32" file_name="../../../RescueX_Lib/cars/CamiDeBellis/CDBhummer.obj"/>
     <obj3d  name="r2lib" file_name="R2_Library/doprava/vozidla/avia.obj" />
     <obj3d  name="r2lib" file_name="R2_Library/doprava/vozidla/bus_mhd.obj" />
     <obj3d  name="r2lib" file_name="R2_Library/doprava/vozidla/bus_2.obj" />
@@ -200,9 +199,9 @@
   </cars>
   
   <clutter>
-    <obj3d  name="sign01" file_name="RescueX/objects/OBJ_Faltdreieck.obj"/>
-    <obj3d  name="sign02" file_name="RescueX/objects/OBJ_Faltdreieck_Leuchte.obj"/>
-    <obj3d  name="sign03" file_name="RescueX/objects/OBJ_Leuchte.obj"/>
+    <obj3d  name="sign01" file_name="../../../RescueX_Lib/objects/OBJ_Faltdreieck.obj"/>
+    <obj3d  name="sign02" file_name="../../../RescueX_Lib/objects/OBJ_Faltdreieck_Leuchte.obj"/>
+    <obj3d  name="sign03" file_name="../../../RescueX_Lib/objects/OBJ_Leuchte.obj"/>
     <!-- obj3d  name="sign04_blank" file_name=""/ -->   
     <obj3d  name="r2lib" file_name="R2_Library/airport/accessories/kuzel_cerveny.obj" />
     <obj3d  name="r2lib" file_name="R2_Library/airport/accessories/kuzel_modry.obj" />
@@ -461,7 +460,7 @@
   </oilrig_med>
   
   <fireman>
-    <obj3d  name="person01" file_name="3D_people_library/fireman.obj"  />
+    <obj3d  name="person01" file_name="3D_people_library/Fireman.obj"  />
     <obj3d  name="person01" file_name="3D_people_library/fireman2.obj" />
     <obj3d  name="person01" file_name="3D_people_library/fireman3.obj" />
     <obj3d  name="person01" file_name="3D_people_library/fireman4.obj" />
