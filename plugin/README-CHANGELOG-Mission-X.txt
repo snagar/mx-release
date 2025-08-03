@@ -10,9 +10,10 @@ Installation:
 !!! Remember to read the README.txt file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-v25.06.1-rc-1 (beta-4)
+v25.06.1
 =======================
 . [new] FInish implementing the bulk features for the "surprise me".
+. [template] Fixed and enhanced few templates to work with the new "surprise me (OSM)" sub category. Only for "medevac" missions and "helo" plane.
 . [ui] Added "extended information" to the "Simbrief" screen.
 . [bug] Fixed a bug where checking equality between two empty "icao" values would return a true instead of false. Empty strings should be invalid in such cases.
 . [bug] Template "last nav point" was overriden by x-plane nearest "nav point" if both "ID" fields were empty.
