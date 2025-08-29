@@ -23,4 +23,6 @@ docs/Mission-X_v3-ScriptingConcepts(v3.0.242.2)-w.i.p.pdf
 docs/Mission-X_v3_Hands_on_mission_creation,Step_by_Step_(based_on_Mission-X_v3.0.242.2).pdf
 docs/OSM-to-SQLite-for-Mission-X-v1.1.pdf
 docs/Mission-X_Conversion_Screens_v1.0.pdf
-
+docs/Designing Templates.pdf
+templates/template.zip
+plugin/win_x64/libssl-3-x64.dll

@@ -10,6 +10,24 @@ Installation:
 !!! Remember to read the README.txt file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+v25.08.1
+=======================
+. [bug] Trigger based poly did not store all <point>s which made it unusable.
+. [bug] Regression when calculating distance to center of runway.
+. [ui] Items with zero quantities won't be displayed.
+. [ui] Added VFR airport search in the "ILS Search" screen.
+. [random] Oilrig missions can have four pre-defined areas to search and build the random mission.
+. Some revised code for plane positioning at the start of a new mission.
+. [behavior] Drop support for positioning using version "10".
+. [Template] Renamed "location_value" with "location_properties". Will deprecate it in the next few builds (break change).
+. [random] Fixed Oilrig last location to not be another Oilrig. Should be on land helipad.
+. [lib] Windows cURL now uses Windows own security library so OpenSSL dependency should not be a thing.
+. [lib] ImGui v1.91.9b
+. [lib] implot v0.17
+
+
+
+
 v25.06.1
 =======================
 . [new] FInish implementing the bulk features for the "surprise me".
@@ -18,8 +36,6 @@ v25.06.1
 . [bug] Fixed a bug where checking equality between two empty "icao" values would return a true instead of false. Empty strings should be invalid in such cases.
 . [bug] Template "last nav point" was overriden by x-plane nearest "nav point" if both "ID" fields were empty.
 . [bug] Fixed template based mission do not set the <GPS> node correctly.
-
-
 
 
 v25.05.1-beta-1
