@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TEMPLATE version="301" plane_type="" > 
+  <!-- v25.08.1 -->
   <mission_info template_image_file_name="" written_by="You" plane_desc="" estimate_time="" difficulty="" other_settings="" weather_settings="By Simmer" scenery_settings="Rescue-X, R2 Library, 3D people library, OpenSceneryX and MisterX libraries (all should be available through X-Plane Org)" short_desc="Hello pilot.;The following template will create a random medevac mission for helicopters. It uses random locations based on your plane position, so no plausiable location is garentied (at your own risk :-) ).;;You should be advised that some custom sceneries should be installed as a pre-requisites to this mission.;Sceneries like: HSF_lib, Rescue-X, R2 Library, 3D people library, OpenSceneryX and MisterX libraries (all should be available through X-Plane Org).;;Enjoy" />
   
   <!-- [plane] currently we always start from plane location -->

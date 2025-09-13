@@ -10,6 +10,15 @@ Installation:
 !!! Remember to read the README.txt file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+v25.09.1
+=======================
+[bug] Fixed XP11 OpenGL internal code (thanks to @sacto88 for the feedback).
+[bug] Improved plane positioning.
+[win] Removed MFC dependency.
+[random] Re-implemented Oil Rig mission creation.
+[nav data] In XP12, airport METAR will now be fetched from X-Plane first, and only then from flightplandatabase.
+
+
 v25.08.1
 =======================
 . [bug] Trigger based poly did not store all <point>s which made it unusable.
@@ -24,8 +33,6 @@ v25.08.1
 . [lib] Windows cURL now uses Windows own security library so OpenSSL dependency should not be a thing.
 . [lib] ImGui v1.91.9b
 . [lib] implot v0.17
-
-
 
 
 v25.06.1
