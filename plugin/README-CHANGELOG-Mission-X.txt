@@ -10,6 +10,11 @@ Installation:
 !!! Remember to read the README.txt file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+v25.09.1.1
+=======================
+[hotfix] Random Engine fails to add the last position of the target when generating a mission from a custom template.
+
+
 v25.09.1
 =======================
 [bug] Fixed XP11 OpenGL internal code (thanks to @sacto88 for the feedback).

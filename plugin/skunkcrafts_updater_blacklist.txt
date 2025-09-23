@@ -26,3 +26,11 @@ docs/Mission-X_Conversion_Screens_v1.0.pdf
 docs/Designing Templates.pdf
 templates/template.zip
 plugin/win_x64/libssl-3-x64.dll
+plugin/win_x64/msvcp140.dll
+plugin/win_x64/msvcp140d.dll
+plugin/win_x64/ucrtbase.dll
+plugin/win_x64/ucrtbased.dll
+plugin/win_x64/vcruntime140_1.dll
+plugin/win_x64/vcruntime140_1d.dll
+plugin/win_x64/vcruntime140.dll
+plugin/win_x64/vcruntime140d.dll
