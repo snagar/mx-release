@@ -10,10 +10,21 @@ Installation:
 !!! Remember to read the README.txt file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+v25.09.2-beta1/2
+=======================
+[internal] Re-Wrote / Re-Organized most of the Random Engine code.
+There are still missing features and tests to conduct like:
+* Set of legs (template).
+* Re-Test and modify default templates.
+* Probably remove support for "copy set of legs as is". We should just use the "template option" as a simpler way to implement the same.
+* Fix the demo template "Townsville to Palm and back"
+
+
+
+
 v25.09.1.1
 =======================
 [hotfix] Random Engine fails to add the last position of the target when generating a mission from a custom template.
-
 
 v25.09.1
 =======================
