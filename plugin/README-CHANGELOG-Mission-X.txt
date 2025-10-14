@@ -10,13 +10,14 @@ Installation:
 !!! Remember to read the README.txt file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-v25.09.2-beta1/2
+v25.09.2-beta 1..4
 =======================
 [internal] Re-Wrote / Re-Organized most of the Random Engine code.
-There are still missing features and tests to conduct like:
+[templates] Modified few templates, and removed the compressed one.
+There are still missing features and tests to be had:
 * Re-Test and modify default templates.
 * Probably remove support for "copy set of legs as is". We should just use the "template option" as a simpler way to implement the same.
-* Fix the demo template "Townsville to Palm and back"
+* Fix the demo template "Townsville to Palm and back".
 
 
 

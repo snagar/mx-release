@@ -18,53 +18,53 @@
   </briefer_and_start_location>
 
 
-  <!-- plugin will probe location and will decide if it is water or ground --> <!-- location_value = random_pick_target_in_area -->
-  <goal_medevac template="hover,land" name="" >
-    <expected_location location_type="xy" location_value="nm=25"   />    
+  <!-- plugin will probe location and will decide if it is water or ground --> <!-- location_properties = random_pick_target_in_area -->
+  <goal_medevac template="land_hover" name="" >
+    <expected_location location_type="xy" location_properties="nm=25"   />
     <display_object_set random_tag="object_sets" set_name="medevac" />  
   </goal_medevac>
 
-  <goal_medevac template="hover,land" name="" >
-    <expected_location location_type="xy" location_value="nm=14"   />      
+  <goal_medevac template="land_hover" name="" >
+    <expected_location location_type="xy" location_properties="nm=14"   />
     <display_object_set random_tag="object_sets" set_name="medevac" />   
   </goal_medevac>
 
   <goal_delivery template="land" name="" >
-    <expected_location location_type="xy" location_value="nm=80"   />      
+    <expected_location location_type="xy" location_properties="nm=80"   />
     <display_object_set random_tag="object_sets" set_name="delivery" />   
   </goal_delivery>
 
   <goal_delivery template="land" name="" >
-    <expected_location location_type="xy" location_value="nm=50"   />      
+    <expected_location location_type="xy" location_properties="nm=50"   />
     <display_object_set random_tag="object_sets" set_name="delivery" />   
   </goal_delivery>
 
   
   <!-- when "location_type = "start" you will return to starting coordinate. Start is a special case -->
   <goal_back_to_start template="start" name="" >
-    <expected_location location_type="land" location_value=""   />      
+    <expected_location location_type="land" location_properties=""   />
     <display_object name="marker" instance_name="" target_marker_b="yes" replace_elev_above_ground_ft="60" />      
     <desc>It is time to fly back. Fly to: {navaid_name}.</desc>  
   </goal_back_to_start>
 
   <goal_land template="land" name="" >
-    <expected_location location_type="xy" location_value="nm=20"  /> 
+    <expected_location location_type="xy" location_properties="nm=20"  />
     <display_object name="marker" instance_name="" target_marker_b="yes" replace_elev_above_ground_ft="60" />      
   </goal_land>
 
   <goal_land template="land,start" name="" >
-    <expected_location location_type="xy,near" location_value="nm=20,nm=_"  /> 
+    <expected_location location_type="xy,near" location_properties="nm=20,nm=_"  />
     <display_object name="marker" instance_name="" target_marker_b="yes" replace_elev_above_ground_ft="60" />      
   </goal_land>
 
 
   <deliver_medevac_set>
     <leg template="land" name="" >    
-      <expected_location location_type="icao" location_value="nm=20"   />      
+      <expected_location location_type="icao" location_properties="nm=20"   />
       <display_object name="marker" skewed_name="marker_q" instance_name="" target_marker_b="yes" replace_elev_above_ground_ft="60" />      
     </leg>
     <leg template="land" name="" >    
-      <expected_location location_type="icao" location_value="nm=20"   />      
+      <expected_location location_type="icao" location_properties="nm=20"   />
       <display_object name="marker" skewed_name="marker_q" instance_name="" target_marker_b="yes" replace_elev_above_ground_ft="60" />      
     </leg>
   </deliver_medevac_set>

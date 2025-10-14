@@ -14,7 +14,7 @@
   <!-- plugin will probe location and will decide if it is water or ground --> <!-- location_properties = random_pick_target_in_area -->
   <leg template="land" name="goal_1" >
     <expected_location location_type="xy" location_properties="nm=25" />
-    <display_object_set random_tag="object_sets" set_name="medevac" />
+    <display_object_set random_tag="object_sets" set_name="medevac" slope_set_name="medevac_slope" />
     <special_leg_directives base_on_external_plugin="" add_tasks_from_template="" add_messages_from_template="" add_triggers_from_template="" />
 	
 	<!--
