@@ -10,14 +10,18 @@ Installation:
 !!! Remember to read the README.txt file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-v25.09.2-beta 1..4
+v25.09.2
 =======================
-[internal] Re-Wrote / Re-Organized most of the Random Engine code.
-[templates] Modified the plugin templates, and removed the archived ones.
-[compatibility] Breaking compatibility for <content> based template, please read the "content" topic in the "Designing_Template.pdf" document and the "breaking" changes.
-Still need more QA time but the bulk of the work and tests were done.
+[internal] Rewrote and reorganized most of the Random Engine code.
+[templates] Updated plugin templates and removed archived versions.
 
+Known issues:
+Custom templates may not function correctly due to breaking changes in <content>-based templates.
+Please refer to the “content” section in the Designing_Template.pdf document for guidance on how to update them.
 
+Additional Notes
+Further testing and fine-tuning of the Random Engine code will continue, but the current build appears stable and consistent.
+Any feedback from the community is greatly appreciated.
 
 
 v25.09.1.1

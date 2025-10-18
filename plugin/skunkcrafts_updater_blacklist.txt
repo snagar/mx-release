@@ -35,3 +35,4 @@ win_x64/vcruntime140_1.dll
 win_x64/vcruntime140_1d.dll
 win_x64/vcruntime140.dll
 win_x64/vcruntime140d.dll
+win_x64/dll
