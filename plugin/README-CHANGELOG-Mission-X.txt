@@ -10,6 +10,22 @@ Installation:
 !!! Remember to read the README.txt file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+
+v25.10.1
+=======================
+[internal] Continued rewriting and improving the Random Engine code.
+[3D] Fixed display of 3D objects when the target is located over water.
+[oilrig] Improved oil ramp detection when airports do not have ramp data defined in X-Plane.
+[briefer] Improved the generic starting message text for different mission types.
+[countdown] Added countdown functionality to Oil Rig, Generic, and Surprise Me mission types.
+[ui] Fixed briefer descriptions for SimBrief, ILS, and external flight plan missions.
+[cold and dark] Added missing "start cold and dark" when reading from template file.
+[osm] Tweaked mission creation time for OSM-based missions.
+[ui] Enabled display of 2D cues on the map in release builds (previously only functional in debug mode).
+[ctd] Hopefully resolved a crash that could occur when opening the 2D map after a plugin reload.
+
+
+
 v25.09.2
 =======================
 [internal] Rewrote and reorganized most of the Random Engine code.
