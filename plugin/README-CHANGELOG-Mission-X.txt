@@ -11,7 +11,7 @@ Installation:
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-v25.10.1
+v25.10.1 beta 1/2
 =======================
 [internal] Continued rewriting and improving the Random Engine code.
 [3D] Fixed display of 3D objects when the target is located over water.
@@ -22,7 +22,8 @@ v25.10.1
 [cold and dark] Added missing "start cold and dark" when reading from template file.
 [osm] Tweaked mission creation time for OSM-based missions.
 [ui] Enabled display of 2D cues on the map in release builds (previously only functional in debug mode).
-[ctd] Hopefully resolved a crash that could occur when opening the 2D map after a plugin reload.
+[bug] Mission based content did not add the target objectives and triggers.
+- Fixed incorrect template messages.
 
 
 

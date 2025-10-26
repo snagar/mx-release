@@ -2,11 +2,11 @@
 <TEMPLATE version="301" plane_type="" > 
 
   <content>
-    <medevac list="goal_medevac,goal_land" plane_type="helos">Assist in evacuating an injured person with an helicopter</medevac>
-    <medevac list="goal_medevac,goal_land,goal_delivery" plane_type="helos">Hello pilot.;Use the helicopter to assist in evacuating an injured person</medevac>
-    <delivery list="goal_delivery,goal_delivery|optional=50%,goal_delivery,goal_land," plane_type="prop">Today you will fly to few locations to deliver some mechanical parts.;Check the generated flight plan and pick the correct plane for this mission.;;Use your 'inventory' to move items from/to your plane.</delivery>
-    <delivery list="goal_delivery,goal_delivery" plane_type="prop">Today you will fly to few locations to deliver some mechanical parts.;Check the generated flight plan and pick the correct plane for this mission.;;Use your 'inventory' to move items from/to your plane.</delivery>       
-    <delivery list="goal_delivery,deliver_medevac_set|optional=20%,goal_delivery,goal_back_to_start" plane_type="prop">Today you will fly to few locations.;You might be asked to deliver some medic staff too.;;Check the generated flight plan and pick the correct plane for this mission.</delivery>       
+    <medevac list="goal_medevac,goal_land" plane_type="helos" mission_type="medevac">Assist in evacuating an injured person with an helicopter</medevac>
+    <medevac list="goal_medevac,goal_land,goal_delivery" plane_type="helos" mission_type="medevac" >Hello pilot.;Use the helicopter to assist in evacuating an injured person</medevac>
+    <delivery list="goal_delivery,goal_delivery" plane_type="prop" mission_type="cargo">Today you will fly to few locations to deliver some mechanical parts.;Check the generated flight plan and pick the correct plane for this mission.;;Use your 'inventory' to move items from/to your plane.</delivery>
+    <delivery list="goal_delivery,goal_delivery|optional=50%,goal_delivery,goal_land," plane_type="prop" mission_type="cargo">Today you will fly to few locations to deliver some mechanical parts.;Check the generated flight plan and pick the correct plane for this mission.;;Use your 'inventory' to move items from/to your plane.</delivery>
+    <delivery list="goal_delivery,deliver_medevac_set|optional=20%,goal_delivery,goal_back_to_start" plane_type="prop" mission_type="cargo">Today you will fly to few locations.;You might be asked to deliver some medic staff too.;;Check the generated flight plan and pick the correct plane for this mission.</delivery>
   </content>
 
 
@@ -30,31 +30,33 @@
   </goal_medevac>
 
   <goal_delivery template="land" name="" >
-    <expected_location location_type="xy" location_properties="nm=80"   />
+    <expected_location location_type="icao" location_properties="nm=80"   />
     <display_object_set random_tag="object_sets" set_name="delivery" />   
+    <display_object name="marker" skewed_name="marker_q" instance_name="" target_marker_b="yes" replace_elev_above_ground_ft="60" />
   </goal_delivery>
 
   <goal_delivery template="land" name="" >
-    <expected_location location_type="xy" location_properties="nm=50"   />
+    <expected_location location_type="icao" location_properties="nm=50"   />
     <display_object_set random_tag="object_sets" set_name="delivery" />   
+    <display_object name="marker" skewed_name="marker_q" instance_name="" target_marker_b="yes" replace_elev_above_ground_ft="60" />
   </goal_delivery>
 
   
   <!-- when "location_type = "start" you will return to starting coordinate. Start is a special case -->
   <goal_back_to_start template="start" name="" >
     <expected_location location_type="land" location_properties=""   />
-    <display_object name="marker" instance_name="" target_marker_b="yes" replace_elev_above_ground_ft="60" />      
+    <display_object name="marker" skewed_name="marker_q" instance_name="" target_marker_b="yes" replace_elev_above_ground_ft="60" />
     <desc>It is time to fly back. Fly to: {navaid_name}.</desc>  
   </goal_back_to_start>
 
   <goal_land template="land" name="" >
     <expected_location location_type="xy" location_properties="nm=20"  />
-    <display_object name="marker" instance_name="" target_marker_b="yes" replace_elev_above_ground_ft="60" />      
+    <display_object name="marker" skewed_name="marker_q" instance_name="" target_marker_b="yes" replace_elev_above_ground_ft="60" />
   </goal_land>
 
   <goal_land template="land,start" name="" >
-    <expected_location location_type="xy,near" location_properties="nm=20,nm=_"  />
-    <display_object name="marker" instance_name="" target_marker_b="yes" replace_elev_above_ground_ft="60" />      
+    <expected_location location_type="icao,near" location_properties="nm=20,nm=_"  />
+    <display_object name="marker" skewed_name="marker_q" instance_name="" target_marker_b="yes" replace_elev_above_ground_ft="60" />
   </goal_land>
 
 
