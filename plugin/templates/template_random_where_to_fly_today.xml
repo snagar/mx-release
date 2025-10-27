@@ -50,7 +50,7 @@
   </goal_back_to_start>
 
   <goal_land template="land" name="" >
-    <expected_location location_type="xy" location_properties="nm=20"  />
+    <expected_location location_type="icao" location_properties="nm=20"  />
     <display_object name="marker" skewed_name="marker_q" instance_name="" target_marker_b="yes" replace_elev_above_ground_ft="60" />
   </goal_land>
 

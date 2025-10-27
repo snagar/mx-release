@@ -11,7 +11,7 @@ Installation:
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-v25.10.1 beta 1/2
+v25.10.1 beta 1/2/3
 =======================
 [internal] Continued rewriting and improving the Random Engine code.
 [3D] Fixed display of 3D objects when the target is located over water.
@@ -23,8 +23,9 @@ v25.10.1 beta 1/2
 [osm] Tweaked mission creation time for OSM-based missions.
 [ui] Enabled display of 2D cues on the map in release builds (previously only functional in debug mode).
 [bug] Mission based content did not add the target objectives and triggers.
+[bug] Fixed duplicate 3D objects.
 - Fixed incorrect template messages.
-
+- Tweaks to the target messages.
 
 
 v25.09.2
