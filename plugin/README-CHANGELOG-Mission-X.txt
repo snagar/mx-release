@@ -11,7 +11,7 @@ Installation:
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-v25.10.1 beta 1/2/3
+v25.10.1
 =======================
 [internal] Continued rewriting and improving the Random Engine code.
 [3D] Fixed display of 3D objects when the target is located over water.
