@@ -11,6 +11,13 @@ Installation:
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
+v25.10.2 - beta 1
+=======================
+[regression][bug] Start and End ramp were not picked correctly.
+[bug] Fixed "external database flight plan" was creating a "leg" for all waypoints. Now it will only create for the first and last.
+[ui] GPS data will always be cleared at the beginning of a mission.
+
+
 v25.10.1
 =======================
 [internal] Continued rewriting and improving the Random Engine code.
