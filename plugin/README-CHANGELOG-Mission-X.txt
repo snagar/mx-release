@@ -11,11 +11,15 @@ Installation:
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-v25.10.2 - beta 1
+v25.10.2
 =======================
-[regression][bug] Start and End ramp were not picked correctly.
-[bug] Fixed "external database flight plan" was creating a "leg" for all waypoints. Now it will only create for the first and last.
-[ui] GPS data will always be cleared at the beginning of a mission.
+Mainly bug fixes for v25.10.1
+[regression][bug] Start and end ramps were not selected correctly — fixed.
+[bug] Fixed an issue where “external database flight plans” created a leg for every waypoint. It now creates legs only for the first and last waypoints.
+[ui] GPS data is now always cleared at the beginning of a mission.
+[message] The near-target message radius now considers airport metadata and aircraft type. The radius will range between 2 nm and 6 nm.
+[internal] Improved ramp filtering logic.
+[internal] Updated and refined aircraft positioning logic.
 
 
 v25.10.1
@@ -812,44 +816,3 @@ v3.0.304.1
 6. [new] Added support for special keyword: "{navaid_lat}" and "{navaid_lon}" in "dataref_start_cold_and_dark" element.
 7. [new] Implemented new attribute: "copy_leg_as_is_b" into templates to make it simpler to convert a stand alone mission to a template or to create a main mission file and just add some randomization to it using a template structure.
 8. [internal] Some internal changes to parameter handling in the embedded class.
-
-v3.0.302 - final
-1. Enhanced Mission-X triggers <rectangle> element with attribute: "first_point_is_center".
-Now we have 2 rectangular trigger types.
-The default one: "first point" is left bottom point.
-The second one(new): "first point" is the center of the rectangle, dimensions are treated as radius.
-Example: dimensions of 100|50 length will be translated to rectangle of "200x100"
-2. Modified the "conversion screen" to use the new <rectangle> enhancement, which means:
-it won't calculate all <point>s of the rectangle, only the first one and the designer will pick between first point is center or not, in the trigger creation screen.
-3. Added "position_pref" to the <briefer>, so now we can use code logic from xp11 or xp10.
-The benefit of xp10 logic is that after positioning the plane, it won't force engine start.
-This attribute can be used in templates too, check "Designing Templates" documentation.
-4. Added "force_heading_b" attribute was added to the <location_adjust> element, and it is mainly for designer use (can be forced in the setup screen also).
-The idea behind this attribute: when plane is 20m from starting location, the positioning code is ignored. The new flag will at least, force the heading positioning.
-5. Some internal fixes.
-
-
-
-v3.0.302 B3 - Beta
-1. Added support for "boxed" triggers and "script" based triggers.
-2. Added new function: "fn_get_aircraft_model()"
-3. More UI tweaks.
-
-v3.0.302 B2 - Beta
-1. New Trigger option in the "flight_leg" screen.
-   You can only create but not edit created triggers, yet.
-2. Tested some Ugly colors to the popup tables ;-)
-3. Mainly internal work.
-
-
-v3.0.302 B1 - Beta
-1. New screen to convert LittleNavMap flight plan to a mission-x file (base implementation).
-2. Fixed a bug where plane and camera view returned same headings.
-3. [designers] Minor <leg> element extended, you no longer need <desc> subelement to write the flight leg description, you can use <![[CDATA ]]> directly under <leg>.
-
-
-v3.0.256.4.4 - Hopefully the last tweak of this build tree.
-1. Another tweak for the external file read when using replace element in a template.
-2. Fixed the stats graph at the end of the mission.
-3. Added new functionality to write the current GPS to the external FPLN files. No need for an active mission anymore.
-   It can now behave as a tool. You can use it from the "setup" screen or through the "missionx=>tools" menu.
