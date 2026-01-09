@@ -21,6 +21,18 @@ Random Mission Pack Installation:
 3. Extract the random_vX.xxx" file into that folder.
 
 
+Suggested Libraries:
+
+* mx_library:  https://forums.x-plane.org/files/file/97944-mx_library/
+
+* R2_Library
+* MisterX_Library
+* 3D People Library
+* openscenery-x (has installer)
+* RescueX_Library:
+Extract the compress file into a "temporary" folder.
+You should see two sub folders: RescueX_Lib and RescueX_Terrain (If after extracting the package you see one main folder, only copy the two folders in it).
+Copy the two folders into the "Custom Scenery" directory.
 
 < ========= END OF Installation ======================
 

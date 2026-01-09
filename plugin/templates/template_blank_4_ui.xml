@@ -1,103 +1,104 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<TEMPLATE version="301" plane_type="" > 
-  <!-- v25.08.1 -->
+<TEMPLATE version="301" plane_type="" >
+  <!-- v25.12.1, v25.08.1 -->
+
   <mission_info template_image_file_name="" written_by="You" plane_desc="" estimate_time="" difficulty="" other_settings="" weather_settings="By Simmer" scenery_settings="Rescue-X, R2 Library, 3D people library, OpenSceneryX and MisterX libraries (all should be available through X-Plane Org)" short_desc="Hello pilot.;The following template will create a random medevac mission for helicopters. It uses random locations based on your plane position, so no plausiable location is garentied (at your own risk :-) ).;;You should be advised that some custom sceneries should be installed as a pre-requisites to this mission.;Sceneries like: HSF_lib, Rescue-X, R2 Library, 3D people library, OpenSceneryX and MisterX libraries (all should be available through X-Plane Org).;;Enjoy" />
-  
+
   <!-- [plane] currently we always start from plane location -->
-  <briefer_and_start_location location_type="plane" location_value="" lat="" long="" elev_ft="0" heading_psi="" > 
+  <briefer_and_start_location location_type="plane" location_value="" lat="" long="" elev_ft="0" heading_psi="" >
     <![CDATA[ ]]>
   </briefer_and_start_location>
 
 
- 
-  
+
+
   <object_templates>
     <!-- markers -->
     <obj3d  name="marker" file_name="marker_five_parts_02.obj" />
     <obj3d  name="marker_q" file_name="marker01_q.obj" />
     <obj3d  name="land_hover_marker" file_name="land_hover01.obj" />
   </object_templates>
-  
-  
+
+
   <object_sets>
     <medevac>
       <display_object  name="marker"   skewed_name="marker_q" target_marker_b="yes" replace_elev_above_ground_ft="60" />
-      <display_object  name="random_ambulance" file_name=""  random_tag="ambulance_select"  random_water_tag="water_replace_ambulance"    limit_to_terrain_slope="20" />    
-      <display_object  name="random_car"       file_name=""  random_tag="crashed_car"       relative_pos_bearing_deg_distance_mt="360|10" random_water_tag="blank" limit_to_terrain_slope="20" />    
-      <display_object  name="random_sign"      file_name=""  random_tag="clutter"           relative_pos_bearing_deg_distance_mt="180|10" random_water_tag="blank" />    
+      <display_object  name="random_ambulance" file_name=""  random_tag="ambulance_select"  random_water_tag="water_replace_ambulance"    limit_to_terrain_slope="20" />
+      <display_object  name="random_car"       file_name=""  random_tag="crashed_car"       relative_pos_bearing_deg_distance_mt="{vec}|10" random_water_tag="blank" limit_to_terrain_slope="20" />
+      <display_object  name="random_sign"      file_name=""  random_tag="clutter"           relative_pos_bearing_deg_distance_mt="{vec}+180|10" random_water_tag="blank" />
     </medevac>
 
     <medevac>
       <display_object  name="marker"    skewed_name="marker_q"        target_marker_b="yes" replace_elev_above_ground_ft="60" />
-      <display_object  name="random_police_car" file_name=""    random_tag="police_car"         random_water_tag="water_replace_ambulance"    limit_to_terrain_slope="20" />    
-      <display_object  name="random_car"        file_name=""    random_tag="crashed_car"        relative_pos_bearing_deg_distance_mt="360|10" random_water_tag="blank" limit_to_terrain_slope="20" />    
-      <display_object  name="random_police01"   file_name=""    random_tag="policeman"          relative_pos_bearing_deg_distance_mt="360|5"  random_water_tag="blank" limit_to_terrain_slope="" />    
-      <display_object  name="random_police02"   file_name=""    random_tag="policeman"          relative_pos_bearing_deg_distance_mt="345|5"  random_water_tag="blank" limit_to_terrain_slope="" />    
-      <display_object  name="random_person1"    file_name=""    random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="10|10"  random_water_tag="blank" limit_to_terrain_slope="" />    
-      <display_object  name="random_person2"    file_name=""    random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="15|10"  random_water_tag="blank" limit_to_terrain_slope="" />    
-      <display_object  name="random_sign"       file_name=""    random_tag="clutter"            relative_pos_bearing_deg_distance_mt="180|10" random_water_tag="blank" />    
+      <display_object  name="random_police_car" file_name=""    random_tag="police_car"         random_water_tag="water_replace_ambulance"    limit_to_terrain_slope="20" />
+      <display_object  name="random_car"        file_name=""    random_tag="crashed_car"        relative_pos_bearing_deg_distance_mt="{vec}|10" random_water_tag="blank" limit_to_terrain_slope="20" />
+      <display_object  name="random_police01"   file_name=""    random_tag="policeman"          relative_pos_bearing_deg_distance_mt="{vec}|5"  random_water_tag="blank" limit_to_terrain_slope="" />
+      <display_object  name="random_police02"   file_name=""    random_tag="policeman"          relative_pos_bearing_deg_distance_mt="{vec}+345|5"  random_water_tag="blank" limit_to_terrain_slope="" />
+      <display_object  name="random_person1"    file_name=""    random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="{vec}+10|10"  random_water_tag="blank" limit_to_terrain_slope="" />
+      <display_object  name="random_person2"    file_name=""    random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="{vec}+15|10"  random_water_tag="blank" limit_to_terrain_slope="" />
+      <display_object  name="random_sign"       file_name=""    random_tag="clutter"            relative_pos_bearing_deg_distance_mt="{vec}+180|10" random_water_tag="blank" />
     </medevac>
 
     <medevac>
       <display_object  name="marker"    skewed_name="marker_q"       target_marker_b="yes" replace_elev_above_ground_ft="60" />
-      <display_object  name="random_person1"   random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="10|10"  random_water_tag="blank" limit_to_terrain_slope="" />    
-      <display_object  name="random_person2"   random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="12|10"  random_water_tag="blank" limit_to_terrain_slope="" />    
-      <display_object  name="random_person3"   random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="10|8"   random_water_tag="blank" limit_to_terrain_slope="" optional="45%" />    
-      <display_object  name="random_person4"   random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="15|10"  random_water_tag="blank" limit_to_terrain_slope="" optional="35%" />
-      <display_object  name="random_ambulance" random_tag="ambulance_select"  random_water_tag="water_replace_ambulance"    limit_to_terrain_slope="20" />    
-      <display_object  name="aider01"          random_tag="push_wealchair"    relative_pos_bearing_deg_distance_mt="45|05"  random_water_tag="blank" limit_to_terrain_slope="20" />    
-      <display_object  name="wealchair01"      random_tag="wealchairs"        relative_pos_bearing_deg_distance_mt="46|05"  random_water_tag="blank" limit_to_terrain_slope="20" />    
-      <display_object  name="random_car"       random_tag="crashed_car"       relative_pos_bearing_deg_distance_mt="360|10" random_water_tag="blank" limit_to_terrain_slope="20" />    
-      <display_object  name="random_sign"      random_tag="clutter"           relative_pos_bearing_deg_distance_mt="180|10" random_water_tag="blank" />    
-      <display_object  name="firetruck01"      random_tag="firetruck"         relative_pos_bearing_deg_distance_mt="270|5"  random_water_tag="blank" />    
-      <display_object  name="fireman01"        random_tag="fireman"           relative_pos_bearing_deg_distance_mt="295|4"  random_water_tag="blank" />    
-    </medevac>    
-    
+      <display_object  name="random_person1"   random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="{vec}+10|10"  random_water_tag="blank" limit_to_terrain_slope="" />
+      <display_object  name="random_person2"   random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="{vec}+12|10"  random_water_tag="blank" limit_to_terrain_slope="" />
+      <display_object  name="random_person3"   random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="{vec}+10|8"   random_water_tag="blank" limit_to_terrain_slope="" optional="45%" />
+      <display_object  name="random_person4"   random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="{vec}+15|10"  random_water_tag="blank" limit_to_terrain_slope="" optional="35%" />
+      <display_object  name="random_ambulance" random_tag="ambulance_select"  random_water_tag="water_replace_ambulance"    limit_to_terrain_slope="20" />
+      <display_object  name="aider01"          random_tag="push_wealchair"    relative_pos_bearing_deg_distance_mt="{vec}+45|05"  random_water_tag="blank" limit_to_terrain_slope="20" />
+      <display_object  name="wealchair01"      random_tag="wealchairs"        relative_pos_bearing_deg_distance_mt="{vec}+46|05"  random_water_tag="blank" limit_to_terrain_slope="20" />
+      <display_object  name="random_car"       random_tag="crashed_car"       relative_pos_bearing_deg_distance_mt="{vec}|10" random_water_tag="blank" limit_to_terrain_slope="20" />
+      <display_object  name="random_sign"      random_tag="clutter"           relative_pos_bearing_deg_distance_mt="{vec}+180|10" random_water_tag="blank" />
+      <display_object  name="firetruck01"      random_tag="firetruck"         relative_pos_bearing_deg_distance_mt="{vec}+270|5"  random_water_tag="blank" />
+      <display_object  name="fireman01"        random_tag="fireman"           relative_pos_bearing_deg_distance_mt="{vec}+295|4"  random_water_tag="blank" />
+    </medevac>
+
     <medevac_slope>
       <display_object  name="marker"    skewed_name="marker_q"      target_marker_b="yes" replace_elev_above_ground_ft="60" />
-      <display_object  name="random_person1"  file_name=""   random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="10|10"  random_water_tag="blank" limit_to_terrain_slope="" />    
-      <display_object  name="random_person2"  file_name=""   random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="15|10"  random_water_tag="blank" limit_to_terrain_slope="" optional="70%" />    
-      <display_object  name="random_sign"     file_name=""   random_tag="clutter"              relative_pos_bearing_deg_distance_mt="180|10" random_water_tag="blank" optional="50%" />    
+      <display_object  name="random_person1"  file_name=""   random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="{vec}+10|10"  random_water_tag="blank" limit_to_terrain_slope="" />
+      <display_object  name="random_person2"  file_name=""   random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="{vec}+15|10"  random_water_tag="blank" limit_to_terrain_slope="" optional="70%" />
+      <display_object  name="random_sign"     file_name=""   random_tag="clutter"              relative_pos_bearing_deg_distance_mt="{vec}+180|10" random_water_tag="blank" optional="50%" />
     </medevac_slope>
 
     <medevac_slope>
       <display_object  name="marker"     skewed_name="marker_q"     target_marker_b="yes" replace_elev_above_ground_ft="60" />
-      <display_object  name="random_person1"  file_name=""     random_tag="people_at_location" relative_pos_bearing_deg_distance_mt=""       random_water_tag="blank" limit_to_terrain_slope="" optional="70%" />    
-      <display_object  name="random_person2"  file_name=""     random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="10|10"  random_water_tag="blank" limit_to_terrain_slope="" />    
-      <display_object  name="random_person3"  file_name=""     random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="15|10"  random_water_tag="blank" limit_to_terrain_slope="" optional="70%" />    
-      <display_object  name="random_sign"     file_name=""     random_tag="clutter"            relative_pos_bearing_deg_distance_mt="180|10" random_water_tag="blank" optional="50%" />    
+      <display_object  name="random_person1"  file_name=""     random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="{vec}+"       random_water_tag="blank" limit_to_terrain_slope="" optional="70%" />
+      <display_object  name="random_person2"  file_name=""     random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="{vec}+10|10"  random_water_tag="blank" limit_to_terrain_slope="" />
+      <display_object  name="random_person3"  file_name=""     random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="{vec}+15|10"  random_water_tag="blank" limit_to_terrain_slope="" optional="70%" />
+      <display_object  name="random_sign"     file_name=""     random_tag="clutter"            relative_pos_bearing_deg_distance_mt="{vec}+180|10" random_water_tag="blank" optional="50%" />
     </medevac_slope>
-    
-    
+
+
     <oilrig_cargo>
-      <display_object  name="random_person1"  file_name=""   random_tag="oilrig_people"  relative_pos_bearing_deg_distance_mt="10|6"   random_water_tag="oilrig_people" limit_to_terrain_slope="" optional="70%" />    
-      <display_object  name="random_person2"  file_name=""   random_tag="oilrig_people"  relative_pos_bearing_deg_distance_mt="0|6"    random_water_tag="oilrig_people" limit_to_terrain_slope="" />    
-      <display_object  name="random_sign"     file_name=""   random_tag="clutter"        relative_pos_bearing_deg_distance_mt="350|6"  random_water_tag="clutter" optional="" />          
-    </oilrig_cargo>                                                                      
-                                                             
-    <oilrig_cargo>                                           
-      <display_object  name="random_person1"  file_name=""   random_tag="oilrig_people"  relative_pos_bearing_deg_distance_mt="10|6"   random_water_tag="oilrig_people"  limit_to_terrain_slope="" optional="" />    
-      <display_object  name="random_pallet"   file_name=""   random_tag="oilrig_pallets" relative_pos_bearing_deg_distance_mt="350|6"  random_water_tag="oilrig_pallets" optional="" />          
-    </oilrig_cargo>                                          
-                                                             
-    <oilrig_med>                                             
-      <display_object  name="random_person2"  file_name=""   random_tag="oilrig_people"  relative_pos_bearing_deg_distance_mt="10|6"  random_water_tag="oilrig_people" limit_to_terrain_slope="" />    
-      <display_object  name="random_sign"     file_name=""   random_tag="clutter"        relative_pos_bearing_deg_distance_mt="0|6"   random_water_tag="clutter"    optional="60%" />          
-      <display_object  name="oilmed_clutter2" file_name=""   random_tag="oilrig_med"     relative_pos_bearing_deg_distance_mt="270|6" random_water_tag="oilrig_med" optional="" />          
+      <display_object  name="random_person1"  file_name=""   random_tag="oilrig_people"  relative_pos_bearing_deg_distance_mt="{vec}+10|6"   random_water_tag="oilrig_people" limit_to_terrain_slope="" optional="70%" />
+      <display_object  name="random_person2"  file_name=""   random_tag="oilrig_people"  relative_pos_bearing_deg_distance_mt="{vec}+0|6"    random_water_tag="oilrig_people" limit_to_terrain_slope="" />
+      <display_object  name="random_sign"     file_name=""   random_tag="clutter"        relative_pos_bearing_deg_distance_mt="{vec}+350|6"  random_water_tag="clutter" optional="" />
+    </oilrig_cargo>
+
+    <oilrig_cargo>
+      <display_object  name="random_person1"  file_name=""   random_tag="oilrig_people"  relative_pos_bearing_deg_distance_mt="{vec}+10|6"   random_water_tag="oilrig_people"  limit_to_terrain_slope="" optional="" />
+      <display_object  name="random_pallet"   file_name=""   random_tag="oilrig_pallets" relative_pos_bearing_deg_distance_mt="{vec}+350|6"  random_water_tag="oilrig_pallets" optional="" />
+    </oilrig_cargo>
+
+    <oilrig_med>
+      <display_object  name="random_person2"  file_name=""   random_tag="oilrig_people"  relative_pos_bearing_deg_distance_mt="{vec}+10|6"  random_water_tag="oilrig_people" limit_to_terrain_slope="" />
+      <display_object  name="random_sign"     file_name=""   random_tag="clutter"        relative_pos_bearing_deg_distance_mt="{vec}+0|6"   random_water_tag="clutter"    optional="60%" />
+      <display_object  name="oilmed_clutter2" file_name=""   random_tag="oilrig_med"     relative_pos_bearing_deg_distance_mt="{vec}+270|6" random_water_tag="oilrig_med" optional="" />
     </oilrig_med>
-    
+
     <medevac_land_icao>
       <display_object name="marker"    skewed_name="marker_q"        target_marker_b="yes" replace_elev_above_ground_ft="60" />
-      <display_object name="ambulance" instance_name="ambulance_end_target" random_tag="ambulance_select" relative_pos_bearing_deg_distance_mt="180|25" />
+      <display_object name="ambulance" instance_name="ambulance_end_target" random_tag="ambulance_select" relative_pos_bearing_deg_distance_mt="{vec}+180|25" />
     </medevac_land_icao>
 
     <medevac_land_hospital>
       <display_object name="marker"    skewed_name="marker_q"        target_marker_b="yes" replace_elev_above_ground_ft="60" />
-      <display_object name="person_aid" instance_name="person_aid_end_target" random_tag="people_aiders" relative_pos_bearing_deg_distance_mt="180|6" />
+      <display_object name="person_aid" instance_name="person_aid_end_target" random_tag="people_aiders" relative_pos_bearing_deg_distance_mt="{vec}+180|6" />
     </medevac_land_hospital>
 
     <delivery>
-    
+
     </delivery>
 
   </object_sets>
@@ -107,74 +108,93 @@
   <osm_object_set>
     <road_primary_car>
       <display_object  name="marker"   skewed_name="marker_q" target_marker_b="yes" replace_elev_above_ground_ft="60" />
-      <display_object  name="random_ambulance" file_name=""  random_tag="ambulance_select"  random_water_tag="water_replace_ambulance"    limit_to_terrain_slope="20" />
-      <display_object  name="random_car"       file_name=""  random_tag="crashed_car"       relative_pos_bearing_deg_distance_mt="360|10" random_water_tag="blank" limit_to_terrain_slope="20" />
-      <display_object  name="random_sign"      file_name=""  random_tag="clutter"           relative_pos_bearing_deg_distance_mt="180|10" random_water_tag="blank" />
-      <display_object  name="random_person1"    file_name=""    random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="15|10"  random_water_tag="blank" />
-      <display_object  name="random_sign"       file_name=""    random_tag="clutter"            relative_pos_bearing_deg_distance_mt="360|10" random_water_tag="blank" />
+      <display_object  name="random_ambulance" file_name=""  random_tag="osm_ambulance"  random_water_tag="blank"    limit_to_terrain_slope="20" />
+      <display_object  name="random_car"       file_name=""  random_tag="osm_accident_cars"       relative_pos_bearing_deg_distance_mt="{vec}|10" random_water_tag="blank" limit_to_terrain_slope="20" />
+      <display_object  name="random_sign"      file_name=""  random_tag="clutter"           relative_pos_bearing_deg_distance_mt="{vec}+5|25" random_water_tag="blank" />
+      <display_object  name="random_sign"      file_name=""  random_tag="clutter"           relative_pos_bearing_deg_distance_mt="{vec}+180|10" random_water_tag="blank" />
+      <display_object  name="random_person1"    file_name=""    random_tag="osm_men"  relative_pos_bearing_deg_distance_mt="{vec}+15|10"  random_water_tag="blank" />
+      <display_object  name="random_person2"    file_name=""    random_tag="osm_men"  relative_pos_bearing_deg_distance_mt="{vec}+12|10"  random_water_tag="blank" />
+      <display_object  name="random_sign"       file_name=""    random_tag="clutter"            relative_pos_bearing_deg_distance_mt="{vec}+5|10" random_water_tag="blank" />
+      <display_object  name="random_police01"   file_name=""    random_tag="osm_policeman"  relative_pos_bearing_deg_distance_mt="{vec}+90|5"  random_water_tag="blank" limit_to_terrain_slope="" />
+      <display_object  name="random_policecar"   file_name=""    random_tag="osm_police_cars_bikes"  relative_pos_bearing_deg_distance_mt="{vec}-175|10"  random_water_tag="blank" limit_to_terrain_slope="" />
+      <display_object  name="random_police02"   file_name=""    random_tag="osm_policeman"  relative_pos_bearing_deg_distance_mt="{vec}-178|15"  random_water_tag="blank" limit_to_terrain_slope="" />
     </road_primary_car>
 
     <road_primary_car>
       <display_object  name="marker"    skewed_name="marker_q"        target_marker_b="yes" replace_elev_above_ground_ft="60" />
-      <display_object  name="random_police_car" file_name=""    random_tag="police_car"         relative_pos_bearing_deg_distance_mt="360|10" random_water_tag="water_replace_ambulance"    limit_to_terrain_slope="20" />
-      <display_object  name="random_car"        file_name=""    random_tag="crashed_car"        relative_pos_bearing_deg_distance_mt="350|2"  random_water_tag="blank" limit_to_terrain_slope="" />
-      <display_object  name="random_police01"   file_name=""    random_tag="policeman"          relative_pos_bearing_deg_distance_mt="360|5"  random_water_tag="blank" limit_to_terrain_slope="" />
-      <display_object  name="random_police02"   file_name=""    random_tag="policeman"          relative_pos_bearing_deg_distance_mt="345|5"  random_water_tag="blank" limit_to_terrain_slope="" />
-      <display_object  name="random_person1"    file_name=""    random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="10|10"  random_water_tag="blank" limit_to_terrain_slope="" />
-      <display_object  name="random_person2"    file_name=""    random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="15|10"  random_water_tag="blank" limit_to_terrain_slope="" />
-      <display_object  name="random_sign"       file_name=""    random_tag="clutter"            relative_pos_bearing_deg_distance_mt="180|10" random_water_tag="blank" />
+      <display_object  name="random_police_car" file_name=""    random_tag="osm_police_cars_bikes"         relative_pos_bearing_deg_distance_mt="{vec}|10" random_water_tag="water_replace_ambulance"    limit_to_terrain_slope="20" />
+      <display_object  name="random_car"        file_name=""    random_tag="osm_accident_cars"        relative_pos_bearing_deg_distance_mt="{vec}+350|2"  random_water_tag="blank" limit_to_terrain_slope="" />
+      <display_object  name="random_police01"   file_name=""    random_tag="osm_policeman"          relative_pos_bearing_deg_distance_mt="{vec}+15|5"  random_water_tag="blank" limit_to_terrain_slope="" />
+      <display_object  name="random_police02"   file_name=""    random_tag="osm_policeman"          relative_pos_bearing_deg_distance_mt="{vec}+345|5"  random_water_tag="blank" limit_to_terrain_slope="" />
+      <display_object  name="random_person1"    file_name=""    random_tag="people_at_location" relative_pos_bearing_deg_distance_mt="{vec}+10|10"  random_water_tag="blank" limit_to_terrain_slope="" />
+      <display_object  name="random_person2"    file_name=""    random_tag="osm_women"          relative_pos_bearing_deg_distance_mt="{vec}+15|10"  random_water_tag="blank" limit_to_terrain_slope="" />
+      <display_object  name="random_sign"       file_name=""    random_tag="clutter"            relative_pos_bearing_deg_distance_mt="{vec}+180|10" random_water_tag="blank" />
     </road_primary_car>
 
     <road_primary_truck>
       <display_object  name="marker"   skewed_name="marker_q" target_marker_b="yes" replace_elev_above_ground_ft="60" />
-      <display_object  name="random_ambulance" file_name=""  random_tag="ambulance_select"    random_water_tag="water_replace_ambulance"    limit_to_terrain_slope="20" />
-      <display_object  name="random_truck"     file_name=""  random_tag="trucks"              relative_pos_bearing_deg_distance_mt="360|10" random_water_tag="blank" limit_to_terrain_slope="20" />
-      <display_object  name="random_sign"      file_name=""  random_tag="clutter"             relative_pos_bearing_deg_distance_mt="180|10" random_water_tag="blank" />
-      <display_object  name="random_person1"   file_name=""  random_tag="people_at_location"  relative_pos_bearing_deg_distance_mt="25|10"  random_water_tag="blank" />
-      <display_object  name="random_person2"   file_name=""  random_tag="people_at_location"  relative_pos_bearing_deg_distance_mt="23|9"  random_water_tag="blank" />
-      <display_object  name="random_police01"  file_name=""  random_tag="policeman"           relative_pos_bearing_deg_distance_mt="250|10"  random_water_tag="blank" />
-      <display_object  name="random_sign"      file_name=""  random_tag="clutter"             relative_pos_bearing_deg_distance_mt="360|16" random_water_tag="blank" />
+      <display_object  name="random_ambulance" file_name=""  random_tag="osm_ambulance"       random_water_tag="blank"    limit_to_terrain_slope="20" />
+      <display_object  name="random_truck"     file_name=""  random_tag="osm_small_trucks"    relative_pos_bearing_deg_distance_mt="{vec}|10" replace_heading_psi="{vec}" random_water_tag="blank" limit_to_terrain_slope="20" />
+      <display_object  name="random_truck"     file_name=""  random_tag="osm_car_lifter"      relative_pos_bearing_deg_distance_mt="{vec}|20" random_water_tag="blank" limit_to_terrain_slope="20" />
+      <display_object  name="random_mechanic"  file_name=""  random_tag="osm_mechanic"        relative_pos_bearing_deg_distance_mt="{vec}+5|20" replace_heading_psi="{vec}-180"  random_water_tag="blank" />
+      <display_object  name="random_truck"     file_name=""  random_tag="osm_accident_cars"   relative_pos_bearing_deg_distance_mt="{vec}-100|10" random_water_tag="blank" limit_to_terrain_slope="20" />
+      <display_object  name="random_sign"      file_name=""  random_tag="clutter"             relative_pos_bearing_deg_distance_mt="{vec}+180|10" random_water_tag="blank" />
+      <display_object  name="random_person1"   file_name=""  random_tag="osm_men"             relative_pos_bearing_deg_distance_mt="{vec}+25|10"  random_water_tag="blank" />
+      <display_object  name="random_person2"   file_name=""  random_tag="osm_men"             relative_pos_bearing_deg_distance_mt="{vec}+23|9"  random_water_tag="blank" />
+      <display_object  name="random_police01"  file_name=""  random_tag="osm_policeman"       relative_pos_bearing_deg_distance_mt="{vec}+250|10"  random_water_tag="blank" />
+      <display_object  name="random_police01"  file_name=""  random_tag="osm_police_cars_bikes"       relative_pos_bearing_deg_distance_mt="{vec}+248|11"  random_water_tag="blank" />
+      <display_object  name="random_sign"      file_name=""  random_tag="clutter"             relative_pos_bearing_deg_distance_mt="{vec}|16" random_water_tag="blank" />
     </road_primary_truck>
 
     <road_primary_truck>
       <display_object  name="marker"   skewed_name="marker_q" target_marker_b="yes" replace_elev_above_ground_ft="60" />
-      <display_object  name="random_ambulance" file_name=""  random_tag="ambulance_select"    random_water_tag="water_replace_ambulance"    limit_to_terrain_slope="20" />
-      <display_object  name="random_truck"     file_name=""  random_tag="trucks"              relative_pos_bearing_deg_distance_mt="360|8" replace_roll="90" random_water_tag="blank" />
-      <display_object  name="random_truck"     file_name=""  random_tag="car_lifter"          relative_pos_bearing_deg_distance_mt="360|15" random_water_tag="blank" limit_to_terrain_slope="20" />
-      <display_object  name="random_sign"      file_name=""  random_tag="clutter"             relative_pos_bearing_deg_distance_mt="180|10" random_water_tag="blank" />
-      <display_object  name="random_person1"   file_name=""  random_tag="people_at_location"  relative_pos_bearing_deg_distance_mt="25|10"  random_water_tag="blank" />
-      <display_object  name="random_person2"   file_name=""  random_tag="people_at_location"  relative_pos_bearing_deg_distance_mt="23|9"  random_water_tag="blank" />
-      <display_object  name="random_police01"  file_name=""  random_tag="policeman"           relative_pos_bearing_deg_distance_mt="250|10"  random_water_tag="blank" />
-      <display_object  name="random_sign"      file_name=""  random_tag="clutter"             relative_pos_bearing_deg_distance_mt="330|8" random_water_tag="blank" />
+      <display_object  name="random_ambulance" file_name=""  random_tag="osm_ambulance"       random_water_tag="blank"    limit_to_terrain_slope="20" />
+      <display_object  name="random_truck"     file_name=""  random_tag="osm_semi_trailers"    relative_pos_bearing_deg_distance_mt="{vec}|20" replace_heading_psi="{vec}" random_water_tag="blank" limit_to_terrain_slope="20" />
+      <display_object  name="random_truck"     file_name=""  random_tag="osm_car_lifter"      relative_pos_bearing_deg_distance_mt="{vec}+180|10" random_water_tag="blank" limit_to_terrain_slope="20" />
+      <display_object  name="random_mechanic"  file_name=""  random_tag="osm_mechanic"        relative_pos_bearing_deg_distance_mt="{vec}+5|20" replace_heading_psi="{vec}-180"  random_water_tag="blank" />
+      <display_object  name="random_truck"     file_name=""  random_tag="osm_accident_cars"   relative_pos_bearing_deg_distance_mt="{vec}-100|10" random_water_tag="blank" limit_to_terrain_slope="20" />
+      <display_object  name="random_sign"      file_name=""  random_tag="clutter"             relative_pos_bearing_deg_distance_mt="{vec}+185|15" random_water_tag="blank" />
+      <display_object  name="random_person1"   file_name=""  random_tag="osm_men"             relative_pos_bearing_deg_distance_mt="{vec}+25|10"  random_water_tag="blank" />
+      <display_object  name="random_person2"   file_name=""  random_tag="osm_men"             relative_pos_bearing_deg_distance_mt="{vec}+23|9" replace_heading_psi="{vec}+90"  random_water_tag="blank" />
+      <display_object  name="random_police01"  file_name=""  random_tag="osm_policeman"       relative_pos_bearing_deg_distance_mt="{vec}+250|10"  random_water_tag="blank" />
+      <display_object  name="random_police01"  file_name=""  random_tag="osm_police_cars_bikes"       relative_pos_bearing_deg_distance_mt="{vec}+248|11"  random_water_tag="blank" />
+      <display_object  name="random_police01"  file_name=""  random_tag="osm_civil_services"  relative_pos_bearing_deg_distance_mt="{vec}+175|21" replace_heading_psi="{vec}"  random_water_tag="blank" />
+      <display_object  name="random_sign"      file_name=""  random_tag="clutter"             relative_pos_bearing_deg_distance_mt="{vec}|16" random_water_tag="blank" />
     </road_primary_truck>
 
     <road_tertiary_truck>
       <display_object  name="marker"   skewed_name="marker_q" target_marker_b="yes" replace_elev_above_ground_ft="60" />
-      <display_object  name="random_ambulance" file_name=""  random_tag="ambulance_select"    random_water_tag="water_replace_ambulance"    limit_to_terrain_slope="20" />
-      <display_object  name="random_truck"     file_name=""  random_tag="trucks"              relative_pos_bearing_deg_distance_mt="45|8"  random_water_tag="blank" />
-      <display_object  name="random_tractor"   file_name=""  random_tag="tractors"            relative_pos_bearing_deg_distance_mt="270|5" replace_roll="90" random_water_tag="blank" />
-      <display_object  name="random_person2"   file_name=""  random_tag="people_at_location"  relative_pos_bearing_deg_distance_mt="23|9"  random_water_tag="blank" />
-      <display_object  name="random_sign"      file_name=""  random_tag="clutter"             relative_pos_bearing_deg_distance_mt="330|8" random_water_tag="blank" />
+      <display_object  name="random_ambulance" file_name=""  random_tag="osm_ambulance"    random_water_tag=""    limit_to_terrain_slope="20" />
+      <display_object  name="random_truck"     file_name=""  random_tag="osm_offroad_cars"    relative_pos_bearing_deg_distance_mt="{vec}+15|8" replace_heading_psi="{vec}-45"  random_water_tag="blank" />
+      <display_object  name="random_tractor"   file_name=""  random_tag="tractors"            relative_pos_bearing_deg_distance_mt="{vec}+270|5" replace_roll="90" random_water_tag="blank" />
+      <display_object  name="random_person2"   file_name=""  random_tag="people_at_location"  relative_pos_bearing_deg_distance_mt="{vec}+23|9"  random_water_tag="blank" />
+      <display_object  name="random_sign"      file_name=""  random_tag="clutter"             relative_pos_bearing_deg_distance_mt="{vec}-30|8" random_water_tag="blank" />
     </road_tertiary_truck>
 
     <path_generic>
       <display_object  name="marker"   skewed_name="marker_q" target_marker_b="yes" replace_elev_above_ground_ft="60" />
-      <display_object  name="random_person1"   file_name=""  random_tag="people_at_location"  relative_pos_bearing_deg_distance_mt="25|10"  random_water_tag="blank" />
-      <display_object  name="random_person2"   file_name=""  random_tag="people_at_location"  relative_pos_bearing_deg_distance_mt="23|9"  random_water_tag="blank" />
-      <display_object  name="random_sign"      file_name=""  random_tag="clutter"             relative_pos_bearing_deg_distance_mt="330|8" random_water_tag="blank" />
-      <display_object  name="random_ambulance" file_name=""  random_tag="ambulance_select"    random_water_tag="water_replace_ambulance"    limit_to_terrain_slope="20" />
+      <display_object  name="random_person1"   file_name=""  random_tag="osm_men"  relative_pos_bearing_deg_distance_mt="{vec}+25|10"  random_water_tag="blank" />
+      <display_object  name="random_person2"   file_name=""  random_tag="osm_women_gestures"  relative_pos_bearing_deg_distance_mt="{vec}+23|9"  random_water_tag="blank" />
     </path_generic>
 
     <path_mountain>
       <display_object  name="marker"   skewed_name="marker_q" target_marker_b="yes" replace_elev_above_ground_ft="60" />
-      <display_object  name="random_person1"   file_name=""  random_tag="people_at_location"  relative_pos_bearing_deg_distance_mt="25|10"  random_water_tag="blank" />
-      <display_object  name="random_person2"   file_name=""  random_tag="people_at_location"  relative_pos_bearing_deg_distance_mt="23|9"  random_water_tag="blank" />
-      <display_object  name="random_sign"      file_name=""  random_tag="clutter"             relative_pos_bearing_deg_distance_mt="330|8" random_water_tag="blank" />
+      <display_object  name="random_person1"   file_name=""  random_tag="osm_traveler"  relative_pos_bearing_deg_distance_mt="{vec}+5|3"  random_water_tag="blank" />
+      <display_object  name="random_person2"   file_name=""  random_tag="osm_men"  relative_pos_bearing_deg_distance_mt="{vec}+23|2"  random_water_tag="blank" />
+<!--      <display_object  name="random_sign"      file_name=""  random_tag="clutter"             relative_pos_bearing_deg_distance_mt="{vec}+330|8" random_water_tag="blank" />-->
     </path_mountain>
+
+    <sac_scale_bicycle>
+      <display_object  name="marker"   skewed_name="marker_q" target_marker_b="yes" replace_elev_above_ground_ft="60" />
+      <display_object  name="random_person1"   file_name=""  random_tag="osm_men"  relative_pos_bearing_deg_distance_mt="{vec}+5|3"  random_water_tag="blank" />
+      <display_object  name="random_person2"   file_name=""  random_tag="osm_men"  relative_pos_bearing_deg_distance_mt="{vec}+23|2"  random_water_tag="blank" />
+      <display_object  name="bicycle"      file_name=""  random_tag="osm_bicycles" relative_pos_bearing_deg_distance_mt="{vec}+7|8" random_water_tag="blank" />
+      <display_object  name="bicycle"      file_name=""  random_tag="osm_bicycles" relative_pos_bearing_deg_distance_mt="{vec}+17|5" random_water_tag="blank" />
+    </sac_scale_bicycle>
 
     <path_mountain_solo>
       <display_object  name="marker"   skewed_name="marker_q" target_marker_b="yes" replace_elev_above_ground_ft="60" />
-      <display_object  name="random_person1"   file_name=""  random_tag="people_at_location"  relative_pos_bearing_deg_distance_mt="25|10"  random_water_tag="blank" />
+      <display_object  name="random_person1"   file_name=""  random_tag="osm_traveler"  relative_pos_bearing_deg_distance_mt="{vec}+25|5"  random_water_tag="blank" />
     </path_mountain_solo>
 
 
@@ -187,18 +207,429 @@
   </blank>
 
 
+  <osm_staff>
+    <obj3d cat="backpacks" name="backpack.obj" file_name="mx_library/staff/backpacks/backpack.obj" />
+    <obj3d cat="backpacks" name="schoolbag.obj" file_name="mx_library/staff/backpacks/schoolbag.obj" />
+  </osm_staff>
+
+  <osm_medevac>
+    <obj3d cat="equipment" name="stretcher_extended.obj" file_name="mx_library/medevac/equipment/stretcher_extended.obj" />
+    <obj3d cat="equipment" name="stretcher_retracted.obj" file_name="mx_library/medevac/equipment/stretcher_retracted.obj" />
+    <obj3d cat="equipment" name="stretcher01.obj" file_name="mx_library/medevac/equipment/stretcher01.obj" />
+    <obj3d cat="equipment" name="stretcher02.obj" file_name="mx_library/medevac/equipment/stretcher02.obj" />
+  </osm_medevac>
+
+  <osm_med_mini_scene>
+    <obj3d cat="mini_scene" name="scene_cpr_worker.obj" file_name="mx_library/medevac/mini_scene/scene_cpr_worker.obj" />
+    <obj3d cat="mini_scene" name="nathan_on_ambulance_extended_stretcher.obj" file_name="mx_library/medevac/mini_scene/nathan_on_ambulance_extended_stretcher.obj" />
+    <obj3d cat="mini_scene" name="nathan_on_ambulance_retracted_stretcher.obj" file_name="mx_library/medevac/mini_scene/nathan_on_ambulance_retracted_stretcher.obj" />
+    <obj3d cat="mini_scene" name="nathan_on_ambulance_retracted_stretcher_2.obj" file_name="mx_library/medevac/mini_scene/nathan_on_ambulance_retracted_stretcher_2.obj" />
+  </osm_med_mini_scene>
+
+  <osm_medical>
+    <obj3d cat="medical" name="admincpr.obj" file_name="mx_library/people/medical/admincpr.obj" />
+    <obj3d cat="medical" name="med_wm_crosshands.obj" file_name="mx_library/people/medical/med_wm_crosshands.obj" />
+    <obj3d cat="medical" name="med_wm_stand.obj" file_name="mx_library/people/medical/med_wm_stand.obj" />
+    <obj3d cat="medical" name="med_no_mask_crosshands.obj" file_name="mx_library/people/medical/med_no_mask_crosshands.obj" />
+    <obj3d cat="medical" name="med_no_mask_stand.obj" file_name="mx_library/people/medical/med_no_mask_stand.obj" />
+    <obj3d cat="medical" name="reccpr.obj" file_name="mx_library/people/medical/reccpr.obj" />
+  </osm_medical>
+
+  <osm_mini_scene>
+    <obj3d cat="mini_scene" name="woman_and_child_scene.obj" file_name="mx_library/people/mini_scene/woman_and_child_scene.obj" />
+  </osm_mini_scene>
+
+  <osm_worker>
+    <obj3d cat="workers" name="bald_worker_on_phone.obj" file_name="mx_library/people/workers/bald_worker_on_phone.obj" />
+    <obj3d cat="workers" name="bald_worker_talk_phone_02.obj" file_name="mx_library/people/workers/bald_worker_talk_phone_02.obj" />
+    <obj3d cat="workers" name="worker_stands_01.obj" file_name="mx_library/people/workers/worker_stands_01.obj" />
+    <obj3d cat="workers" name="worker_with_respirator_01.obj" file_name="mx_library/people/workers/worker_with_respirator_01.obj" />
+    <obj3d cat="workers" name="female_watch_scan.obj" file_name="mx_library/people/workers/female_watch_scan.obj" />
+    <obj3d cat="workers" name="worker_01_kneel.obj" file_name="mx_library/people/workers/worker_01_kneel.obj" />
+    <obj3d cat="workers" name="worker_01_stand.obj" file_name="mx_library/people/workers/worker_01_stand.obj" />
+    <obj3d cat="workers" name="worker_01_walk.obj" file_name="mx_library/people/workers/worker_01_walk.obj" />
+    <obj3d cat="workers" name="worker_02_kneel.obj" file_name="mx_library/people/workers/worker_02_kneel.obj" />
+    <obj3d cat="workers" name="worker_02_stand.obj" file_name="mx_library/people/workers/worker_02_stand.obj" />
+    <obj3d cat="workers" name="worker_02_walk.obj" file_name="mx_library/people/workers/worker_02_walk.obj" />
+    <obj3d cat="workers" name="worker_03_kneel.obj" file_name="mx_library/people/workers/worker_03_kneel.obj" />
+    <obj3d cat="workers" name="worker_03_stand.obj" file_name="mx_library/people/workers/worker_03_stand.obj" />
+    <obj3d cat="workers" name="worker_03_walk.obj" file_name="mx_library/people/workers/worker_03_walk.obj" />
+    <obj3d cat="workers" name="worker_04_kneel.obj" file_name="mx_library/people/workers/worker_04_kneel.obj" />
+    <obj3d cat="workers" name="worker_04_stand.obj" file_name="mx_library/people/workers/worker_04_stand.obj" />
+    <obj3d cat="workers" name="worker_04_walk.obj" file_name="mx_library/people/workers/worker_04_walk.obj" />
+    <obj3d cat="workers" name="worker.obj" file_name="mx_library/people/workers/worker.obj" />
+    <obj3d cat="workers" name="worker_wave.obj" file_name="mx_library/people/workers/worker_wave.obj" />
+    <obj3d cat="workers" name="worker.obj" file_name="mx_library/people/workers/worker.obj" />
+    <obj3d cat="workers" name="worker_speaks.obj" file_name="mx_library/people/workers/worker_speaks.obj" />
+  </osm_worker>
+
+
+  <osm_mechanic>
+    <obj3d cat="mechanics" name="mechanic_girl_speak.obj" file_name="mx_library/people/mechanics/mechanic_girl_speak.obj" />
+    <obj3d cat="mechanics" name="mechanic_girl_stand.obj" file_name="mx_library/people/mechanics/mechanic_girl_stand.obj" />
+    <obj3d cat="mechanics" name="mechanic_girl_walk.obj" file_name="mx_library/people/mechanics/mechanic_girl_walk.obj" />
+    <obj3d cat="mechanics" name="mechanic_speak.obj" file_name="mx_library/people/mechanics/mechanic_speak.obj" />
+    <obj3d cat="mechanics" name="mechanic_speak_hands.obj" file_name="mx_library/people/mechanics/mechanic_speak_hands.obj" />
+    <obj3d cat="mechanics" name="mechanic_stand.obj" file_name="mx_library/people/mechanics/mechanic_stand.obj" />
+    <obj3d cat="mechanics" name="mechanic_walk.obj" file_name="mx_library/people/mechanics/mechanic_walk.obj" />
+  </osm_mechanic>
+
+  <osm_men>
+    <obj3d cat="men" name="dennis_stands.obj" file_name="mx_library/people/men/dennis_stands.obj" />
+    <obj3d cat="men" name="elderly_speak.obj" file_name="mx_library/people/men/elderly_speak.obj" />
+    <obj3d cat="men" name="elderly_stand.obj" file_name="mx_library/people/men/elderly_stand.obj" />
+    <obj3d cat="men" name="eric_speaks.obj" file_name="mx_library/people/men/eric_speaks.obj" />
+    <obj3d cat="men" name="eric_stands.obj" file_name="mx_library/people/men/eric_stands.obj" />
+    <obj3d cat="men" name="man_speak.obj" file_name="mx_library/people/men/man_speak.obj" />
+    <obj3d cat="men" name="man_speak_hands.obj" file_name="mx_library/people/men/man_speak_hands.obj" />
+    <obj3d cat="men" name="man_stand.obj" file_name="mx_library/people/men/man_stand.obj" />
+    <obj3d cat="men" name="man_walk.obj" file_name="mx_library/people/men/man_walk.obj" />
+    <obj3d cat="men" name="male_7_speak.obj" file_name="mx_library/people/men/male_7_speak.obj" />
+    <obj3d cat="men" name="male_7_speak_hands.obj" file_name="mx_library/people/men/male_7_speak_hands.obj" />
+    <obj3d cat="men" name="male_7_stand.obj" file_name="mx_library/people/men/male_7_stand.obj" />
+    <obj3d cat="men" name="male_7_walk.obj" file_name="mx_library/people/men/male_7_walk.obj" />
+    <obj3d cat="men" name="nathan_lay_down_stretched.obj" file_name="mx_library/people/men/nathan_lay_down_stretched.obj" />
+    <obj3d cat="men" name="nathan_speaks.obj" file_name="mx_library/people/men/nathan_speaks.obj" />
+    <obj3d cat="men" name="nathan_stands.obj" file_name="mx_library/people/men/nathan_stands.obj" />
+    <obj3d cat="men" name="nathan_stretched_hand_on_head.obj" file_name="mx_library/people/men/nathan_stretched_hand_on_head.obj" />
+    <obj3d cat="men" name="person_01.obj" file_name="mx_library/people/men/person_01.obj" />
+  </osm_men>
+
+  <osm_women>
+    <obj3d cat="women" name="sofia_speaks.obj" file_name="mx_library/people/women/sofia_speaks.obj" />
+    <obj3d cat="women" name="sofia_stands_idle.obj" file_name="mx_library/people/women/sofia_stands_idle.obj" />
+    <obj3d cat="women" name="woman_01_speak.obj" file_name="mx_library/people/women/woman_01_speak.obj" />
+    <obj3d cat="women" name="woman_01_stand.obj" file_name="mx_library/people/women/woman_01_stand.obj" />
+    <obj3d cat="women" name="woman_1_short_hair_speak.obj" file_name="mx_library/people/women/woman_1_short_hair_speak.obj" />
+    <obj3d cat="women" name="woman_1_short_hair_stand.obj" file_name="mx_library/people/women/woman_1_short_hair_stand.obj" />
+    <obj3d cat="women" name="woman_02_speak.obj" file_name="mx_library/people/women/woman_02_speak.obj" />
+    <obj3d cat="women" name="woman_02_stand.obj" file_name="mx_library/people/women/woman_02_stand.obj" />
+    <obj3d cat="women" name="woman_03_speak.obj" file_name="mx_library/people/women/woman_03_speak.obj" />
+    <obj3d cat="women" name="woman_03_stand.obj" file_name="mx_library/people/women/woman_03_stand.obj" />
+    <obj3d cat="women" name="woman_04_speak.obj" file_name="mx_library/people/women/woman_04_speak.obj" />
+    <obj3d cat="women" name="woman_04_stand.obj" file_name="mx_library/people/women/woman_04_stand.obj" />
+    <obj3d cat="women" name="woman_26_speak.obj" file_name="mx_library/people/women/woman_26_speak.obj" />
+    <obj3d cat="women" name="woman_26_stand.obj" file_name="mx_library/people/women/woman_26_stand.obj" />
+    <obj3d cat="women" name="woman_27_speak.obj" file_name="mx_library/people/women/woman_27_speak.obj" />
+    <obj3d cat="women" name="woman_27_stand.obj" file_name="mx_library/people/women/woman_27_stand.obj" />
+    <obj3d cat="women" name="woman_28_speak.obj" file_name="mx_library/people/women/woman_28_speak.obj" />
+    <obj3d cat="women" name="woman_28_stand.obj" file_name="mx_library/people/women/woman_28_stand.obj" />
+  </osm_women>
+
+  <osm_teenagers>
+    <obj3d cat="teenagers" name="boy_lay_down_legs_up.obj" file_name="mx_library/people/teenagers/boy_lay_down_legs_up.obj" />
+    <obj3d cat="teenagers" name="boy_stands.obj" file_name="mx_library/people/teenagers/boy_stands.obj" />
+    <obj3d cat="teenagers" name="girl_lp_scan.obj" file_name="mx_library/people/teenagers/girl_lp_scan.obj" />
+    <obj3d cat="teenagers" name="ind_boy.obj" file_name="mx_library/people/teenagers/ind_boy.obj" />
+    <obj3d cat="teenagers" name="ind_boy_lay_down_legs_up.obj" file_name="mx_library/people/teenagers/ind_boy_lay_down_legs_up.obj" />
+    <obj3d cat="teenagers" name="ind_boy_lay_down_stretched.obj" file_name="mx_library/people/teenagers/ind_boy_lay_down_stretched.obj" />
+    <obj3d cat="teenagers" name="ind_boy_seat_ground_leans_back.obj" file_name="mx_library/people/teenagers/ind_boy_seat_ground_leans_back.obj" />
+    <obj3d cat="teenagers" name="ind_boy_seat_ground_legs_stretch.obj" file_name="mx_library/people/teenagers/ind_boy_seat_ground_legs_stretch.obj" />
+    <obj3d cat="teenagers" name="indi_girl.obj" file_name="mx_library/people/teenagers/indi_girl.obj" />
+    <obj3d cat="teenagers" name="indi_girl_laydown_legs_up.obj" file_name="mx_library/people/teenagers/indi_girl_laydown_legs_up.obj" />
+    <obj3d cat="teenagers" name="indi_girl_laydown_stretched.obj" file_name="mx_library/people/teenagers/indi_girl_laydown_stretched.obj" />
+    <obj3d cat="teenagers" name="indi_girl_seat_on_ground_leans_back.obj" file_name="mx_library/people/teenagers/indi_girl_seat_on_ground_leans_back.obj" />
+    <obj3d cat="teenagers" name="indi_girl_seat_on_ground_leg_stretched.obj" file_name="mx_library/people/teenagers/indi_girl_seat_on_ground_leg_stretched.obj" />
+    <obj3d cat="teenagers" name="teen_boy_lay_down_stretched.obj" file_name="mx_library/people/teenagers/teen_boy_lay_down_stretched.obj" />
+    <obj3d cat="teenagers" name="teen_boy_lstands_handscrossed.obj" file_name="mx_library/people/teenagers/teen_boy_lstands_handscrossed.obj" />
+    <obj3d cat="teenagers" name="teen_boy_stands.obj" file_name="mx_library/people/teenagers/teen_boy_stands.obj" />
+    <obj3d cat="teenagers" name="teen_boy_walk_fast.obj" file_name="mx_library/people/teenagers/teen_boy_walk_fast.obj" />
+    <obj3d cat="teenagers" name="teen_half_lay_down.obj" file_name="mx_library/people/teenagers/teen_half_lay_down.obj" />
+    <obj3d cat="teenagers" name="teen_laydown_stretched.obj" file_name="mx_library/people/teenagers/teen_laydown_stretched.obj" />
+    <obj3d cat="teenagers" name="teen_loose_stand.obj" file_name="mx_library/people/teenagers/teen_loose_stand.obj" />
+    <obj3d cat="teenagers" name="teen_raise_hand.obj" file_name="mx_library/people/teenagers/teen_raise_hand.obj" />
+    <obj3d cat="teenagers" name="teen_stand_strait.obj" file_name="mx_library/people/teenagers/teen_stand_strait.obj" />
+    <obj3d cat="teenagers" name="teen_stands.obj" file_name="mx_library/people/teenagers/teen_stands.obj" />
+
+  </osm_teenagers>
+
+  <osm_bikers>
+    <obj3d cat="bikers" name="biker_rider_stand.obj" file_name="mx_library/people/bikers/biker_rider_stand.obj" />
+    <obj3d cat="bikers" name="biker_woman_01_stand.obj" file_name="mx_library/people/bikers/biker_woman_01_stand.obj" />
+    <obj3d cat="bikers" name="race_driver_stand.obj" file_name="mx_library/people/bikers/race_driver_stand.obj" />
+  </osm_bikers>
+
+  <osm_policeman>
+    <obj3d cat="policemen" name="police_idle_01.obj" file_name="mx_library/people/policemen/police_idle_01.obj" />
+    <obj3d cat="policemen" name="police_idle_04.obj" file_name="mx_library/people/policemen/police_idle_04.obj" />
+    <obj3d cat="policemen" name="police_01_kneeling.obj" file_name="mx_library/people/policemen/police_01_kneeling.obj" />
+    <obj3d cat="policemen" name="police_01_kneeling_left_90.obj" file_name="mx_library/people/policemen/police_01_kneeling_left_90.obj" />
+    <obj3d cat="policemen" name="police_01_kneeling_right_90.obj" file_name="mx_library/people/policemen/police_01_kneeling_right_90.obj" />
+    <obj3d cat="policemen" name="police_01_stand.obj" file_name="mx_library/people/policemen/police_01_stand.obj" />
+    <obj3d cat="policemen" name="police_walk_01.obj" file_name="mx_library/people/policemen/police_walk_01.obj" />
+    <obj3d cat="policemen" name="police_walk_02.obj" file_name="mx_library/people/policemen/police_walk_02.obj" />
+    <obj3d cat="policemen" name="police_walk_03.obj" file_name="mx_library/people/policemen/police_walk_03.obj" />
+    <obj3d cat="policemen" name="police_walk_04.obj" file_name="mx_library/people/policemen/police_walk_04.obj" />
+  </osm_policeman>
+
+  <osm_traveler>
+    <obj3d cat="traveler" name="man_with_backpack_speaks.obj" file_name="mx_library/people/traveler/man_with_backpack_speaks.obj" />
+    <obj3d cat="traveler" name="man_with_backpack_stands.obj" file_name="mx_library/people/traveler/man_with_backpack_stands.obj" />
+    <obj3d cat="traveler" name="man_with_backpack_wave.obj" file_name="mx_library/people/traveler/man_with_backpack_wave.obj" />
+    <obj3d cat="traveler" name="blake_stands.obj" file_name="mx_library/people/traveler/blake_stands.obj" />
+    <obj3d cat="traveler" name="blake_wave_hands.obj" file_name="mx_library/people/traveler/blake_wave_hands.obj" />
+    <obj3d cat="traveler" name="traveler_look_up.obj" file_name="mx_library/people/traveler/traveler_look_up.obj" />
+    <obj3d cat="traveler" name="traveler_stand.obj" file_name="mx_library/people/traveler/traveler_stand.obj" />
+    <obj3d cat="traveler" name="traveller02.obj" file_name="mx_library/people/traveler/traveller02.obj" />
+    <obj3d cat="traveler" name="traveler03_hands_crossed.obj" file_name="mx_library/people/traveler/traveler03_hands_crossed.obj" />
+    <obj3d cat="traveler" name="traveler03_looks_up.obj" file_name="mx_library/people/traveler/traveler03_looks_up.obj" />
+    <obj3d cat="traveler" name="traveler03_stand.obj" file_name="mx_library/people/traveler/traveler03_stand.obj" />
+  </osm_traveler>
+
+  <osm_women_gestures>
+    <obj3d cat="women" name="sofia_wave_hand.obj" file_name="mx_library/people/women/sofia_wave_hand.obj" />
+    <obj3d cat="women" name="woman_01_hands_up.obj" file_name="mx_library/people/women/woman_01_hands_up.obj" />
+    <obj3d cat="women" name="woman_01_hands_up_x.obj" file_name="mx_library/people/women/woman_01_hands_up_x.obj" />
+    <obj3d cat="women" name="woman_01_left_hand_up.obj" file_name="mx_library/people/women/woman_01_left_hand_up.obj" />
+    <obj3d cat="women" name="woman_01_right_hand_up.obj" file_name="mx_library/people/women/woman_01_right_hand_up.obj" />
+    <obj3d cat="women" name="woman_1_short_hair_hands_up.obj" file_name="mx_library/people/women/woman_1_short_hair_hands_up.obj" />
+    <obj3d cat="women" name="woman_1_short_hair_left_hand_up.obj" file_name="mx_library/people/women/woman_1_short_hair_left_hand_up.obj" />
+    <obj3d cat="women" name="woman_1_short_hair_right_hand_up.obj" file_name="mx_library/people/women/woman_1_short_hair_right_hand_up.obj" />
+    <obj3d cat="women" name="woman_02_left_hand_up.obj" file_name="mx_library/people/women/woman_02_left_hand_up.obj" />
+    <obj3d cat="women" name="woman_02_right_hand_up.obj" file_name="mx_library/people/women/woman_02_right_hand_up.obj" />
+    <obj3d cat="women" name="woman_02_two_hands_up.obj" file_name="mx_library/people/women/woman_02_two_hands_up.obj" />
+    <obj3d cat="women" name="woman_03_left_hand_up.obj" file_name="mx_library/people/women/woman_03_left_hand_up.obj" />
+    <obj3d cat="women" name="woman_03_right_hand_up.obj" file_name="mx_library/people/women/woman_03_right_hand_up.obj" />
+    <obj3d cat="women" name="woman_03_two_hands_up.obj" file_name="mx_library/people/women/woman_03_two_hands_up.obj" />
+    <obj3d cat="women" name="woman_04_left_hand_up.obj" file_name="mx_library/people/women/woman_04_left_hand_up.obj" />
+    <obj3d cat="women" name="woman_04_right_hand_up.obj" file_name="mx_library/people/women/woman_04_right_hand_up.obj" />
+    <obj3d cat="women" name="woman_04_two_hands_up.obj" file_name="mx_library/people/women/woman_04_two_hands_up.obj" />
+    <obj3d cat="women" name="woman_26_left_hand_up.obj" file_name="mx_library/people/women/woman_26_left_hand_up.obj" />
+    <obj3d cat="women" name="woman_26_right_hand_up.obj" file_name="mx_library/people/women/woman_26_right_hand_up.obj" />
+    <obj3d cat="women" name="woman_26_two_hands_up.obj" file_name="mx_library/people/women/woman_26_two_hands_up.obj" />
+    <obj3d cat="women" name="woman_27_left_hand_up.obj" file_name="mx_library/people/women/woman_27_left_hand_up.obj" />
+    <obj3d cat="women" name="woman_27_right_hand_up.obj" file_name="mx_library/people/women/woman_27_right_hand_up.obj" />
+    <obj3d cat="women" name="woman_27_two_hands_up.obj" file_name="mx_library/people/women/woman_27_two_hands_up.obj" />
+    <obj3d cat="women" name="woman_28_left_hand_up.obj" file_name="mx_library/people/women/woman_28_left_hand_up.obj" />
+    <obj3d cat="women" name="woman_28_right_hand_up.obj" file_name="mx_library/people/women/woman_28_right_hand_up.obj" />
+    <obj3d cat="women" name="woman_28_two_hands_up.obj" file_name="mx_library/people/women/woman_28_two_hands_up.obj" />
+  </osm_women_gestures>
+
+  <osm_ambulance>
+    <obj3d cat="ambulances" name="ambulance.obj" file_name="mx_library/vehicles/ambulances/ambulance.obj" />
+    <obj3d cat="civil_service" name="ambulance.obj" file_name="mx_library/vehicles/civil_service/ambulance.obj" />
+  </osm_ambulance>
+
+  <osm_bikes>
+    <obj3d cat="bikes" name="bike_3_cylinder.obj" file_name="mx_library/vehicles/bikes/bike_3_cylinder.obj" />
+    <obj3d cat="bikes" name="kato.obj" file_name="mx_library/vehicles/bikes/kato.obj" />
+    <obj3d cat="bikes" name="harley.obj" file_name="mx_library/vehicles/bikes/harley.obj" />
+    <obj3d cat="bikes" name="jawa.obj" file_name="mx_library/vehicles/bikes/jawa.obj" />
+    <obj3d cat="bikes" name="ktm.obj" file_name="mx_library/vehicles/bikes/ktm.obj" />
+    <obj3d cat="bikes" name="retro_bike.obj" file_name="mx_library/vehicles/bikes/retro_bike.obj" />
+    <obj3d cat="bikes" name="vespa.obj" file_name="mx_library/vehicles/bikes/vespa.obj" />
+    <obj3d cat="bikes" name="yamaha_vino.obj" file_name="mx_library/vehicles/bikes/yamaha_vino.obj" />
+    <obj3d cat="bikes" name="sports_bike.obj" file_name="mx_library/vehicles/bikes/sports_bike.obj" />
+  </osm_bikes>
+
+  <osm_police_cars_bikes>
+    <obj3d cat="civil_service" name="harley_police.obj" file_name="mx_library/vehicles/civil_service/harley_police.obj" />
+    <obj3d cat="civil_service" name="pc5008.obj" file_name="mx_library/vehicles/civil_service/pc5008.obj" />
+    <obj3d cat="civil_service" name="pcrusty.obj" file_name="mx_library/vehicles/civil_service/pcrusty.obj" />
+    <obj3d cat="civil_service" name="pcgta_lp.obj" file_name="mx_library/vehicles/civil_service/pcgta_lp.obj" />
+    <obj3d cat="civil_service" name="pc_lp.obj" file_name="mx_library/vehicles/civil_service/pc_lp.obj" />
+    <obj3d cat="civil_service" name="swat_lp.obj" file_name="mx_library/vehicles/civil_service/swat_lp.obj" />
+    <obj3d cat="civil_service" name="pc.obj" file_name="mx_library/vehicles/civil_service/pc.obj" />
+    <obj3d cat="civil_service" name="pc2.obj" file_name="mx_library/vehicles/civil_service/pc2.obj" />
+    <obj3d cat="civil_service" name="dodge.obj" file_name="mx_library/vehicles/civil_service/dodge.obj" />
+  </osm_police_cars_bikes>
+
+  <osm_offroad_motor_bikes>
+    <obj3d  name="ktm_dirt_bike" file_name="mx_library/vehicles/bikes/ktm.obj" />
+  </osm_offroad_motor_bikes>
+
+  <osm_bicycles>
+    <obj3d cat="bicycles" name="family_bicycle.obj" file_name="mx_library/vehicles/bicycles/family_bicycle.obj" />
+    <obj3d cat="bicycles" name="road_bike.obj" file_name="mx_library/vehicles/bicycles/road_bike.obj" />
+    <obj3d cat="bicycles" name="sport_bicycle.obj" file_name="mx_library/vehicles/bicycles/sport_bicycle.obj" />
+    <obj3d cat="bicycles" name="yellow_bicycle.obj" file_name="mx_library/vehicles/bicycles/yellow_bicycle.obj" />
+    <obj3d cat="bicycles" name="yt_enduro.obj" file_name="mx_library/vehicles/bicycles/yt_enduro.obj" />
+  </osm_bicycles>
+
+  <osm_offroad_bicycles>
+    <obj3d cat="bicycles" name="family_bicycle.obj" file_name="mx_library/vehicles/bicycles/family_bicycle.obj" />
+    <obj3d cat="bicycles" name="yt_enduro.obj" file_name="mx_library/vehicles/bicycles/yt_enduro.obj" />
+  </osm_offroad_bicycles>
+
+  <osm_total_loss_cars>
+    <obj3d cat="total_loss" name="burnet_car_01.obj" file_name="mx_library/vehicles/total_loss/burnet_car_01.obj" />
+  </osm_total_loss_cars>
+
+  <osm_road_cars>
+    <obj3d cat="cars" name="bmw_m5.obj" file_name="mx_library/vehicles/cars/bmw_m5.obj" />
+    <obj3d cat="cars" name="bmw_x3.obj" file_name="mx_library/vehicles/cars/bmw_x3.obj" />
+    <obj3d cat="cars" name="compact_07.obj" file_name="mx_library/vehicles/cars/compact_07.obj" />
+    <obj3d cat="cars" name="eugene_mk65.obj" file_name="mx_library/vehicles/cars/eugene_mk65.obj" />
+    <obj3d cat="cars" name="compact.obj" file_name="mx_library/vehicles/cars/compact.obj" />
+    <obj3d cat="cars" name="coupe.obj" file_name="mx_library/vehicles/cars/coupe.obj" />
+    <obj3d cat="cars" name="hatchback.obj" file_name="mx_library/vehicles/cars/hatchback.obj" />
+    <obj3d cat="cars" name="minivan.obj" file_name="mx_library/vehicles/cars/minivan.obj" />
+    <obj3d cat="cars" name="offroad.obj" file_name="mx_library/vehicles/cars/offroad.obj" />
+    <obj3d cat="cars" name="pickup.obj" file_name="mx_library/vehicles/cars/pickup.obj" />
+    <obj3d cat="cars" name="sportcar.obj" file_name="mx_library/vehicles/cars/sportcar.obj" />
+    <obj3d cat="cars" name="station.obj" file_name="mx_library/vehicles/cars/station.obj" />
+    <obj3d cat="cars" name="suv.obj" file_name="mx_library/vehicles/cars/suv.obj" />
+    <obj3d cat="cars" name="honda_integra.obj" file_name="mx_library/vehicles/cars/honda_integra.obj" />
+    <obj3d cat="cars" name="iveco_daily.obj" file_name="mx_library/vehicles/cars/iveco_daily.obj" />
+    <obj3d cat="cars" name="kiri.obj" file_name="mx_library/vehicles/cars/kiri.obj" />
+    <obj3d cat="cars" name="lancia_delta_evo.obj" file_name="mx_library/vehicles/cars/lancia_delta_evo.obj" />
+    <obj3d cat="cars" name="land_rover_1997.obj" file_name="mx_library/vehicles/cars/land_rover_1997.obj" />
+    <obj3d cat="cars" name="rover_sport_2023.obj" file_name="mx_library/vehicles/cars/rover_sport_2023.obj" />
+    <obj3d cat="cars" name="merc_benz_sl63.obj" file_name="mx_library/vehicles/cars/merc_benz_sl63.obj" />
+    <obj3d cat="cars" name="merc_benz_sl63_hd.obj" file_name="mx_library/vehicles/cars/merc_benz_sl63_hd.obj" />
+    <obj3d cat="cars" name="polo_gti.obj" file_name="mx_library/vehicles/cars/polo_gti.obj" />
+    <obj3d cat="cars" name="ram.obj" file_name="mx_library/vehicles/cars/ram.obj" />
+    <obj3d cat="cars" name="rancher_50.obj" file_name="mx_library/vehicles/cars/rancher_50.obj" />
+    <obj3d cat="cars" name="rancher_80.obj" file_name="mx_library/vehicles/cars/rancher_80.obj" />
+    <obj3d cat="cars" name="taxi.obj" file_name="mx_library/vehicles/cars/taxi.obj" />
+    <obj3d cat="cars" name="toyota_hilux.obj" file_name="mx_library/vehicles/cars/toyota_hilux.obj" />
+    <obj3d cat="cars" name="toyota_rav4.obj" file_name="mx_library/vehicles/cars/toyota_rav4.obj" />
+    <obj3d cat="cars" name="van_traveller.obj" file_name="mx_library/vehicles/cars/van_traveller.obj" />
+    <obj3d cat="vans" name="van011.obj" file_name="mx_library/vehicles/vans/van011.obj" />
+    <obj3d cat="vans" name="van17.obj" file_name="mx_library/vehicles/vans/van17.obj" />
+    <obj3d cat="vans" name="van18.obj" file_name="mx_library/vehicles/vans/van18.obj" />
+    <obj3d cat="vans" name="van21.obj" file_name="mx_library/vehicles/vans/van21.obj" />
+    <obj3d cat="vans" name="van22.obj" file_name="mx_library/vehicles/vans/van22.obj" />
+  </osm_road_cars>
+
+  <osm_civil_services>
+    <obj3d cat="civil_service" name="firetruck.obj" file_name="mx_library/vehicles/civil_service/firetruck.obj" />
+    <obj3d cat="civil_service" name="aidcar.obj" file_name="mx_library/vehicles/civil_service/aidcar.obj" />
+    <obj3d cat="civil_service" name="sc.obj" file_name="mx_library/vehicles/civil_service/sc.obj" />
+    <obj3d cat="civil_service" name="truck.obj" file_name="mx_library/vehicles/civil_service/truck.obj" />
+    <obj3d cat="civil_service" name="taxi.obj" file_name="mx_library/vehicles/civil_service/taxi.obj" />
+    <obj3d cat="civil_service" name="towtruck.obj" file_name="mx_library/vehicles/civil_service/towtruck.obj" />
+  </osm_civil_services>
+
+  <osm_firetrucks>
+    <obj3d cat="civil_service" name="firetruck.obj" file_name="mx_library/vehicles/civil_service/firetruck.obj" />
+  </osm_firetrucks>
+
+  <osm_garbage_trucks>
+    <obj3d cat="civil_service" name="garbage.obj" file_name="mx_library/vehicles/civil_service/garbage.obj" />
+  </osm_garbage_trucks>
+
+  <osm_offroad_cars>
+    <obj3d cat="cars" name="offroad.obj" file_name="mx_library/vehicles/cars/offroad.obj" />
+    <obj3d cat="cars" name="pickup.obj" file_name="mx_library/vehicles/cars/pickup.obj" />
+    <obj3d cat="cars" name="suv.obj" file_name="mx_library/vehicles/cars/suv.obj" />
+    <obj3d cat="cars" name="land_rover_1997.obj" file_name="mx_library/vehicles/cars/land_rover_1997.obj" />
+    <obj3d cat="cars" name="rover_sport_2023.obj" file_name="mx_library/vehicles/cars/rover_sport_2023.obj" />
+    <obj3d cat="cars" name="ram.obj" file_name="mx_library/vehicles/cars/ram.obj" />
+    <obj3d cat="cars" name="rancher_50.obj" file_name="mx_library/vehicles/cars/rancher_50.obj" />
+    <obj3d cat="cars" name="rancher_80.obj" file_name="mx_library/vehicles/cars/rancher_80.obj" />
+    <obj3d cat="cars" name="toyota_hilux.obj" file_name="mx_library/vehicles/cars/toyota_hilux.obj" />
+    <obj3d cat="cars" name="toyota_rav4.obj" file_name="mx_library/vehicles/cars/toyota_rav4.obj" />
+    <obj3d cat="cars" name="van_traveller.obj" file_name="mx_library/vehicles/cars/van_traveller.obj" />
+
+  </osm_offroad_cars>
+
+  <!-- mvp, small trucks, no trailers -->
+  <osm_small_trucks>
+    <obj3d cat="trucks" name="flatbed_truck.obj" file_name="mx_library/vehicles/trucks/flatbed_truck.obj" />
+    <obj3d cat="trucks" name="truck_lct_3000_95.obj" file_name="mx_library/vehicles/trucks/truck_lct_3000_95.obj" />
+    <obj3d cat="trucks" name="pickup_truck_blue.obj" file_name="mx_library/vehicles/trucks/pickup_truck_blue.obj" />
+    <obj3d cat="trucks" name="tow_truck.obj" file_name="mx_library/vehicles/trucks/tow_truck.obj" />
+    <obj3d cat="trucks" name="van002.obj" file_name="mx_library/vehicles/trucks/van002.obj" />
+    <obj3d cat="trucks" name="van006.obj" file_name="mx_library/vehicles/trucks/van006.obj" />
+    <obj3d cat="trucks" name="van007.obj" file_name="mx_library/vehicles/trucks/van007.obj" />
+    <obj3d cat="trucks" name="utility_truck.obj" file_name="mx_library/vehicles/trucks/utility_truck.obj" />
+  </osm_small_trucks>
+
+  <osm_car_lifter>
+    <obj3d cat="trucks" name="tow_truck.obj" file_name="mx_library/vehicles/trucks/tow_truck.obj" />
+  </osm_car_lifter>
+
+  <!-- with or without trailers -->
+  <osm_semi_trucks>
+    <obj3d cat="semi" name="truck_renult_t.obj" file_name="mx_library/vehicles/semi/truck_renult_t.obj" />
+    <obj3d cat="semi" name="truck_mercedes_benz.obj" file_name="mx_library/vehicles/semi/truck_mercedes_benz.obj" />
+    <obj3d cat="semi" name="truck_n_trailer.obj" file_name="mx_library/vehicles/semi/truck_n_trailer.obj" />
+    <obj3d cat="semi" name="truck_red_low_poly.obj" file_name="mx_library/vehicles/semi/truck_red_low_poly.obj" />
+  </osm_semi_trucks>
+
+  <!-- with trailers -->
+  <osm_semi_trailers>
+    <obj3d cat="semi" name="truck_mercedes_benz.obj" file_name="mx_library/vehicles/semi/truck_mercedes_benz.obj" />
+    <obj3d cat="semi" name="truck_n_trailer.obj" file_name="mx_library/vehicles/semi/truck_n_trailer.obj" />
+  </osm_semi_trailers>
+
+
+  <osm_transport_cars>
+    <obj3d cat="cars" name="iveco_daily.obj" file_name="mx_library/vehicles/cars/iveco_daily.obj" />
+    <obj3d cat="vans" name="van011.obj" file_name="mx_library/vehicles/vans/van011.obj" />
+    <obj3d cat="civil_service" name="citybus.obj" file_name="mx_library/vehicles/civil_service/citybus.obj" />
+    <obj3d cat="vans" name="van17.obj" file_name="mx_library/vehicles/vans/van17.obj" />
+    <obj3d cat="civil_service" name="schoolbus.obj" file_name="mx_library/vehicles/civil_service/schoolbus.obj" />
+    <obj3d cat="vans" name="van18.obj" file_name="mx_library/vehicles/vans/van18.obj" />
+    <obj3d cat="vans" name="van21.obj" file_name="mx_library/vehicles/vans/van21.obj" />
+    <obj3d cat="vans" name="van22.obj" file_name="mx_library/vehicles/vans/van22.obj" />
+  </osm_transport_cars>
+
+  <osm_accident_cars>
+    <obj3d cat="crashed" name="compact_driver_hit.obj" file_name="mx_library/crashed/vehicles/compact_driver_hit.obj" />
+    <obj3d cat="crashed" name="compact_front_heavy_hit.obj" file_name="mx_library/crashed/vehicles/compact_front_heavy_hit.obj" />
+    <obj3d cat="crashed" name="compact_rear_heavy_hit.obj" file_name="mx_library/crashed/vehicles/compact_rear_heavy_hit.obj" />
+    <obj3d cat="crashed" name="coupe_driver_hit.obj" file_name="mx_library/crashed/vehicles/coupe_driver_hit.obj" />
+    <obj3d cat="crashed" name="coupe_front_heavy_hit.obj" file_name="mx_library/crashed/vehicles/coupe_front_heavy_hit.obj" />
+    <obj3d cat="crashed" name="coupe_rear_heavy_hit.obj" file_name="mx_library/crashed/vehicles/coupe_rear_heavy_hit.obj" />
+    <obj3d cat="crashed" name="hatchback_driver_hit.obj" file_name="mx_library/crashed/vehicles/hatchback_driver_hit.obj" />
+    <obj3d cat="crashed" name="hatchback_front_heavy_hit.obj" file_name="mx_library/crashed/vehicles/hatchback_front_heavy_hit.obj" />
+    <obj3d cat="crashed" name="hatchback_rear_heavy_hit.obj" file_name="mx_library/crashed/vehicles/hatchback_rear_heavy_hit.obj" />
+    <obj3d cat="crashed" name="minivan_driver_hit.obj" file_name="mx_library/crashed/vehicles/minivan_driver_hit.obj" />
+    <obj3d cat="crashed" name="minivan_front_heavy_hit.obj" file_name="mx_library/crashed/vehicles/minivan_front_heavy_hit.obj" />
+    <obj3d cat="crashed" name="minivan_rear_heavy_hit.obj" file_name="mx_library/crashed/vehicles/minivan_rear_heavy_hit.obj" />
+    <obj3d cat="crashed" name="pickup_front_hit.obj" file_name="mx_library/crashed/vehicles/pickup_front_hit.obj" />
+    <obj3d cat="crashed" name="pickup_left_hit.obj" file_name="mx_library/crashed/vehicles/pickup_left_hit.obj" />
+    <obj3d cat="crashed" name="pickup_right_hit.obj" file_name="mx_library/crashed/vehicles/pickup_right_hit.obj" />
+    <obj3d cat="crashed" name="pickup_right_strong_hit.obj" file_name="mx_library/crashed/vehicles/pickup_right_strong_hit.obj" />
+    <obj3d cat="crashed" name="sportcar_driver_hit.obj" file_name="mx_library/crashed/vehicles/sportcar_driver_hit.obj" />
+    <obj3d cat="crashed" name="sportcar_front_hard_hit.obj" file_name="mx_library/crashed/vehicles/sportcar_front_hard_hit.obj" />
+    <obj3d cat="crashed" name="sportcar_rear_hard_hit.obj" file_name="mx_library/crashed/vehicles/sportcar_rear_hard_hit.obj" />
+    <obj3d cat="crashed" name="station_driver_critical_hit.obj" file_name="mx_library/crashed/vehicles/station_driver_critical_hit.obj" />
+    <obj3d cat="crashed" name="station_front_critical_hit.obj" file_name="mx_library/crashed/vehicles/station_front_critical_hit.obj" />
+    <obj3d cat="crashed" name="station_front_hit.obj" file_name="mx_library/crashed/vehicles/station_front_hit.obj" />
+    <obj3d cat="crashed" name="station_rear_massive_hit.obj" file_name="mx_library/crashed/vehicles/station_rear_massive_hit.obj" />
+    <obj3d cat="crashed" name="suv_front_huge_hit.obj" file_name="mx_library/crashed/vehicles/suv_front_huge_hit.obj" />
+    <obj3d cat="crashed" name="suv_left_hit.obj" file_name="mx_library/crashed/vehicles/suv_left_hit.obj" />
+    <obj3d cat="crashed" name="suv_rear_harder_hit.obj" file_name="mx_library/crashed/vehicles/suv_rear_harder_hit.obj" />
+  </osm_accident_cars>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <car_lifter>
-    <obj3d  name="lift01" file_name="../../../RescueX_Lib/cars/ADAC_generic.obj"/>
+    <obj3d  name="lift01" file_name="RescueX/cars/ADAC_TowTruck.obj"/>
   </car_lifter>
 
   <trucks>
     <obj3d  name="truck" file_name="R2_Library/doprava/vozidla/T815.obj" /> <!-- truck -->
-    <obj3d  name="truck" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_postTruck.obj"/>
-    <obj3d  name="truck" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_old_pickup.obj"/>
-    <obj3d  name="truck" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_toyotaTacoma.obj"/>
-    <obj3d  name="truck" file_name="../../../RescueX_Lib/cars/CamiDeBellis/CDBhummer.obj"/>
-    <obj3d  name="truck" file_name="../../../RescueX_Lib/cars/CamiDeBellis/CDBcar_van.obj"/>
-    <obj3d  name="truck" file_name="../../../RescueX_Lib/cars/FW_BF_Karlsruhe_WLF.obj"/>
+    <obj3d  name="truck" file_name="RescueX/cars/car_postTruck.obj"/>
+    <obj3d  name="truck" file_name="RescueX/cars/car_old_pickup.obj"/>
+    <obj3d  name="truck" file_name="RescueX/cars/car_toyotaTacoma.obj"/>
+    <obj3d  name="truck" file_name="RescueX/cars/CDBhummer.obj"/>
+    <obj3d  name="truck" file_name="RescueX/cars/CDBcar_van.obj"/>
+    <obj3d  name="truck" file_name="RescueX/cars/FW_BF_Karlsruhe_WLF.obj"/>
   </trucks>
 
   <tractors>
@@ -207,87 +638,84 @@
     <obj3d  name="tractor" file_name="opensceneryx/objects/vehicles/construction/dump_trucks.obj"/> <!-- dump_trucks/1/object.obj -->
   </tractors>
 
-  
+
   <ambulance_select>
-    <obj3d  name="ambulance1" file_name="../../../RescueX_Lib/cars/RTW_01.obj" />
-    <obj3d  name="ambulance2" file_name="../../../RescueX_Lib/cars/RTW_02.obj" />
-    <obj3d  name="ambulance3" file_name="../../../RescueX_Lib/cars/RTW_03.obj" />
-    <obj3d  name="ambulance4" file_name="../../../RescueX_Lib/cars/RTW_04.obj" />
+    <obj3d  name="ambulance1" file_name="RescueX/cars/RTW_DRK_Bayern.obj" />
+    <obj3d  name="ambulance1" file_name="RescueX/cars/RTW_ASB_1.obj" />
+    <obj3d  name="ambulance1" file_name="RescueX/cars/RTW_ASB_2.obj" />
+    <obj3d  name="ambulance1" file_name="RescueX/cars/RTW_FEU_GUT.obj" />
   </ambulance_select>
-  
+
   <police_car>
-    <obj3d  name="police01" file_name="../../../RescueX_Lib/cars/Polizei_FuStw_01.obj" />
-    <obj3d  name="police01" file_name="../../../RescueX_Lib/cars/Polizei_FuStw_01_lit.obj" />
-    <obj3d  name="police01" file_name="../../../RescueX_Lib/cars/Polizei_FuStw_01_lit_open.obj" />
+    <obj3d  name="police01" file_name="RescueX/cars/Polizei_FuStw_01.obj" />
+    <obj3d  name="police01" file_name="RescueX/cars/Polizei_FuStw_01_lit.obj" />
+    <obj3d  name="police01" file_name="RescueX/cars/Polizei_FuStw_01_lit_open.obj" />
   </police_car>
-  
+
   <policeman>
-    <obj3d  name="person01" file_name="3D_people_library/policeman_1.obj" />
-    <obj3d  name="person01" file_name="3D_people_library/policeman_1_walking.obj" />
-    <obj3d  name="person01" file_name="3D_people_library/policeman_2.obj" />
-    <obj3d  name="person01" file_name="3D_people_library/policeman3.obj" />
-    <obj3d  name="person01" file_name="3D_people_library/policeman4.obj" />
-    <obj3d  name="person01" file_name="3D_people_library/policeman5.obj" />
-    <obj3d  name="person01" file_name="3D_people_library/policeman6.obj" />
-    <obj3d  name="person01" file_name="3D_people_library/policeman7.obj" />
-    <obj3d  name="person01" file_name="3D_people_library/policeman8.obj" />
-    <obj3d  name="person01" file_name="3D_people_library/policeman_motorcyclist.obj" />
-    <obj3d  name="person01" file_name="3D_people_library/police.obj" />
-    <obj3d  name="person01" file_name="3D_people_library/police_officer.obj" />  
-    <obj3d  name="person01" file_name="3D_people_library/sheriff.obj" />
-    <obj3d  name="person01" file_name="3D_people_library/sheriff_walking.obj" />
+    <obj3d  name="policemen" file_name="mx_library/people/policemen/police_idle_01.obj" />
+    <obj3d  name="policemen" file_name="mx_library/people/policemen/police_idle_04.obj" />
+    <obj3d  name="policemen" file_name="mx_library/people/policemen/police_01_kneeling.obj" />
+    <obj3d  name="policemen" file_name="mx_library/people/policemen/police_01_kneeling_left_90.obj" />
+    <obj3d  name="policemen" file_name="mx_library/people/policemen/police_01_kneeling_right_90.obj" />
+    <obj3d  name="policemen" file_name="mx_library/people/policemen/police_01_stand.obj" />
+    <obj3d  name="policemen" file_name="mx_library/people/policemen/police_walk_01.obj" />
+    <obj3d  name="policemen" file_name="mx_library/people/policemen/police_walk_02.obj" />
+    <obj3d  name="policemen" file_name="mx_library/people/policemen/police_walk_03.obj" />
+    <obj3d  name="policemen" file_name="mx_library/people/policemen/police_walk_04.obj" />
   </policeman>
-  
-  
+
+
   <crashed_car>
-    <obj3d  name="crash_car01" file_name="../../../RescueX_Lib/cars/NEF_Passat_sb1099.obj" />
-    <obj3d  name="crash_car02" file_name="../../../RescueX_Lib/cars/crashed_CLK.obj" />
-    <obj3d  name="crash_car03" file_name="../../../RescueX_Lib/cars/crashed_Kia_Picanto.obj" />
-    <obj3d  name="crash_car04" file_name="../../../RescueX_Lib/cars/crashed_Opel_Insignia.obj" />
+    <obj3d  name="car01" file_name="RescueX/cars/NEF_Passat_sb1099.obj" />
+    <obj3d  name="car02" file_name="RescueX/cars/Crashed_CLK.obj" />
+    <obj3d  name="car03" file_name="RescueX/cars/Crashed_Kia_Picanto.obj" />
+    <obj3d  name="car04" file_name="RescueX/cars/Crashed_Kia_Picanto2.obj" />
+    <obj3d  name="car05" file_name="RescueX/cars/Crashed_Opel_Insignia.obj" />
   </crashed_car>
-  
+
   <wealchairs>
-    <obj3d  name="person01" file_name="3D_people_library/wheelchair.obj" />  
+    <obj3d  name="person01" file_name="3D_people_library/wheelchair.obj" />
   </wealchairs>
 
   <push_wealchair>
-      <obj3d  name="person01" file_name="3D_people_library/woman_push_wheelchair.obj" />    
+    <obj3d  name="person01" file_name="3D_people_library/woman_push_wheelchair.obj" />
   </push_wealchair>
-  
-  
+
+
   <cars>
-    <obj3d  name="car01" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_alto.obj"/>
-    <obj3d  name="car02" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_daihatsu_tanto.obj"/>
-    <obj3d  name="car03" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_Datsun_620-73.obj"/>
-    <obj3d  name="car04" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_datsunGO.obj"/>
-    <obj3d  name="car05" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_datsunGOPlus.obj"/>
-    <obj3d  name="car06" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_fordRangerWhite.obj"/>
-    <obj3d  name="car07" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_gmc_airport.obj"/>
-    <obj3d  name="car08" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_gmc_old.obj"/>
-    <obj3d  name="car09" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_KiaSuv.obj"/>
-    <obj3d  name="car10" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_LandRover107.obj"/>
-    <obj3d  name="car11" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_lexus.obj"/>
-    <obj3d  name="car12" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_mitshubishiTbox.obj"/>
-    <obj3d  name="car13" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_mitsubishi_pack.obj"/>
-    <obj3d  name="car14" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_nissanStanzaWG.obj"/>
-    <obj3d  name="car15" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_old_pickup.obj"/>
-    <obj3d  name="car16" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_Pajero.obj"/>
-    <obj3d  name="car17" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_peugeotrossa.obj"/>
-    <obj3d  name="car18" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_postTruck.obj"/>
-    <obj3d  name="car19" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_sinca.obj"/>
-    <obj3d  name="car20" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_subaru_wagon.obj"/>
-    <obj3d  name="car21" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_suzuki_cappuccino.obj"/>
-    <obj3d  name="car22" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_suzukiCarry.obj"/>
-    <obj3d  name="car23" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_SuzukiCarry_pickup.obj"/>
-    <obj3d  name="car24" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_SuzukiCarry2.obj"/>
-    <obj3d  name="car25" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_toyota_camry.obj"/>
-    <obj3d  name="car26" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_toyota_corolla.obj"/>
-    <obj3d  name="car27" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_toyota_corolla_old.obj"/>
-    <obj3d  name="car28" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_toyotaRed_old_pickup.obj"/>
-    <obj3d  name="car29" file_name="../../../RescueX_Lib/cars/CamiDeBellis/car_toyotaTacoma.obj"/>
-    <obj3d  name="car30" file_name="../../../RescueX_Lib/cars/CamiDeBellis/CDBambassador_carblack.obj"/>
-    <obj3d  name="car31" file_name="../../../RescueX_Lib/cars/CamiDeBellis/CDBcar_van.obj"/>
-    <obj3d  name="car32" file_name="../../../RescueX_Lib/cars/CamiDeBellis/CDBhummer.obj"/>
+    <obj3d  name="car01" file_name="RescueX/cars/car_alto.obj"/>
+    <obj3d  name="car02" file_name="RescueX/cars/car_daihatsu_tanto.obj"/>
+    <obj3d  name="car03" file_name="RescueX/cars/car_Datsun_620-73.obj"/>
+    <obj3d  name="car04" file_name="RescueX/cars/car_datsunGO.obj"/>
+    <obj3d  name="car05" file_name="RescueX/cars/car_datsunGOPlus.obj"/>
+    <obj3d  name="car06" file_name="RescueX/cars/car_fordRangerWhite.obj"/>
+    <obj3d  name="car07" file_name="RescueX/cars/car_gmc_airport.obj"/>
+    <obj3d  name="car08" file_name="RescueX/cars/car_gmc_old.obj"/>
+    <obj3d  name="car09" file_name="RescueX/cars/car_KiaSuv.obj"/>
+    <obj3d  name="car10" file_name="RescueX/cars/car_LandRover107.obj"/>
+    <obj3d  name="car11" file_name="RescueX/cars/car_lexus.obj"/>
+    <obj3d  name="car12" file_name="RescueX/cars/car_mitshubishiTbox.obj"/>
+    <obj3d  name="car13" file_name="RescueX/cars/car_mitsubishi_pack.obj"/>
+    <obj3d  name="car14" file_name="RescueX/cars/car_nissanStanzaWG.obj"/>
+    <obj3d  name="car15" file_name="RescueX/cars/car_old_pickup.obj"/>
+    <obj3d  name="car16" file_name="RescueX/cars/car_Pajero.obj"/>
+    <obj3d  name="car17" file_name="RescueX/cars/car_peugeotrossa.obj"/>
+    <obj3d  name="car18" file_name="RescueX/cars/car_postTruck.obj"/>
+    <obj3d  name="car19" file_name="RescueX/cars/car_sinca.obj"/>
+    <obj3d  name="car20" file_name="RescueX/cars/car_subaru_wagon.obj"/>
+    <obj3d  name="car21" file_name="RescueX/cars/car_suzuki_cappuccino.obj"/>
+    <obj3d  name="car22" file_name="RescueX/cars/car_suzukiCarry.obj"/>
+    <obj3d  name="car23" file_name="RescueX/cars/car_SuzukiCarry_pickup.obj"/>
+    <obj3d  name="car24" file_name="RescueX/cars/car_SuzukiCarry2.obj"/>
+    <obj3d  name="car25" file_name="RescueX/cars/car_toyota_camry.obj"/>
+    <obj3d  name="car26" file_name="RescueX/cars/car_toyota_corolla.obj"/>
+    <obj3d  name="car27" file_name="RescueX/cars/car_toyota_corolla_old.obj"/>
+    <obj3d  name="car28" file_name="RescueX/cars/car_toyotaRed_old_pickup.obj"/>
+    <obj3d  name="car29" file_name="RescueX/cars/car_toyotaTacoma.obj"/>
+    <obj3d  name="car30" file_name="RescueX/cars/CDBambassador_carblack.obj"/>
+    <obj3d  name="car31" file_name="RescueX/cars/CDBcar_van.obj"/>
+    <obj3d  name="car32" file_name="RescueX/cars/CDBhummer.obj"/>
     <obj3d  name="r2lib" file_name="R2_Library/doprava/vozidla/avia.obj" />
     <obj3d  name="r2lib" file_name="R2_Library/doprava/vozidla/bus_mhd.obj" />
     <obj3d  name="r2lib" file_name="R2_Library/doprava/vozidla/bus_2.obj" />
@@ -301,15 +729,15 @@
     <obj3d  name="r2lib" file_name="R2_Library/doprava/vozidla/skoda_favorit_yellow.obj" />
     <obj3d  name="r2lib" file_name="R2_Library/doprava/vozidla/T815.obj" /> <!-- truck -->
     <obj3d  name="r2lib" file_name="R2_Library/doprava/vozidla/z7745.obj" /><!-- traktor -->
-    
+
   </cars>
 
-  
+
   <clutter>
-    <obj3d  name="sign01" file_name="../../../RescueX_Lib/objects/OBJ_Faltdreieck.obj"/>
-    <obj3d  name="sign02" file_name="../../../RescueX_Lib/objects/OBJ_Faltdreieck_Leuchte.obj"/>
-    <obj3d  name="sign03" file_name="../../../RescueX_Lib/objects/OBJ_Leuchte.obj"/>
-    <!-- obj3d  name="sign04_blank" file_name=""/ -->   
+    <obj3d  name="sign01" file_name="RescueX/objects/OBJ_Faltdreieck.obj"/>
+    <obj3d  name="sign02" file_name="RescueX/objects/OBJ_Faltdreieck_Leuchte.obj"/>
+    <obj3d  name="sign03" file_name="RescueX/objects/OBJ_Leuchte.obj"/>
+    <!-- obj3d  name="sign04_blank" file_name=""/ -->
     <obj3d  name="r2lib" file_name="R2_Library/airport/accessories/kuzel_cerveny.obj" />
     <obj3d  name="r2lib" file_name="R2_Library/airport/accessories/kuzel_modry.obj" />
     <obj3d  name="r2lib" file_name="R2_Library/airport/accessories/oznaceni_letiste.obj" />
@@ -318,20 +746,20 @@
     <obj3d  name="r2lib" file_name="R2_Library/airport/accessories/sudy_letiste.obj" />
     <obj3d  name="r2lib" file_name="R2_Library/airport/accessories/kuzely_cervene.obj" />
     <obj3d  name="r2lib" file_name="R2_Library/airport/accessories/kuzely_modre.obj" />
-    <obj3d  name="r2lib" file_name="R2_Library/airport/accessories/znaceni_letiste_prkna.obj" />       
+    <obj3d  name="r2lib" file_name="R2_Library/airport/accessories/znaceni_letiste_prkna.obj" />
   </clutter>
 
   <people_aiders>
     <obj3d  name="person01" file_name="3D_people_library/first_aider.obj" />
   </people_aiders>
-  
+
   <people_at_location>
     <!-- People -->
-    <obj3d  name="hicker01" file_name="MisterX_Library/People/Airport_Worker_4.obj" /> 
-    <obj3d  name="hicker02" file_name="MisterX_Library/People/Man_Shirt_1.obj" /> 
-    <obj3d  name="hicker03" file_name="MisterX_Library/People/Man_Shirt_2.obj" /> 
-    <obj3d  name="Woman01"  file_name="MisterX_Library/People/Woman_1.obj" /> 
-    <obj3d  name="Woman02"  file_name="MisterX_Library/People/Woman_4.obj" />    
+    <obj3d  name="hicker01" file_name="MisterX_Library/People/Airport_Worker_4.obj" />
+    <obj3d  name="hicker02" file_name="MisterX_Library/People/Man_Shirt_1.obj" />
+    <obj3d  name="hicker03" file_name="MisterX_Library/People/Man_Shirt_2.obj" />
+    <obj3d  name="Woman01"  file_name="MisterX_Library/People/Woman_1.obj" />
+    <obj3d  name="Woman02"  file_name="MisterX_Library/People/Woman_4.obj" />
     <obj3d  name="person01" file_name="3D_people_library/biker2.obj" />
     <obj3d  name="person01" file_name="3D_people_library/biker3.obj" />
     <obj3d  name="person01" file_name="3D_people_library/biker.obj" />
@@ -536,36 +964,36 @@
     <obj3d  name="person01" file_name="3D_people_library/worker_walking.obj" />
     <obj3d  name="person01" file_name="3D_people_library/worker_waving.obj" />
   </people_at_location>
-  
+
   <oilrig_people>
     <obj3d  name="person01" file_name="3D_people_library/ground_crew_male_10.obj" />
     <obj3d  name="person01" file_name="3D_people_library/ground_crew_male_10_walking.obj" />
     <obj3d  name="person01" file_name="3D_people_library/ground_crew_male_1.obj" />
     <obj3d  name="person01" file_name="3D_people_library/Ground_crew_male1.obj" />
     <obj3d  name="person01" file_name="3D_people_library/ground_crew_male_2.obj" />
-    <obj3d  name="person01" file_name="3D_people_library/ground_crew_male_3.obj" />    
+    <obj3d  name="person01" file_name="3D_people_library/ground_crew_male_3.obj" />
   </oilrig_people>
 
-  <oilrig_clutter>           
-      <obj3d  name="HSF_lib" file_name="HSF_Lib/Worksite/cfl.obj"/>            
-      <obj3d  name="HSF_lib" file_name="HSF_Lib/Worksite/tourretcable.obj"/>            
-      <obj3d  name="HSF_lib" file_name="HSF_Lib/Worksite/rouleaugrillage.obj"/>            
-      <obj3d  name="HSF_lib" file_name="HSF_Lib/Worksite/tourretcable2.obj"/>            
-      <obj3d  name="HSF_lib" file_name="HSF_Lib/Worksite/transpalrouge.obj"/>            
+  <oilrig_clutter>
+    <obj3d  name="HSF_lib" file_name="HSF_Lib/Worksite/cfl.obj"/>
+    <obj3d  name="HSF_lib" file_name="HSF_Lib/Worksite/tourretcable.obj"/>
+    <obj3d  name="HSF_lib" file_name="HSF_Lib/Worksite/rouleaugrillage.obj"/>
+    <obj3d  name="HSF_lib" file_name="HSF_Lib/Worksite/tourretcable2.obj"/>
+    <obj3d  name="HSF_lib" file_name="HSF_Lib/Worksite/transpalrouge.obj"/>
   </oilrig_clutter>
 
   <oilrig_pallets>
-      <obj3d  name="HSF_lib" file_name="HSF_Lib/Worksite/stackpallette.obj"/>            
-      <obj3d  name="HSF_lib" file_name="HSF_Lib/Worksite/stackpallette0.obj"/>            
-      <obj3d  name="HSF_lib" file_name="HSF_Lib/Worksite/box1.obj"/>                       
-      <obj3d  name="HSF_lib" file_name="HSF_Lib/Worksite/box2.obj"/>                       
-      <obj3d  name="HSF_lib" file_name="HSF_Lib/Worksite/box3.obj"/>                       
+    <obj3d  name="HSF_lib" file_name="HSF_Lib/Worksite/stackpallette.obj"/>
+    <obj3d  name="HSF_lib" file_name="HSF_Lib/Worksite/stackpallette0.obj"/>
+    <obj3d  name="HSF_lib" file_name="HSF_Lib/Worksite/box1.obj"/>
+    <obj3d  name="HSF_lib" file_name="HSF_Lib/Worksite/box2.obj"/>
+    <obj3d  name="HSF_lib" file_name="HSF_Lib/Worksite/box3.obj"/>
   </oilrig_pallets>
 
   <oilrig_med>
-    <obj3d  name="stretcher01" file_name="mx_stretcher01.obj" />  
+    <obj3d  name="stretcher01" file_name="mx_stretcher01.obj" />
   </oilrig_med>
-  
+
   <fireman>
     <obj3d  name="person01" file_name="3D_people_library/Fireman.obj"  />
     <obj3d  name="person01" file_name="3D_people_library/fireman2.obj" />
@@ -573,7 +1001,7 @@
     <obj3d  name="person01" file_name="3D_people_library/fireman4.obj" />
   </fireman>
 
-  <water_replace_ambulance>                                                                           
+  <water_replace_ambulance>
     <obj3d  name="boat01" file_name="opensceneryx/objects/vehicles/boats_ships/fishing/10.obj" />
     <obj3d  name="boat01" file_name="opensceneryx/objects/vehicles/boats_ships/canoes_kayaks/3.obj" />
     <obj3d  name="boat01" file_name="opensceneryx/objects/vehicles/boats_ships/canoes_kayaks/4.obj" />
@@ -590,27 +1018,27 @@
     <obj3d  name="boat01" file_name="MisterX_Library/Vehicles/Boats/Yacht_1.obj" />
     <obj3d  name="boat01" file_name="MisterX_Library/Vehicles/Boats/Fishing_Boat_1.obj" />
   </water_replace_ambulance>
-  
+
   <something_in_water>
     <!-- People -->
     <obj3d  name="person01" file_name="3D_people_library/man_swimming.obj" />
     <obj3d  name="person01" file_name="3D_people_library/woman_bikini.obj" />
   </something_in_water>
 
-  
-  
+
+
   <!-- inventory items to pick randomly from -->
   <item_blueprints>
-    <item barcode="staff02" name="Staff_5kg"  weight_kg="5" />      
-    <item barcode="staff01" name="Staff_10kg"  weight_kg="10" />      
-    <item barcode="staff03" name="Staff_25kg"  weight_kg="25" />      
-    <item barcode="staff04" name="Med Staff_20kg"  weight_kg="20" />      
-    <item barcode="staff05" name="Staff_30kg"  weight_kg="30" />      
-    <item barcode="staff06" name="Med Staff_15kg"  weight_kg="15" />      
-    <item barcode="staff07" name="Med Staff_50kg"  weight_kg="50" />      
+    <item barcode="staff02" name="Staff_5kg"  weight_kg="5" />
+    <item barcode="staff01" name="Staff_10kg"  weight_kg="10" />
+    <item barcode="staff03" name="Staff_25kg"  weight_kg="25" />
+    <item barcode="staff04" name="Med Staff_20kg"  weight_kg="20" />
+    <item barcode="staff05" name="Staff_30kg"  weight_kg="30" />
+    <item barcode="staff06" name="Med Staff_15kg"  weight_kg="15" />
+    <item barcode="staff07" name="Med Staff_50kg"  weight_kg="50" />
   </item_blueprints>
-  
-  
+
+
 </TEMPLATE>
 
 
@@ -625,108 +1053,108 @@
       <roll best="-25|25|0.5" good="-30|30|0.4" average="-35|35|0.25" />
       <gforce best="-0.5|1.55|0.5" good="1.55|1.82|0.4" average="1.82|1.95|0.25" />
       <center_line best="-1.3|1.3|0.5" good="-1.8|1.8|0.35" average="-2.3|2.3|0.25" />
-    </scoring>    
+    </scoring>
   </global_settings>
 
 
-  <leg name="" title="" next_leg=""  > 
-    <start_leg_message name="" />    
+  <leg name="" title="" next_leg=""  >
+    <start_leg_message name="" />
     <link_to_objective name="" />
     <post_leg_message name="" />
   </leg>
 
-  <leg_medevac_plane template="land" name="" title="" next_leg=""  > 
-    <expected_location location_type="icao" location_value="" />  
-    <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" /> 
-    <display_object_set random_tag="object_sets" set_name="medevac_plane" />  	
+  <leg_medevac_plane template="land" name="" title="" next_leg=""  >
+    <expected_location location_type="icao" location_value="" />
+    <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" />
+    <display_object_set random_tag="object_sets" set_name="medevac_plane" />
   </leg_medevac_plane>
-  
-  <leg_medevac_end_plane template="icao,land,start" name="" title="" next_leg=""  > 
-    <expected_location location_type="near,near" location_value="nm=_,nm=40"  force_template_distances_b="yes"/>  
-    <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" /> 
-    <display_object name="ambulance" instance_name="ambulance_end_target" random_tag="ambulance_select" relative_pos_bearing_deg_distance_mt="180|25" />      
-    
-  </leg_medevac_end_plane>
-  
-  <leg_medevac_helos template="land_hover" name="" title="" next_leg=""  >
-    <expected_location location_type="xy" location_value="" />  
-    <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" /> 
-    <display_object_set random_tag="object_sets" set_name="medevac" slope_set_name="medevac_slope" />
-    <fire_commands_at_leg_begin commands="412/buttons/PATIENT_off" />    
-    <fire_commands_at_leg_end commands="412/buttons/PATIENT_on_board" />	
-  </leg_medevac_helos>
-  
-  <leg_medevac_end_helos template="icao" template_="icao,land,start" name="" title="" next_leg=""  > 
-    <expected_location location_type="near" location_value="nm=40"  force_template_distances_b="yes"/>  
-    <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" /> 
-    <display_object name="ambulance" instance_name="ambulance_end_target" random_tag="ambulance_select" relative_pos_bearing_deg_distance_mt="180|25" />          
-  </leg_medevac_end_helos>
-  
-  
-  <leg_cargo_plane template="land" name="" >
-    <expected_location location_type="icao" location_value=""   />      
-    <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" /> 
-    <display_object_set random_tag="object_sets" set_name="delivery" />       	
-  </leg_cargo_plane>
-  
-  <leg_cargo_end_plane template="land,start" name="" >
-    <expected_location location_type="near" location_value="nm=120" force_template_distances_b="yes"/> 
-    <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" /> 
-    	
-  </leg_cargo_end_plane>  
-  
-  <leg_cargo_helos template="land" name="" >
-    <expected_location location_type="icao" location_value=""   />      
-    <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" /> 
-    <display_object_set random_tag="object_sets" set_name="delivery_helos" />       	
-  </leg_cargo_helos>
-  
-   <leg_cargo_end_helos template="land,start" name="" >
-    <expected_location location_type="xy,near" location_value="nm=_,nm=20" force_template_distances_b="yes"/> 
-    <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" />     	
-  </leg_cargo_end_helos>  
-  
 
-  <leg_oilrig_cargo_helos template="land" name="" title="" next_leg=""  > 
-    <expected_location location_type="xy" location_value="" />  
-	  <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" /> 
-	  <display_object_set random_tag="object_sets" set_name="oilrig_cargo" />  	
+  <leg_medevac_end_plane template="icao,land,start" name="" title="" next_leg=""  >
+    <expected_location location_type="near,near" location_value="nm=_,nm=40"  force_template_distances_b="yes"/>
+    <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" />
+    <display_object name="ambulance" instance_name="ambulance_end_target" random_tag="ambulance_select" relative_pos_bearing_deg_distance_mt="{vec}+180|25" />
+
+  </leg_medevac_end_plane>
+
+  <leg_medevac_helos template="land_hover" name="" title="" next_leg=""  >
+    <expected_location location_type="xy" location_value="" />
+    <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" />
+    <display_object_set random_tag="object_sets" set_name="medevac" slope_set_name="medevac_slope" />
+    <fire_commands_at_leg_begin commands="412/buttons/PATIENT_off" />
+    <fire_commands_at_leg_end commands="412/buttons/PATIENT_on_board" />
+  </leg_medevac_helos>
+
+  <leg_medevac_end_helos template="icao" template_="icao,land,start" name="" title="" next_leg=""  >
+    <expected_location location_type="near" location_value="nm=40"  force_template_distances_b="yes"/>
+    <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" />
+    <display_object name="ambulance" instance_name="ambulance_end_target" random_tag="ambulance_select" relative_pos_bearing_deg_distance_mt="{vec}+180|25" />
+  </leg_medevac_end_helos>
+
+
+  <leg_cargo_plane template="land" name="" >
+    <expected_location location_type="icao" location_value=""   />
+    <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" />
+    <display_object_set random_tag="object_sets" set_name="delivery" />
+  </leg_cargo_plane>
+
+  <leg_cargo_end_plane template="land,start" name="" >
+    <expected_location location_type="near" location_value="nm=120" force_template_distances_b="yes"/>
+    <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" />
+
+  </leg_cargo_end_plane>
+
+  <leg_cargo_helos template="land" name="" >
+    <expected_location location_type="icao" location_value=""   />
+    <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" />
+    <display_object_set random_tag="object_sets" set_name="delivery_helos" />
+  </leg_cargo_helos>
+
+  <leg_cargo_end_helos template="land,start" name="" >
+    <expected_location location_type="xy,near" location_value="nm=_,nm=20" force_template_distances_b="yes"/>
+    <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" />
+  </leg_cargo_end_helos>
+
+
+  <leg_oilrig_cargo_helos template="land" name="" title="" next_leg=""  >
+    <expected_location location_type="xy" location_value="" />
+    <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" />
+    <display_object_set random_tag="object_sets" set_name="oilrig_cargo" />
   </leg_oilrig_cargo_helos>
-  
-  <leg_oilrig_cargo_end_helos template="icao" template_="icao,land,start" name="" title="" next_leg=""  > 
-    <expected_location location_type="icao" location_value="nm_between=5-60"  force_template_distances_b="yes"/>  
-	  <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" />     
+
+  <leg_oilrig_cargo_end_helos template="icao" template_="icao,land,start" name="" title="" next_leg=""  >
+    <expected_location location_type="icao" location_value="nm_between=5-60"  force_template_distances_b="yes"/>
+    <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" />
   </leg_oilrig_cargo_end_helos>
 
-  <leg_oilrig_med_helos template="land" name="" title="" next_leg=""  > 
-    <expected_location location_type="xy" location_value="" />  
-	  <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" /> 
-	  <display_object_set random_tag="object_sets" set_name="oilrig_med" />  	
+  <leg_oilrig_med_helos template="land" name="" title="" next_leg=""  >
+    <expected_location location_type="xy" location_value="" />
+    <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" />
+    <display_object_set random_tag="object_sets" set_name="oilrig_med" />
   </leg_oilrig_med_helos>
-  
-  <leg_oilrig_med_end_helos template="icao" template_="icao,land,start" name="" title="" next_leg=""  > 
-    <expected_location location_type="icao" location_value="nm_between=5-60"  force_template_distances_b="yes"/>  
-	  <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" /> 
-    <display_object  name="random_ambulance" file_name=""  random_tag="ambulance_select"  random_water_tag="blank"    limit_to_terrain_slope="20" />        
+
+  <leg_oilrig_med_end_helos template="icao" template_="icao,land,start" name="" title="" next_leg=""  >
+    <expected_location location_type="icao" location_value="nm_between=5-60"  force_template_distances_b="yes"/>
+    <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" />
+    <display_object  name="random_ambulance" file_name=""  random_tag="ambulance_select"  random_water_tag="blank"    limit_to_terrain_slope="20" />
   </leg_oilrig_med_end_helos>
 
-  
+
   <objective name="" title="" />
-  <task name="" base_on_trigger="" base_on_script="" eval_success_for_n_sec="3" mandatory="true" force_evaluation=""/>        
+  <task name="" base_on_trigger="" base_on_script="" eval_success_for_n_sec="3" mandatory="true" force_evaluation=""/>
 
   <trigger name="" type="rad" rearm="" post_script="" >
-    <conditions plane_on_ground="true" cond_script="" />    
+    <conditions plane_on_ground="true" cond_script="" />
     <outcome message_name_when_fired="" message_name_when_left="" script_name_when_fired="" script_name_when_left="" commands_to_exec_when_fired="" commands_to_exec_when_left="" dataref_to_modify_when_fired=""  dataref_to_modify_when_left=""  />
-    <loc_and_elev_data> 
+    <loc_and_elev_data>
       <radius length_mt="40" />
-      <point lat="" long="" />  
-      <elevation_volume  elev_lower_upper_ft="" />    
+      <point lat="" long="" />
+      <elevation_volume  elev_lower_upper_ft="" />
     </loc_and_elev_data>
   </trigger>
 
-  
-  <message name="" is_mxpad="yes">         
-      <mix track_type="text"  mute_xplane_narrator="" hide_text="" override_seconds_to_display_text="" override_seconds_calc_per_line="" mxpad_label="radio" mxpad_label_color="yellow" />
+
+  <message name="" is_mxpad="yes">
+    <mix track_type="text"  mute_xplane_narrator="" hide_text="" override_seconds_to_display_text="" override_seconds_calc_per_line="" mxpad_label="radio" mxpad_label_color="yellow" />
   </message>
 
   <end_mission>
@@ -737,7 +1165,7 @@
     <fail_msg ><![CDATA[You failed !!!]]></fail_msg>
     <fail_sound sound_file="" sound_vol="" />
   </end_mission>
-    
+
   <inventory name="" type="rad" >
     <item name="" barcode="" quantity="1"  weight_kg="20"/>
     <loc_and_elev_data>
@@ -745,11 +1173,11 @@
       <point lat="" long=""/>
     </loc_and_elev_data>
   </inventory>
-  
+
   <item name="" barcode="" quantity="1"  weight_kg="20"/>
-  
+
   <point lat="" long=""/>
-    
-    
+
+
 </MAPPING>
 

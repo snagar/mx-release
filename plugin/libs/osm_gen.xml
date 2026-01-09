@@ -39,7 +39,7 @@
     -->
 
 
-    <q id="road" wp_type="land_hover" next_tag="hospital,icao" ><![CDATA[
+    <q id="road" wp_type="land_hover" next_tag="hospital,icao" random_tag="osm_object_set" set_name="road_primary_car" slope_set_name="" ><![CDATA[
       [out:xml][timeout:15][bbox:{{bbox}}];
       way["highway"]["name"];
       out body;
@@ -48,7 +48,6 @@
         <item name="injured person" barcode="injured_p01" weight_kg="75" quantity="1" mandatory="y" image_file_name="" target_inventory="" />
       </inventory>
       <desc  >Pick up an injured person at {navaid_loc_desc} (distance: ~{distance}, bearing: {bearing_target}).</desc>
-      <desc  >Pick up an injured person2 at {navaid_loc_desc} (distance: ~{distance}, bearing: {bearing_target}).</desc>
       <test1> test1 </test1>
     </q>
 
@@ -60,16 +59,14 @@
         <item name="tourist" barcode="tourist_01" weight_kg="80" quantity="2" mandatory="y" image_file_name="" target_inventory="" />
       </inventory>
 
-      <desc >Pick up an injured tourist at {navaid_loc_desc} (distance: ~{distance}, bearing: {bearing_target}).</desc>
-      <desc >Pick up an injured tourist2 at {navaid_loc_desc} (distance: ~{distance}, bearing: {bearing_target}).</desc>
-
+      <desc random_tag="osm_object_set" set_name="path_generic">Pick up an injured tourist at {navaid_loc_desc} (distance: ~{distance}, bearing: {bearing_target}).</desc>
     </q>
 
 
     <q id="mountain trail" wp_type="land_hover" next_tag="hospital,icao" ><![CDATA[
       [out:xml][timeout:25][bbox:{{bbox}}];
       (
-      way["highway"="path"]["sac_scale"]({{bbox}});
+      way["highway"="path"]["sac_scale"~"hiking|mountain_hiking"]["name"]({{bbox}});
       );
       out body;
       ]]>
@@ -77,19 +74,43 @@
         <item name="hiker" barcode="hiker_01" weight_kg="85" quantity="2" mandatory="y" image_file_name="" target_inventory="" />
       </inventory>
 
-      <desc>A hiker was injured  at {navaid_loc_desc}. We need to pick him asap, Expected distance: ~{distance}, bearing: {bearing_target}).</desc>
-      <desc>A hiker was injured2 at {navaid_loc_desc}. We need to pick him asap, Expected distance: ~{distance}, bearing: {bearing_target}).</desc>
+      <desc random_tag="osm_object_set" set_name="path_mountain_solo" slope_set_name="" >A hiker was injured at {navaid_loc_desc}. We need to pick him asap, Expected distance: ~{distance}, bearing: {bearing_target}).</desc>
+      <desc random_tag="osm_object_set" set_name="path_mountain" slope_set_name="" >Hikers needs evacuation at {navaid_loc_desc}. We need to pick them asap, Expected distance: ~{distance}, bearing: {bearing_target}).</desc>
 
+    </q>
+
+    <q id="mountain trail" wp_type="land_hover" next_tag="hospital,icao" ><![CDATA[
+      [out:xml][timeout:25][bbox:{{bbox}}];
+      (
+      way["highway"="path"]["sac_scale"]["bicycle"="yes"]({{bbox}});
+      );
+      out body;
+      ]]>
+      <inventory >
+        <item name="hiker" barcode="hiker_01" weight_kg="85" quantity="2" mandatory="y" image_file_name="" target_inventory="" />
+      </inventory>
+
+      <desc random_tag="osm_object_set" set_name="sac_scale_bicycle" slope_set_name="" >A person on bicycles was injured while riding in {navaid_loc_desc}. We need to pick him asap, Expected distance: ~{distance}, bearing: {bearing_target}).</desc>
     </q>
 
 
   </highway>
-
+  <!--
+  <hospital random_tag="object_sets" set_name="medevac_land_hospital" >
+  <q id="hospital" wp_type="land" next_tag=""><![CDATA[
+  [out:xml][timeout:25][bbox:{{all_bbox}}];
+  (
+  nwr['amenity'='hospital']({{all_bbox}});
+  );
+  out body;
+  ]]></q>
+  </hospital>
+  -->
   <hospital random_tag="object_sets" set_name="medevac_land_hospital" >
     <q id="hospital" wp_type="land" next_tag=""><![CDATA[
       [out:xml][timeout:25][bbox:{{all_bbox}}];
       (
-      nwr['amenity'='hospital']({{all_bbox}});
+      nwr["amenity"="hospital"]["emergency"="yes"]({{all_bbox}});
       );
       out body;
       ]]></q>

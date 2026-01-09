@@ -10,6 +10,17 @@ Installation:
 !!! Remember to read the README.txt file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+v25.12.1
+=======================
+[osm_gen] Continued work on OSM-based XML mission generation, primarily focusing on 3D object logic.
+[osm_gen] The 3D set attributes random_tag, set_name, and slope_set_name now support multiple values, allowing random selection and more diverse 3D scenery options to be defined.
+[templates] Added the new mx_library to the plugin templates. It does not yet replace the suggested default templates.
+[ui] Updated and refined some UI aspects and text wording.
+[bug] Added missing replace_xxx attributes (e.g., replace_pitch, replace_heading) to the <display_object> node.
+[templates][osm] Added support for the {vec} keyword in the relative_pos_bearing_deg_distance_mt attribute. This allows placing 3D objects along an OSM node vector and currently applies only to “osm” based missions.
+
+
+
 
 v25.10.2
 =======================
