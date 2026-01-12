@@ -10,6 +10,11 @@ Installation:
 !!! Remember to read the README.txt file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+v26.01.1 - alpha
+=================
+[ui] Added a warning popup window to assist users troubleshoot which 3D object was not found by the plugin.
+
+
 v25.12.1
 =======================
 [osm_gen] Continued work on OSM-based XML mission generation, primarily focusing on 3D object logic.
