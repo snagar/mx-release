@@ -10,9 +10,10 @@ Installation:
 !!! Remember to read the README.txt file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-v26.01.1 - alpha
+v26.01.1
 =================
-[ui] Added a warning popup window to assist users troubleshoot which 3D object was not found by the plugin.
+[ui] Added a warning popup window to assist users and developers troubleshoot mission loading and missing 3D objects.
+
 
 
 v25.12.1
@@ -23,8 +24,6 @@ v25.12.1
 [ui] Updated and refined some UI aspects and text wording.
 [bug] Added missing replace_xxx attributes (e.g., replace_pitch, replace_heading) to the <display_object> node.
 [templates][osm] Added support for the {vec} keyword in the relative_pos_bearing_deg_distance_mt attribute. This allows placing 3D objects along an OSM node vector and currently applies only to “osm” based missions.
-
-
 
 
 v25.10.2
