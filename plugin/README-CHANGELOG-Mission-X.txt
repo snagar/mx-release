@@ -13,6 +13,7 @@ Installation:
 v26.01.1
 =================
 [ui] Added a warning popup window to assist users and developers troubleshoot mission loading and missing 3D objects.
+[ui] Removed the "alpha" from the version.
 
 
 
