@@ -10,12 +10,15 @@ Installation:
 !!! Remember to read the README.txt file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+v26.01.2
+=================
+[curl] Fixed an issue where data was being fetched twice from SimBrief.
+
+
 v26.01.1
 =================
 [ui] Added a warning popup window to assist users and developers troubleshoot mission loading and missing 3D objects.
 [ui] Removed the "alpha" from the version.
-
-
 
 v25.12.1
 =======================
