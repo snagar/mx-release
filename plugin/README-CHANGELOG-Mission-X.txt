@@ -7,13 +7,19 @@ Installation:
 !!! "D:\X-Plane" (Windows)
 !!! or
 !!! "/home/{user}/X-Plane" (Linux or OSX)
-!!! Remember to read the README.txt file in the plugin folder.
+!!! Remember to read the README file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+v26.01.3
+=================
+[bug] Fixed an issue where a 3D object could be missing from the "object_template" after mission generation.
+[bug] Fixed a rare issue where the FlightPlanDatabase screen did not display the Fetch button.
+[ui] Added an [Abort] button to the FlightPlanDatabase screen.
+[curl] Improved internal request/response handling when fetching data from SimBrief and similar services, including cases where a warning is received on the first attempt.
 
 v26.01.2
 =================
 [curl] Fixed an issue where data was being fetched twice from SimBrief.
-
 
 v26.01.1
 =================
