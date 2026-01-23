@@ -10,6 +10,11 @@ Installation:
 !!! Remember to read the README file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+v26.01.4
+=================
+[ui] Some ui fixes.
+
+
 v26.01.3
 =================
 [bug] Fixed an issue where a 3D object could be missing from the "object_template" after mission generation.
