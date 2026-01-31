@@ -10,10 +10,22 @@ Installation:
 !!! Remember to read the README file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+
+v26.01.5
+=================
+. [bug] Fixed <display_object> heading not storing correctly values larger than 99 degrees. 165 -> 16.
+. [bug] Wrong attribute name was used with the "replace_roll". Was "replace_role".
+. Added the option to use "{vec}" in the  replace_heading_psi attribute (see "Designing_Templates.pdf" document).
+. Added option to provide random degrees with the "replace_heading_psi" attribute (see "Designing_Templates.pdf" document).
+  Should be used with the osm mission generation templates, but can be used with any template or mission file.
+example:  replace_heading_psi="{vec}+180|25".
+Outcome: {vec}+180+random(-25,25).
+. More osm_gen.xml modifications, but there are still missing 3D objects to be had. Will add them in the near future.
+
+
 v26.01.4
 =================
 [ui] Some ui fixes.
-
 
 v26.01.3
 =================
