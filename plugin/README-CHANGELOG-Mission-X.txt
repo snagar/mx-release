@@ -11,6 +11,17 @@ Installation:
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
+v26.02.1
+=================
+. [bug] Crash when generating random medevac mission in v12.4.1 alpha
+. [bug] Crash when opening "stats" windows at the end of the flight.
+. Added OS and X-Plane clocks, so I won't have excuses for late hour flying.
+. Added some more Simbrief extended data to the "flight plan" screen.
+. [ui] Simbrief waypoint field will be wrapped correctly for better readability.
+. [Known issue] Moving objects is not working, meaning the 3D instance is being shown but only at the start of the moving path. Still in investigation.
+
+
+
 v26.01.5
 =================
 . [bug] Fixed <display_object> heading not storing correctly values larger than 99 degrees. 165 -> 16.
