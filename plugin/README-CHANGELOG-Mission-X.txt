@@ -10,6 +10,14 @@ Installation:
 !!! Remember to read the README file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+v26.03.1
+=================
+. [bug] Fixed 3D instance movement.
+. [bug] Fixed plane type not being  initialized when building a mission from the dynamic mission creation screen.
+. [ui] Added plane types for better ramp selection, although limited by the chosen airport.
+. [ui] Added FPS counter.
+. Added "ramp" info when using default description. Also added the "{ramp}" and "{ramp_info}" replacement keyword to use with templates.
+
 
 v26.02.1
 =================
@@ -19,8 +27,6 @@ v26.02.1
 . Added some more Simbrief extended data to the "flight plan" screen.
 . [ui] Simbrief waypoint field will be wrapped correctly for better readability.
 . [Known issue] Moving objects is not working, meaning the 3D instance is being shown but only at the start of the moving path. Still in investigation.
-
-
 
 v26.01.5
 =================
