@@ -10,6 +10,11 @@ Installation:
 !!! Remember to read the README file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+v26.04.1
+=================
+. [ui] W.I.P, New alternative screen, for mission creation.
+
+
 v26.03.1
 =================
 . [bug] Fixed 3D instance movement.
