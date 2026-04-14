@@ -10,10 +10,15 @@ Installation:
 !!! Remember to read the README file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+v26.04.2
+=================
+. [ui] New alternative screen, for mission creation.
+. [bug] Fixed a CTD for templates not based <content>
+
+
 v26.04.1
 =================
 . [ui] W.I.P, New alternative screen, for mission creation.
-
 
 v26.03.1
 =================

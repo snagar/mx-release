@@ -86,7 +86,7 @@
       [out:xml][timeout:15][bbox:{{bbox}}];
       (
       wr["highway"~"tertiary"]["name"];
-      )
+      );
       out body;
       ]]>
           <inventory >
