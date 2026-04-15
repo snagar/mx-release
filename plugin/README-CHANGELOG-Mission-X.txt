@@ -13,8 +13,7 @@ Installation:
 v26.04.2
 =================
 . [ui] New alternative screen, for mission creation.
-. [bug] Fixed a CTD for templates not based <content>
-
+. [bug] Fixed a CTD for templates not based <content> nonde.
 
 v26.04.1
 =================
