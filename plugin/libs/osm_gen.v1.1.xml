@@ -36,22 +36,49 @@
     <!--
     future:
     "quarry|winter_sports|meadow|scrap_yard|industrial|landfill"
-    -->
     <q id="landuse"><![CDATA[
-      [out:xml][timeout:15];
-      (
-      wr["landuse"~"quarry|scrap_yard|landfill"]({{bbox}});
-      );
-      out count;]]></q>
+    [out:xml][timeout:15];
+    (
+    wr["landuse"~"quarry|scrap_yard|landfill"]({{bbox}});
+    );
+    out count;]]></q>
 
     <q id="natural"><![CDATA[
-      [out:xml][timeout:15];
-      (
-      wr["natural"~"wood|heath|grassland|fell|bare_rock|shrubbery|water"]({{bbox}});
-      );
-      out count;]]></q>
+    [out:xml][timeout:15];
+    (
+    wr["natural"~"wood|heath|grassland|fell|bare_rock|shrubbery|water"]({{bbox}});
+    );
+    out count;]]></q>
+    -->
 
   </analyze>
+
+  <!--
+  <landuse>
+  <q id="road" wp_type="land_hover" next_tag="hospital,icao" random_tag="osm_object_set" set_name="landuse_quarry" slope_set_name="" ><![CDATA[
+  [out:xml][timeout:25][bbox:{{bbox}}];
+  wr["landuse"="quarry"];
+  out body;
+  ]]>
+  <inventory >
+  <item name="injured person" barcode="injured_p01" weight_kg="75" quantity="1" mandatory="y" image_file_name="" target_inventory="" />
+  </inventory>
+  <desc  >Pick up an injured person at {navaid_loc_desc} (distance: ~{distance}, bearing: {bearing_target}).</desc>
+  </q>
+
+  <q id="road" wp_type="land_hover" next_tag="hospital,icao" random_tag="osm_object_set" set_name="landuse_junkyard" slope_set_name="" ><![CDATA[
+  [out:xml][timeout:25][bbox:{{bbox}}];
+  wr["landuse"~"landfill|scrap_yard"];
+  out body;
+  ]]>
+  <inventory >
+  <item name="injured person" barcode="injured_p01" weight_kg="75" quantity="1" mandatory="y" image_file_name="" target_inventory="" />
+  </inventory>
+  <desc  >Pick up an injured person at {navaid_loc_desc} (distance: ~{distance}, bearing: {bearing_target}).</desc>
+  </q>
+
+  </landuse>
+  -->
 
   <highway1 random_tag="osm_object_set" set_name="path_generic">
 

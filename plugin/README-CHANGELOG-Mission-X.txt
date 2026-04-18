@@ -10,6 +10,16 @@ Installation:
 !!! Remember to read the README file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+
+v26.04.3
+=================
+. [properties] Updated property file values. Will reset the <overpass> URLS and the <overpass_filter>.
+               BACKUP if you want to copy over some of the settings.
+. [random + db] More tweaks to the database for better ramp filtering.
+. [ui] Refined mission types tips for the "semi-automation" mission creation.
+. [internal] Continue refactoring parts of the code (still a work in progress).
+
+
 v26.04.2
 =================
 . [ui] New alternative screen, for mission creation.
