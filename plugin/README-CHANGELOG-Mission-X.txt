@@ -10,6 +10,17 @@ Installation:
 !!! Remember to read the README file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+v26.04.4
+=================
+. [ramp] Continue optimizing ramp start and ramp target locations.
+. [db] The plugin will rebuild "apt.dat" optimization based on "scenery_pack.ini" file change.
+. [setup] If for any reason, the inventory screen cause a CTD, you can disable the inventory image load from the setup (troubleshoot topic).
+. [random] More optimizations to the "Surprise Me" OSM mission creation. It is still dependent on the overpass web services response times.
+. [setup] You can now select which "overpass" urls you would
+. [random] For some types of planes, you can mark as "amphibian" so plugin could pick water based ramps.
+. [ui] ILS screen slider, will have better distance calculation.
+
+
 
 v26.04.3
 =================
@@ -18,7 +29,6 @@ v26.04.3
 . [random + db] More tweaks to the database for better ramp filtering.
 . [ui] Refined mission types tips for the "semi-automation" mission creation.
 . [internal] Continue refactoring parts of the code (still a work in progress).
-
 
 v26.04.2
 =================
