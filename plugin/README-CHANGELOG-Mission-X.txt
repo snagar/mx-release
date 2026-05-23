@@ -10,6 +10,16 @@ Installation:
 !!! Remember to read the README file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+v26.04.5
+=================
+. [osx] Fixed OSX ctd.
+. [osx folders] Hopefully fixed the folders paths for OSX installations.
+. [log] Cleaned the warning messages: "Sim is not yet started - Time is unset", related to plugin.
+. [internal] Minor code cleanup and some updates.
+
+
+
+
 v26.04.4
 =================
 . [ramp] Continue optimizing ramp start and ramp target locations.
@@ -19,7 +29,6 @@ v26.04.4
 . [setup] You can now select which "overpass" urls you would
 . [random] For some types of planes, you can mark as "amphibian" so plugin could pick water based ramps.
 . [ui] ILS screen slider, will have better distance calculation.
-
 
 
 v26.04.3
