@@ -14,7 +14,8 @@ v26.04.5
 =================
 . [osx] Fixed OSX ctd.
 . [osx folders] Hopefully fixed the folders paths for OSX installations.
-. [log] Cleaned the warning messages: "Sim is not yet started - Time is unset", related to plugin.
+. [log] Cleaned the warning messages: "Sim is not yet started - Time is unset", related to the Mission-X plugin.
+. [ui] Minor tweaks to the "semi-automated" mission creation screen.
 . [internal] Minor code cleanup and some updates.
 
 
