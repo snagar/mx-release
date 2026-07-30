@@ -10,6 +10,15 @@ Installation:
 !!! Remember to read the README file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+v26_06.1
+=================
+. [obj3d] Changed how movement along a path takes place.
+          Heading, roll, and pitch will change only at the 'point transition'.
+          The "heading_psi" attribute takes precedence over the adjust_heading attribute."
+
+
+
+
 v26.04.5
 =================
 . [osx] Fixed OSX ctd.
@@ -17,9 +26,6 @@ v26.04.5
 . [log] Cleaned the warning messages: "Sim is not yet started - Time is unset", related to the Mission-X plugin.
 . [ui] Minor tweaks to the "semi-automated" mission creation screen.
 . [internal] Minor code cleanup and some updates.
-
-
-
 
 v26.04.4
 =================
