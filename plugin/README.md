@@ -17,7 +17,8 @@ Random Mission Pack Installation:
    Download the latest Random Package from: "https://forums.x-plane.org/index.php?/files/file/41874-mission-x/"
    Click the "Download File" button and search for a file with the highest "random" version name in it.
 2. Create the folder: "{XP}/Custom Scenery/missionx".
-3. Extract the random_vX.xxx" file into that folder.
+3. Extract the missionx_random_pack_vX.xxx" file into that folder.
+4. You should use Skunkcrafts utility to update the "random pack" once it is installed.
 
 Suggested Libraries:
 

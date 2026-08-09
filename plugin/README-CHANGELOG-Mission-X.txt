@@ -10,14 +10,18 @@ Installation:
 !!! Remember to read the README file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-v26_06.1
+v26.08.1-beta1
+=================
+. [lib] Compiled plugin against ImGui v1.92.8.
+        Thanks to @slgoldberg and @sparker for their initial implementation.
+. [random] Added latest "random pack": "missionx_random_pack-v25.04.3.zip".
+
+
+v26.06.1
 =================
 . [obj3d] Changed how movement along a path takes place.
           Heading, roll, and pitch will change only at the 'point transition'.
           The "heading_psi" attribute takes precedence over the adjust_heading attribute."
-
-
-
 
 v26.04.5
 =================

@@ -17,7 +17,8 @@ Random Mission Pack Installation:
    Download the latest Random Package from: "https://forums.x-plane.org/index.php?/files/file/41874-mission-x/"
    Click the "Download File" button and search for a file with the highest "random" version name in it.
 2. Create the folder: "{XP}/Custom Scenery/missionx".
-3. Extract the random_vX.xxx" file into that folder.
+3. Extract the missionx_random_pack_vX.xxx" file into that folder.
+4. You should use Skunkcrafts utility to update the "random pack" once it is installed.
 
 Suggested Libraries:
 
@@ -52,8 +53,9 @@ That might point to missing libraries from the latest redistributable visual stu
 
 Solutions:
 ----------
-Please download "https://aka.ms/vs/17/release/vc_redist.x64.exe" file and install.
-The main page for this file can be found in: "https://learn.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170#visual-studio-2015-2017-2019-and-2022"
+Navigate to: https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist page.
+Pick the "latest version of the "Latest supported Redistributable version"
+Download the latest "vc_redist.x64.exe" file and install it.
 or
 search for "visual c ++ redistributable for visual studio download".
 You should download the "vc_redist.x64.exe" in the "Visual Studio 2015, 2017, 2019, and 2022" section.
