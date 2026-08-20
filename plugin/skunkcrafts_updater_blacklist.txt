@@ -36,3 +36,4 @@ win_x64/vcruntime140_1d.dll
 win_x64/vcruntime140.dll
 win_x64/vcruntime140d.dll
 win_x64/dll
+random_pack_v25.04.1.zip
