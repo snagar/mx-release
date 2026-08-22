@@ -10,18 +10,19 @@ Installation:
 !!! Remember to read the README file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-v26.08.1-beta
+v26.08.1
 =================
 . [lib] Compiled plugin against ImGui v1.92.8.
         Thanks to @slgoldberg and @sparker for their initial implementation.
 . [random] Added latest "random pack": "missionx_random_pack-v25.04.3.zip".
-. [LLM] Added LLM support for mission descriptions, currently available only from the User-Created Mission window.
-. [UI] Added a Cross Country option to the Semi Mission Creation screen. Relevant only to GA aircraft.
+. [LLM] Opt-In option. Added LLM support for mission descriptions, currently available only from the User-Created Mission window.
 . [LLM] To test LLM support, install a local LLM server such as LM Studio or llama.cpp.
+. [UI] Added a Cross Country option to the Semi Mission Creation screen. Relevant only to GA aircraft.
 . [ImGui] Implemented the latest 'ImgWindow' library.
-. [UI] Fixed keyboard handling in windows after upgrading to ImGui v1.92.x.
-. [Windows] Hopefully fixed plugin loading failures related to Error 127, as reported in 'Log.txt'.
-. [Bug] Fixed an issue where the Time setting in Advanced Settings did not work correctly in the Navigation screen. The exact cause of the issue was unclear.
+. [Internals] Fixed keyboard handling in windows after upgrading to ImGui v1.92.x.
+. [Windows] Fixed some of the plugin loading failures related to Error 127, as reported in 'Log.txt'.
+. [Bug] Fixed an issue where the Time setting in "Advanced Settings screen", did not work correctly in the Navigation screen. The exact cause of the issue was unclear.
+
 
 
 
