@@ -10,6 +10,12 @@ Installation:
 !!! Remember to read the README file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+v26.08.2
+=================
+. [win Error 127] Statically linked cURL in Windows plugin.
+. [ui] Added mono font.
+
+
 v26.08.1
 =================
 . [lib] Compiled plugin against ImGui v1.92.8.
@@ -22,9 +28,6 @@ v26.08.1
 . [Internals] Fixed keyboard handling in windows after upgrading to ImGui v1.92.x.
 . [Windows] Fixed some of the plugin loading failures related to Error 127, as reported in 'Log.txt'.
 . [Bug] Fixed an issue where the Time setting in "Advanced Settings screen", did not work correctly in the Navigation screen. The exact cause of the issue was unclear.
-
-
-
 
 v26.06.1
 =================
