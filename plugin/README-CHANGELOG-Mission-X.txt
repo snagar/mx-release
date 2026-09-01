@@ -10,11 +10,20 @@ Installation:
 !!! Remember to read the README file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+v26.09.1 - back to school
+=================
+. [bug] Fixed regression where mission creation screen did not construct a valid mission for flight plan with only one leg.
+. [llm] Added an "opt-in" option that uses the llm to pick a target while constructing a user based mission.
+        This is a work in progress and highly dependent on chosen model and machine capabilities.
+        Currently, the success rate is lower than I would like to have, but I have implemented a fallback logic to produce plausible locations.
+        After doing some more tests, I think it is safe to use the "GPU Offload" option, but prefer to uncheck the "Offload KV Cache to GPU Memory".
+. [llm] updated the llm doc, to reflect how we treat the "GPU offload" settings. Previously suggested not to use it, but currently I think it is safer.
+
+
 v26.08.2
 =================
 . [win Error 127] Statically linked cURL in Windows plugin.
 . [ui] Added mono font.
-
 
 v26.08.1
 =================
