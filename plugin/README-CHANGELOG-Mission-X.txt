@@ -10,11 +10,12 @@ Installation:
 !!! Remember to read the README file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-v26.09.2 - beta 6
+v26.09.2 - beta 7
 =================
-. [ui] Better llm option visibility dependent on the picked semi activity.
-. [llm] Continue optimization of the instructions to the llm.
+. [ui] Added more llm options in most of the screens. This is an opt-in feature.
 . [ui] Better support for special UTF characters that also present in ascii table.
+. [ui] Mission description will be visible in most screens after mission generation. It can be hidden.
+. [llm] Continue optimization of the instructions to the llm.
 . [internal] Plugin will create the "missionx/random" in "custom scenery" folder if it is not present.
 
 
