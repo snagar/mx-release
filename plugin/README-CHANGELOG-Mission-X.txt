@@ -10,13 +10,13 @@ Installation:
 !!! Remember to read the README file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-v26.09.2 - beta 7
+v26.09.2
 =================
 . [ui] Added more llm options in most of the screens. This is an opt-in feature.
-. [ui] Better support for special UTF characters that also present in ascii table.
+. [ui] Better support for special UTF characters that can also be presented in ascii table.
 . [ui] Mission description will be visible in most screens after mission generation. It can be hidden.
 . [llm] Continue optimization of the instructions to the llm.
-. [internal] Plugin will create the "missionx/random" in "custom scenery" folder if it is not present.
+. [random pack] Plugin will create the "missionx/random" in "custom scenery" folder if the folder is not present.
 
 
 v26.09.1 - back to school

@@ -12,6 +12,9 @@ or
 
 Random Mission Pack Installation:
 =================================
+**As of v26.09.2 the plugin will automate the creation of the "random" folder if it does not exist.**
+
+Manual Installation of the Random Pack:
 1. The "random pack" should be inside the "missionx" plugin folder, search for "random_pack_xxx" file
    or
    Download the latest Random Package from: "https://forums.x-plane.org/index.php?/files/file/41874-mission-x/"
@@ -129,7 +132,7 @@ Or
 If FMOD library is missing too from your Linux Distro and the "ldd" command does not point to the plugin "./libs/64" folder, you  can do the same with it:
 > ln -s {xp}/Resources/plugins/missionx/libs/64/libfmod.so.13.3  /lib/x86_64-linux-gnu/libfmod.so.13
 
-To validate pluign sees all needed libraries, execute:
+To validate plugin sees all needed libraries, execute:
 
 > cd {xp}   installation folder
 
