@@ -10,6 +10,12 @@ Installation:
 !!! Remember to read the README file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+v26.09.3
+=================
+. [ui] Minor ui change to the "hide description" button.
+. [steam Linux] X-Plane 12,on steam, should work on Linux.
+
+
 v26.09.2
 =================
 . [ui] Added more llm options in most of the screens. This is an opt-in feature.
@@ -17,7 +23,6 @@ v26.09.2
 . [ui] Mission description will be visible in most screens after mission generation. It can be hidden.
 . [llm] Continue optimization of the instructions to the llm.
 . [random pack] Plugin will create the "missionx/random" in "custom scenery" folder if the folder is not present.
-
 
 v26.09.1 - back to school
 =================
