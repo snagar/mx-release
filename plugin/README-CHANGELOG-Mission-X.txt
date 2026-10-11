@@ -10,21 +10,20 @@ Installation:
 !!! Remember to read the README file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-v26.09.3-beta-4
+v26.09.3-beta-5
 =================
 . [ui] Minor ui change to the "hide description" button.
-. [ui] Added [abort] button in the Nav screen.
+. [ui] Added [abort] button in the "Nav" and "external fpln" screens.
 . [ui] Hopefully much fewer freezes when "aborting" or opening "inventory" screen.
-. [setup] Added "No Inventory" option when generating a mission.
+. [ui] When picking "date/time" the minutes will be rounded to the closest fifth minute, when using "current time".
+. [setup/ui] Added "No Inventory" option when generating a mission.
 . [2D ui] When mission starts, we force the "description" tab.
-. [metar] Fixed the Metar fetch logic when using real weather and time.
+. [metar] Fixed the "Metar" fetch logic when using real weather and time.
 . [steam Linux] X-Plane 12,on steam, should work on Linux.
-. [internal] Added latest fixes in XPSDK440b3.
+. [internal] Added latest fixes in XPSDK440b4.
 . [xp12.4.4] Compatibility and Stability with the coming x-plane v12.4.4 Panel Graphics.
 . [weights] Fixed how mission start calculate and assign the initial weights.
 . [llm] LLM suggested weights will be ignored, for now.
-
-
 
 
 v26.09.2
