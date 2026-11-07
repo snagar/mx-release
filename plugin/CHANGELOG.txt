@@ -10,6 +10,27 @@ Installation:
 !!! Remember to read the README file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+v26.10.1-beta-01
+=================
+. Latest v26.10.1 changes.
+. [bug] Fixed possible crash when using "station" type inventory (xp12).
+. [bug] Fixed GPS elevation, plugin used meters instead of feet.
+. [bug] Stats window should not crash X-Plane due to too many plot vertices.
+. [ui] Added "aviationweather.gov" to provide metar information in the search NAV screen.
+. [ui] Extended the stats at the end of a mission, provide better landing information with grades.
+. [osm db] Changed the osmdb table structure (breaking changes).
+. [ui] osmweb/osmdb checkboxes are linked.
+. [ui] added osm sources to the semi dynamic mission creation screen.
+. [db] osm database was moved to "db/osm" so it won't seat in the same folder as the plugin database files.
+. [log] New log logic is now Thread Safe. Using "loguru" library.
+. [sql] Modified the sql.xml file to reflect new table names in osm databases.
+. osmdb now is an opt-in and not a default search path when using osmweb.
+. In templates, added "osm_type" to the "location_properties" attribute.
+
+[known issues] Mission Pack, based local osmdb is broken until future fix.
+
+
+
 v26.09.3
 =================
 . [ui] Minor ui change to the "hide description" button.

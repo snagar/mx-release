@@ -5,7 +5,7 @@
   <mission_info template_image_file_name="" written_by="You" plane_desc="" estimate_time="" difficulty="" other_settings="" weather_settings="By Simmer" scenery_settings="Rescue-X, R2 Library, 3D people library, OpenSceneryX and MisterX libraries (all should be available through X-Plane Org)" short_desc="Hello pilot.;The following template will create a random medevac mission for helicopters. It uses random locations based on your plane position, so no plausiable location is garentied (at your own risk :-) ).;;You should be advised that some custom sceneries should be installed as a pre-requisites to this mission.;Sceneries like: HSF_lib, Rescue-X, R2 Library, 3D people library, OpenSceneryX and MisterX libraries (all should be available through X-Plane Org).;;Enjoy" />
 
   <!-- [plane] currently we always start from plane location -->
-  <briefer_and_start_location location_type="plane" location_value="" lat="" long="" elev_ft="0" heading_psi="" >
+  <briefer_and_start_location location_type="plane" location_properties="" lat="" long="" elev_ft="0" heading_psi="" >
     <![CDATA[ ]]>
   </briefer_and_start_location>
 
@@ -1053,6 +1053,14 @@
       <roll best="-25|25|0.5" good="-30|30|0.4" average="-35|35|0.25" />
       <gforce best="-0.5|1.55|0.5" good="1.55|1.82|0.4" average="1.82|1.95|0.25" />
       <center_line best="-1.3|1.3|0.5" good="-1.8|1.8|0.35" average="-2.3|2.3|0.25" />
+      <!-- v26.10.1 landing score. Values are absolute (fpm, G, degrees). The first range that contains the value gives its score -->
+      <td_fpm     best="0|180|0.5"  good="0|300|0.4"  average="0|500|0.25" />
+      <td_g       best="0|1.4|0.5"  good="0|1.7|0.4"  average="0|2.0|0.25" />
+      <final_sink best="0|1000|0.5" good="0|1200|0.4" average="0|1500|0.25" />
+      <td_bank    best="0|3|0.5"    good="0|5|0.4"    average="0|8|0.25" />
+      <td_bounce    weight="1" best="0|0.5|0.5" good="0|1.5|0.4" average="0|3|0.25" />  <!-- highest bounce after touchdown, ft (0 = no bounce) -->
+      <!-- grade by landing score (0-100). "Call the Doctor" when td_fpm > doctor_fpm or td_g > doctor_g, whatever the score -->
+      <landing_grade butter="90" smooth="75" acceptable="55" firm="35" doctor_fpm="600" doctor_g="2.0" />
     </scoring>
   </global_settings>
 
@@ -1064,20 +1072,20 @@
   </leg>
 
   <leg_medevac_plane template="land" name="" title="" next_leg=""  >
-    <expected_location location_type="icao" location_value="" />
+    <expected_location location_type="icao" location_properties="" />
     <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" />
     <display_object_set random_tag="object_sets" set_name="medevac_plane" />
   </leg_medevac_plane>
 
   <leg_medevac_end_plane template="icao,land,start" name="" title="" next_leg=""  >
-    <expected_location location_type="near,near" location_value="nm=_,nm=40"  force_template_distances_b="yes"/>
+    <expected_location location_type="near,near" location_properties="nm=_,nm=40"  force_template_distances_b="yes"/>
     <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" />
     <display_object name="ambulance" instance_name="ambulance_end_target" random_tag="ambulance_select" relative_pos_bearing_deg_distance_mt="{vec}+180|25" />
 
   </leg_medevac_end_plane>
 
   <leg_medevac_helos template="land_hover" name="" title="" next_leg=""  >
-    <expected_location location_type="xy" location_value="" />
+    <expected_location location_type="xy" location_properties="" />
     <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" />
     <display_object_set random_tag="object_sets" set_name="medevac" slope_set_name="medevac_slope" />
     <fire_commands_at_leg_begin commands="412/buttons/PATIENT_off" />
@@ -1085,55 +1093,55 @@
   </leg_medevac_helos>
 
   <leg_medevac_end_helos template="icao" template_="icao,land,start" name="" title="" next_leg=""  >
-    <expected_location location_type="near" location_value="nm=40"  force_template_distances_b="yes"/>
+    <expected_location location_type="near" location_properties="nm=40|osm_type=icao_or_hospital"  force_template_distances_b="yes"/>
     <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" />
     <display_object name="ambulance" instance_name="ambulance_end_target" random_tag="ambulance_select" relative_pos_bearing_deg_distance_mt="{vec}+180|25" />
   </leg_medevac_end_helos>
 
 
   <leg_cargo_plane template="land" name="" >
-    <expected_location location_type="icao" location_value=""   />
+    <expected_location location_type="icao" location_properties=""   />
     <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" />
     <display_object_set random_tag="object_sets" set_name="delivery" />
   </leg_cargo_plane>
 
   <leg_cargo_end_plane template="land,start" name="" >
-    <expected_location location_type="near" location_value="nm=120" force_template_distances_b="yes"/>
+    <expected_location location_type="near" location_properties="nm=120" force_template_distances_b="yes"/>
     <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" />
 
   </leg_cargo_end_plane>
 
   <leg_cargo_helos template="land" name="" >
-    <expected_location location_type="icao" location_value=""   />
+    <expected_location location_type="icao" location_properties=""   />
     <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" />
     <display_object_set random_tag="object_sets" set_name="delivery_helos" />
   </leg_cargo_helos>
 
   <leg_cargo_end_helos template="land,start" name="" >
-    <expected_location location_type="xy,near" location_value="nm=_,nm=20" force_template_distances_b="yes"/>
+    <expected_location location_type="xy,near" location_properties="nm=_,nm=20" force_template_distances_b="yes"/>
     <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" />
   </leg_cargo_end_helos>
 
 
   <leg_oilrig_cargo_helos template="land" name="" title="" next_leg=""  >
-    <expected_location location_type="xy" location_value="" />
+    <expected_location location_type="xy" location_properties="" />
     <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" />
     <display_object_set random_tag="object_sets" set_name="oilrig_cargo" />
   </leg_oilrig_cargo_helos>
 
   <leg_oilrig_cargo_end_helos template="icao" template_="icao,land,start" name="" title="" next_leg=""  >
-    <expected_location location_type="icao" location_value="nm_between=5-60"  force_template_distances_b="yes"/>
+    <expected_location location_type="icao" location_properties="nm_between=5-60"  force_template_distances_b="yes"/>
     <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" />
   </leg_oilrig_cargo_end_helos>
 
   <leg_oilrig_med_helos template="land" name="" title="" next_leg=""  >
-    <expected_location location_type="xy" location_value="" />
+    <expected_location location_type="xy" location_properties="" />
     <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" />
     <display_object_set random_tag="object_sets" set_name="oilrig_med" />
   </leg_oilrig_med_helos>
 
   <leg_oilrig_med_end_helos template="icao" template_="icao,land,start" name="" title="" next_leg=""  >
-    <expected_location location_type="icao" location_value="nm_between=5-60"  force_template_distances_b="yes"/>
+    <expected_location location_type="icao" location_properties="nm_between=5-60"  force_template_distances_b="yes"/>
     <display_object name="marker" instance_name="" target_marker_b="yes" skewed_name="marker_q" replace_lat="" replace_long=""  replace_elev_above_ground_ft="60" />
     <display_object  name="random_ambulance" file_name=""  random_tag="ambulance_select"  random_water_tag="blank"    limit_to_terrain_slope="20" />
   </leg_oilrig_med_end_helos>
