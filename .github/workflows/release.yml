@@ -14,7 +14,7 @@ jobs:
   build:
     # Execute only if we have "push + tag name" that starts with "v"
     if: github.event_name == 'push' && ( startsWith(github.ref_name, 'v') || startsWith(github.ref_name, 'r') || startsWith(github.ref_name, 'b') || startsWith(github.ref_name, 't') || startsWith(github.ref_name, '0.') )
-#    runs-on: ubuntu-latest
+    #    runs-on: ubuntu-latest
     runs-on: macos-15-intel
 
     steps:
@@ -35,7 +35,7 @@ jobs:
           
           if [ ! -z "$TAG" ]; then
             VERSION="$TAG"
-                              
+          
             echo "VERSION=${VERSION}" > version.mak
           
           else 
@@ -62,23 +62,11 @@ jobs:
           
           
           file_size_bytes() {
-            file="$1"
-            local bytes
-            if [[ "$OSTYPE" == "darwin"* ]]; then
-            # macOS
-            bytes=$(stat -f "%z" "$file")
-            elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-            # Linux
-            bytes=$(stat -c "%s" "$file")
-            else
-          echo "Error: Unsupported operating system for file size check."
-            return 1
-            fi
-          
-            echo $bytes            
+            # portable on macOS and Linux
+            wc -c < "$1" | tr -d ' '
           }
-          
-          
+
+
           ## SkunkCrafts
             sed -e "s|@VERSION@|${VERSION}|g" skunkcrafts_updater.cfg.template > "${RELEASE_FOLDER}/skunkcrafts_updater.cfg"
             sed -e "s|@VERSION@|${VERSION}|g" skunkcrafts_updater_beta.cfg.template > "${RELEASE_FOLDER}/skunkcrafts_updater_beta.cfg"
@@ -89,12 +77,11 @@ jobs:
           rm -f ${RELEASE_FOLDER}/skunkcrafts_updater_whitelist.txt
           rm -f ${RELEASE_FOLDER}/skunkcrafts_updater_sizeslist.txt
           find ${RELEASE_FOLDER}/ -type f ! \( -name '*skunkcrafts_updater*' -o -path '*skunkcrafts_updater*' \) -print0 | while IFS= read -r -d '' file; do
-            checksum_hex=$(crc32 "$file")
+            # crc32 as uint32 decimal (python3 exists on all GitHub runners; the
+            # Perl 'crc32' tool is not installed on Ubuntu / newer macOS images)
+            checksum_decimal=$(python3 -c "import zlib,sys; print(zlib.crc32(open(sys.argv[1],'rb').read()) & 0xffffffff)" "$file")
             # get file size in bytes
             file_size_in_bytes=$(file_size_bytes "$file")
-          
-            # Convert hex checksum to uint32 decimal
-            checksum_decimal=$((16#$checksum_hex))
             # Remove "release/" prefix from $file
             modified_file="${file#${RELEASE_FOLDER}/}"
             # Remove the first character (should be "/")
@@ -116,15 +103,15 @@ jobs:
           echo -e "\n\nSkunkCrafts sizelist - bytes:\n--------------->"
           cat ${RELEASE_FOLDER}/skunkcrafts_updater_sizeslist.txt
           echo -e "<--------------"
-           
+          
           if [[ ! -e ${RELEASE_FOLDER}/skunkcrafts_updater_blacklist.txt ]]; then
             echo -e "Need to create the skunkcrafts_updater_blacklist.txt file"
             touch ${RELEASE_FOLDER}/skunkcrafts_updater_blacklist2.txt
           else 
             echo -e "\n--> skunkcrafts_updater_blacklist.txt file exists <--\n"
           fi
-               
-               
+          
+          
           # TAG=${GITHUB_REF##*/}          
           TARGET_BRANCH=""
           if [[ $VERSION == *"-test"* || $VERSION == t* ]]     # if TAG contains -test or starts with "t"
@@ -143,8 +130,8 @@ jobs:
           then
             TARGET_BRANCH="dry-run"
           fi
-                    
-                  
+          
+          
           # debug which files are part of the branch     
           # ls -lR release
           
@@ -153,7 +140,7 @@ jobs:
           ## Create target branch
           git checkout -b ${TARGET_BRANCH}
           
-          if [ -d "TARGET_BRANCH" ]; then
+          if [ -d "${TARGET_BRANCH}" ]; then
             echo "Directory ${TARGET_BRANCH} does exist."
             git rm -r -f  ${TARGET_BRANCH}/*
           else 
@@ -179,7 +166,7 @@ jobs:
           echo -e "\n--------->"
           ls -lR .
           echo -e "\n<---------"
-
+          
           
           echo -e "\nCommit branch ${TARGET_BRANCH}\n---------------------"
           git commit -m "new ${TARGET_BRANCH} - ${VERSION}"
@@ -190,15 +177,15 @@ jobs:
           if [[ $TARGET_BRANCH != "dry-run" ]]; then          
             echo -e "\nPushing ${TARGET_BRANCH}\n---------------------"
             git push authenticated-origin ${TARGET_BRANCH} --force
-            
+          
             # git push -f -u origin ${TARGET_BRANCH} ## will fail since there is no TOKEN          
-            
+          
             echo -e "TARGET_BRANCH - ${TARGET_BRANCH}"
             echo -e "\ngithub.ref - ${{ github.ref }} - ${{ github.ref_name }} \n"
           else
             echo "Will not push back the '$TARGET_BRANCH'. It is only for tests."
           fi
-          
+
 
 
       - name: Compress Plugin Files
@@ -209,10 +196,10 @@ jobs:
           VERSION=${GITHUB_REF##*/}
           #source version.mak
           echo -e "\nVERSION=${VERSION}\n"
-                    
+          
           file_size_mb() {
             file="$1"
-        
+          
             local bytes
             if [[ "$OSTYPE" == "darwin"* ]]; then
               # macOS
@@ -224,7 +211,7 @@ jobs:
               echo "Error: Unsupported operating system for file size check."
               return 1
             fi
-                    
+          
             echo $(echo "scale=2; $bytes / (1024 * 1024)" | bc -l)
           }
           
@@ -248,11 +235,11 @@ jobs:
             # Delete the previous compressed file
             echo "Deleting previous compressed file: '$output_file'"
             rm -f "$output_file"
-            
+          
             # Compress again with splitting
             echo "Compressing '$folder_to_compress' to '$output_base.7z.001' with volume size ${split_size}..."
             (cd ./release && 7z a -t7z -v"$split_size" "${{ github.workspace }}/${{ steps.strings.outputs.plugin-name }}-${VERSION}.7z" *)
-            
+          
             echo "Folder compressed into multiple volumes with a maximum size of ${split_size} each."
           else
             echo "Folder compressed successfully to '$output_file'."          
@@ -261,7 +248,7 @@ jobs:
           echo -e "\n---------"
           ls -l
           echo -e "\n---------"
-          
+
 
       - name: Create Release
         id: create_release
