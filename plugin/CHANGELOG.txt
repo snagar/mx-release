@@ -10,6 +10,19 @@ Installation:
 !!! Remember to read the README file in the plugin folder.
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+v26.10.2-beta-01
+=================
+Latest v26.10.2 changes:
+. [ui] Added stats screen.
+. [ui] Added ImPlot 3D to the stats screen.
+. [ui] Stats screen can be seen during mission flight.
+. [ui] main screen now has a new Stats button. The conversion button moved to the "Generate" screen.
+. [End screen] holds a much more thorough analyze of your flight.
+. [stats screen] Last 20 flight stats will be stored, and you can see them in the "stats" screen.
+. [lib] Latest fmt library.
+. [gps] Another fix to the GPS.
+
+
 v26.10.1-beta-01
 =================
 . Latest v26.10.1 changes.
@@ -28,8 +41,6 @@ v26.10.1-beta-01
 . In templates, added "osm_type" to the "location_properties" attribute.
 
 [known issues] Mission Pack, based local osmdb is broken until future fix.
-
-
 
 v26.09.3
 =================

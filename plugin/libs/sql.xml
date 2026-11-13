@@ -4,23 +4,23 @@
 
 <!-- The "{}" or "{n}" are part of a c++ library string format. Similar to Python. We will replace it with values, instead of using bind variables, please do not replace them. -->
 <osm_sqls>
-    <query name="create_bounds"><![CDATA[create table if not exists bounds as select min (t1.lat) as min_lat, max(t1.lat) as max_lat, min(t1.lon) as min_lon, max(t1.lon) as max_lon from way_street_node_data t1 ]]></query>
-    <query name="get_way_ids_in_area"><![CDATA[select id, distance_nm from ( select distinct t2.id, mx_calc_distance( ?1, ?2, t1.lat, t1.lon, 3440) as distance_nm
+  <query name="create_bounds"><![CDATA[create table if not exists bounds as select min (t1.lat) as min_lat, max(t1.lat) as max_lat, min(t1.lon) as min_lon, max(t1.lon) as max_lon from way_street_node_data t1 ]]></query>
+  <query name="get_way_ids_in_area"><![CDATA[select id, distance_nm from ( select distinct t2.id, mx_calc_distance( ?1, ?2, t1.lat, t1.lon, 3440) as distance_nm
 from way_street_node_data t1, way_tag_data t2 where t2.key_attrib = 'highway'
 and t2.val_attrib in('primary', 'secondary', 'tertiary', 'residential', 'service', 'living_street', 'track')
 and t1.id = t2.id and t1.lat between ?3 and ?4
 and t1.lon between ?5 and ?6 )
 where distance_nm between ?7 and ?8 ]]>
-    </query>
-    <query name="get_way_tag_data_by_id"><![CDATA[select t2.id, t2.key_attrib, t2.val_attrib from way_tag_data t2 where t2.id = ?1 ]]></query>
-    <query name="get_segments_in_way_id"><![CDATA[select t1.lat, t1.lon from way_street_node_data t1 where t1.id = ?1 order by t1.node_id]]></query>
-    <query name="get_tested_bounds"><![CDATA[select min_lat, max_lat, min_lon, max_lon,
+  </query>
+  <query name="get_way_tag_data_by_id"><![CDATA[select t2.id, t2.key_attrib, t2.val_attrib from way_tag_data t2 where t2.id = ?1 ]]></query>
+  <query name="get_segments_in_way_id"><![CDATA[select t1.lat, t1.lon from way_street_node_data t1 where t1.id = ?1 order by t1.node_id]]></query>
+  <query name="get_tested_bounds"><![CDATA[select min_lat, max_lat, min_lon, max_lon,
 case when min_lat <= ?1 then 1 else 0 end as min_lat_test,
 case when max_lat >= ?2 then 1 else 0 end as max_lat_test,
 case when min_lon <= ?3 then 1 else 0 end as min_lon_test,
 case when max_lon >= ?4 then 1 else 0 end as max_lon_test from bounds limit 1]]>
-    </query>
-    <query name="get_designer_way_ids_part1"><![CDATA[
+  </query>
+  <query name="get_designer_way_ids_part1"><![CDATA[
 select id, distance_nm from
 (
   select distinct wtd.id, mx_calc_distance( ?1, ?2, wsnd.lat, wsnd.lon, 3440) as distance_nm
@@ -30,7 +30,7 @@ select id, distance_nm from
   and wsnd.lat between ?3 and ?4
   and wsnd.lon between ?5 and ?6
   ]]></query>
-    <query name="get_designer_way_ids_part2"><![CDATA[  ) where distance_nm between ?7 and ?8 ]]></query>
+  <query name="get_designer_way_ids_part2"><![CDATA[  ) where distance_nm between ?7 and ?8 ]]></query>
 </osm_sqls>
 
 <oilrig_sqls>
@@ -334,6 +334,11 @@ limit 1
         <!-- v26.10.1 stats database queries (end of mission). Heights are in feet (agl column is meters * 3.28084). -->
         <!-- td_line_id is the "landing" row line_id, the same value as mx_stats_data.line_id from get_landing_stats_as_vec(). -->
         <!-- Columns are read by their alias name, keep the aliases if you change a query. -->
+        <!-- v26.10.2 {bounce_window_sec} is replaced by the plugin (mxconst::STATS_BOUNCE_WINDOW_SEC, 10 sec): a "landing" less than this after the previous landing is a bounce of it, -->
+        <!--          and re-contacts in the first {bounce_window_sec} after a touchdown are bounces. The route in flight_info.route_s uses the same value. -->
+        <!-- v26.10.2 {bounce_min_sec} and {bounce_min_agl_ft} are replaced by the plugin (mxconst::STATS_BOUNCE_MIN_SEC 0.5 sec, STATS_BOUNCE_MIN_AGL_FT 1 ft): a shorter and lower hop is a wheel skip, not a bounce. -->
+        <!-- v26.10.2 {rollout_max_sec} is replaced by the plugin (mxconst::STATS_RUNWAY_ROLLOUT_MAX_SEC, 120 sec): the rows read after a touchdown for the runway check (landing_rollout). -->
+        <!-- v26.10.2 {crash_window_sec} is replaced by the plugin (mxconst::STATS_CRASH_AFTER_LANDING_SEC, 60 sec): a crash up to this long after a landing, before the next takeoff, belongs to that landing. -->
 <stats_sqls>
 <query name="landing_height_steps"><![CDATA[WITH act AS MATERIALIZED (
   -- one row per takeoff/landing, with the previous activity row and the time of the previous landing
@@ -345,15 +350,17 @@ limit 1
   WINDOW w AS (ORDER BY line_id)
 ),
 td AS MATERIALIZED (
-  -- v26.10.1 skip bounce landings: a "landing" less than 10 sec after the previous landing belongs to that landing
+  -- v26.10.1 skip bounce landings: a "landing" less than {bounce_window_sec} sec after the previous landing belongs to that landing
   SELECT line_id AS td_line_id, t AS td_t, lat AS td_lat, lon AS td_lon, prev_act_line_id, activity
   FROM act
-  WHERE NOT (activity = 'landing' AND IFNULL(t - prev_landing_t, 999.0) <= 10.0)
+  WHERE NOT (activity = 'landing' AND IFNULL(t - prev_landing_t, 999.0) <= {bounce_window_sec})
 ),
 descent AS MATERIALIZED (
   -- rows from the previous activity up to the touchdown, with the highest AGL (feet) still ahead of each row
+  -- v26.10.2 and the highest AGL of the whole window (max_agl_ft_window)
   SELECT td.td_line_id, s.line_id,
-         max(s.agl) OVER (PARTITION BY td.td_line_id ORDER BY s.line_id ROWS BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING) * 3.28084 AS max_agl_ft_ahead
+         max(s.agl) OVER (PARTITION BY td.td_line_id ORDER BY s.line_id ROWS BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING) * 3.28084 AS max_agl_ft_ahead,
+         max(s.agl) OVER (PARTITION BY td.td_line_id) * 3.28084 AS max_agl_ft_window
   FROM td
   JOIN stats s ON s.line_id > td.prev_act_line_id AND s.line_id <= td.td_line_id
   WHERE td.activity = 'landing'
@@ -363,8 +370,9 @@ steps(step_order, step_agl_ft) AS (
 ),
 crossing AS (
   -- final crossing of a step = first row after which the plane never climbs above it again
+  -- v26.10.2 only steps the plane was above: a flight that stayed below 300 ft has no "300 ft" step (it was the first row after takeoff)
   SELECT d.td_line_id, st.step_order, st.step_agl_ft, min(d.line_id) AS row_line_id
-  FROM descent d JOIN steps st ON d.max_agl_ft_ahead <= st.step_agl_ft
+  FROM descent d JOIN steps st ON d.max_agl_ft_ahead <= st.step_agl_ft AND d.max_agl_ft_window > st.step_agl_ft
   GROUP BY d.td_line_id, st.step_order
   UNION ALL
   SELECT td_line_id, 99, 0.0, td_line_id FROM descent GROUP BY td_line_id -- the touchdown row
@@ -397,24 +405,41 @@ td AS MATERIALIZED (
          vh_ind_fpm AS td_fpm, roll AS td_bank, pitch AS td_pitch,
          groundspeed * 1.94384 AS td_gs_kt, m_total AS td_weight_kg, activity, prev_act_line_id
   FROM act
-  WHERE NOT (activity = 'landing' AND IFNULL(t - prev_landing_t, 999.0) <= 10.0)
+  WHERE NOT (activity = 'landing' AND IFNULL(t - prev_landing_t, 999.0) <= {bounce_window_sec})
 ),
 final_rows AS MATERIALIZED (
   -- airborne rows before the touchdown, with the highest AGL (feet) still ahead of each row
+  -- v26.10.2 and the highest AGL of the whole window (max_agl_ft_window)
   SELECT td.td_line_id, s.vh_ind_fpm, s.roll, s.groundspeed * 1.94384 AS gs_kt, s.agl * 3.28084 AS agl_ft,
-         max(s.agl) OVER (PARTITION BY td.td_line_id ORDER BY s.line_id ROWS BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING) * 3.28084 AS max_agl_ft_ahead
+         max(s.agl) OVER (PARTITION BY td.td_line_id ORDER BY s.line_id ROWS BETWEEN CURRENT ROW AND UNBOUNDED FOLLOWING) * 3.28084 AS max_agl_ft_ahead,
+         max(s.agl) OVER (PARTITION BY td.td_line_id) * 3.28084 AS max_agl_ft_window
   FROM td
   JOIN stats s ON s.line_id > td.prev_act_line_id AND s.line_id < td.td_line_id
   WHERE td.activity = 'landing'
 ),
 final_sum AS (
   -- the final descent below 300 ft
+  -- v26.10.2 only sink (V/S < 0) counts, and in a flight that stayed below 300 ft only the rows after its highest point (not the climb after takeoff)
   SELECT td_line_id,
-         max(CASE WHEN agl_ft >= 50.0 THEN abs(vh_ind_fpm) END) AS final_max_sink_fpm,                                     -- 300 ft .. 50 ft
-         max(CASE WHEN agl_ft >= 50.0 AND gs_kt > 20.0 THEN abs(vh_ind_fpm) / (gs_kt * 5.3) END) AS final_max_glide_ratio, -- 1.0 = 3 degree path
-         max(abs(roll)) AS final_max_bank                                                                                  -- 300 ft .. touchdown
+         max(CASE WHEN agl_ft >= 50.0 AND vh_ind_fpm < 0.0 THEN -vh_ind_fpm END) AS final_max_sink_fpm,                                     -- 300 ft .. 50 ft
+         max(CASE WHEN agl_ft >= 50.0 AND gs_kt > 20.0 AND vh_ind_fpm < 0.0 THEN -vh_ind_fpm / (gs_kt * 5.3) END) AS final_max_glide_ratio, -- 1.0 = 3 degree path
+         max(abs(roll)) AS final_max_bank                                                                                                   -- 300 ft .. touchdown
   FROM final_rows
   WHERE max_agl_ft_ahead <= 300.0
+    AND (max_agl_ft_window > 300.0 OR max_agl_ft_ahead < max_agl_ft_window)
+  GROUP BY td_line_id
+),
+final_steep AS (
+  -- v26.10.2 the steepest moment of the final (300 ft .. 50 ft, same rows as final_max_glide_ratio): its sink and the sink of a 3 degree path at its groundspeed.
+  --          SQLite takes the other columns from the row that has the max().
+  SELECT td_line_id,
+         max(-vh_ind_fpm / (gs_kt * 5.3)) AS steep_glide_ratio,
+         -vh_ind_fpm                     AS final_steep_sink_fpm,
+         gs_kt * 5.3                     AS final_steep_normal_fpm
+  FROM final_rows
+  WHERE max_agl_ft_ahead <= 300.0
+    AND (max_agl_ft_window > 300.0 OR max_agl_ft_ahead < max_agl_ft_window)
+    AND agl_ft >= 50.0 AND gs_kt > 20.0 AND vh_ind_fpm < 0.0
   GROUP BY td_line_id
 ),
 pre_td AS (
@@ -439,11 +464,13 @@ impact AS (
 SELECT td.td_line_id, abs(td.td_fpm) AS td_fpm, impact.td_g_avg, impact.td_g_peak, pre_td.pre_td_g,
        impact.td_g_avg - pre_td.pre_td_g AS td_gear_load,
        abs(td.td_bank) AS td_bank, td.td_pitch, td.td_gs_kt, td.td_weight_kg,
-       final_sum.final_max_sink_fpm, final_sum.final_max_glide_ratio, final_sum.final_max_bank
+       final_sum.final_max_sink_fpm, final_sum.final_max_glide_ratio, final_sum.final_max_bank,
+       final_steep.final_steep_sink_fpm, final_steep.final_steep_normal_fpm
 FROM td
-LEFT JOIN impact    USING (td_line_id)
-LEFT JOIN pre_td    USING (td_line_id)
-LEFT JOIN final_sum USING (td_line_id)
+LEFT JOIN impact      USING (td_line_id)
+LEFT JOIN pre_td      USING (td_line_id)
+LEFT JOIN final_sum   USING (td_line_id)
+LEFT JOIN final_steep USING (td_line_id)
 WHERE td.activity = 'landing'
 ORDER BY td.td_line_id
 ]]></query>
@@ -456,14 +483,14 @@ ORDER BY td.td_line_id
   WHERE activity IN ('takeoff', 'landing')
 ),
 real_td AS MATERIALIZED (
-  -- real touchdowns: a "landing" less than 10 sec after the previous landing is a bounce of that landing
+  -- real touchdowns: a "landing" less than {bounce_window_sec} sec after the previous landing is a bounce of that landing
   SELECT line_id AS td_line_id, t AS td_t
   FROM act
   WHERE activity = 'landing'
-    AND IFNULL(t - prev_landing_t, 999.0) > 10.0 -- not a bounce: no other landing in the previous 10 sec
+    AND IFNULL(t - prev_landing_t, 999.0) > {bounce_window_sec} -- not a bounce: no other landing in the previous {bounce_window_sec} sec
 ),
 win AS MATERIALIZED (
-  -- first 10 sec after each real touchdown, split into on-ground / airborne islands (grp)
+  -- first {bounce_window_sec} sec after each real touchdown, split into on-ground / airborne islands (grp)
   SELECT r.td_line_id, s.line_id, s.onground_any,
          s.local_date_days * 86400.0 + s.local_time_sec AS t,
          s.agl * 3.28084 AS agl_ft,
@@ -473,7 +500,7 @@ win AS MATERIALIZED (
        - row_number() OVER (PARTITION BY r.td_line_id, s.onground_any ORDER BY s.line_id) AS grp
   FROM real_td r
   JOIN stats s ON s.line_id >= r.td_line_id
-              AND (s.local_date_days * 86400.0 + s.local_time_sec) - r.td_t BETWEEN 0.0 AND 10.0
+              AND (s.local_date_days * 86400.0 + s.local_time_sec) - r.td_t BETWEEN 0.0 AND {bounce_window_sec}
 ),
 air AS (
   -- one row per airborne island
@@ -486,10 +513,11 @@ air AS (
   GROUP BY td_line_id, grp
 ),
 bounce AS (
-  -- a bounce: back on the ground in the window, and not a gear flicker (at least 0.2 sec or 1 ft)
+  -- a bounce: back on the ground in the window, and not a wheel skip
+  -- v26.10.2 at least {bounce_min_sec} sec in the air or {bounce_min_agl_ft} ft high (was 0.2 sec or 1 ft: a 0.4 sec, 0.6 ft skip counted as a bounce)
   SELECT * FROM air
   WHERE recontact_fpm IS NOT NULL
-    AND (air_sec >= 0.2 OR max_agl_ft >= 1.0)
+    AND (air_sec >= {bounce_min_sec} OR max_agl_ft >= {bounce_min_agl_ft})
 )
 SELECT r.td_line_id,
        count(b.grp)       AS bounce_count,
@@ -502,5 +530,78 @@ GROUP BY r.td_line_id
 ORDER BY r.td_line_id
 ]]></query>
 
+<query name="landing_crash"><![CDATA[WITH act AS MATERIALIZED (
+  -- v26.10.2 takeoff/landing rows, with the time of the previous landing and of the next takeoff
+  SELECT line_id, activity, local_date_days * 86400.0 + local_time_sec AS t,
+         max(CASE WHEN activity = 'landing' THEN local_date_days * 86400.0 + local_time_sec END) OVER (ORDER BY line_id ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING) AS prev_landing_t,
+         min(CASE WHEN activity = 'takeoff' THEN local_date_days * 86400.0 + local_time_sec END) OVER (ORDER BY line_id ROWS BETWEEN 1 FOLLOWING AND UNBOUNDED FOLLOWING) AS next_takeoff_t
+  FROM stats
+  WHERE activity IN ('takeoff', 'landing')
+),
+real_td AS MATERIALIZED (
+  -- real touchdowns, same rule as landing_bounces
+  SELECT line_id AS td_line_id, t AS td_t, next_takeoff_t
+  FROM act
+  WHERE activity = 'landing'
+    AND IFNULL(t - prev_landing_t, 999.0) > {bounce_window_sec}
+),
+td_window AS (
+  -- the landing owns the time from 1 sec before the touchdown until {crash_window_sec} sec after it,
+  -- or until the next takeoff or the next real touchdown if that comes first
+  SELECT td_line_id, td_t,
+         min(td_t + {crash_window_sec},
+             IFNULL(next_takeoff_t, td_t + {crash_window_sec}),
+             IFNULL(lead(td_t) OVER (ORDER BY td_line_id), td_t + {crash_window_sec})) AS window_end_t
+  FROM real_td
+),
+crash AS (
+  -- "crash" rows (XPLM_MSG_PLANE_CRASHED). The crash message can arrive before the landing row is written, so the order is not used.
+  SELECT local_date_days * 86400.0 + local_time_sec AS t
+  FROM stats
+  WHERE activity = 'crash'
+)
+-- crash_rows > 0: the plane crashed during the landing or its rollout. The landing is not graded.
+SELECT w.td_line_id, count(c.t) AS crash_rows
+FROM td_window w
+LEFT JOIN crash c ON c.t BETWEEN w.td_t - 1.0 AND w.window_end_t
+GROUP BY w.td_line_id
+ORDER BY w.td_line_id
+]]></query>
+
+<query name="landing_rollout"><![CDATA[WITH act AS MATERIALIZED (
+  -- v26.10.2 takeoff/landing rows, with the time of the previous and of the next landing
+  SELECT line_id, activity, local_date_days * 86400.0 + local_time_sec AS t,
+         max(CASE WHEN activity = 'landing' THEN local_date_days * 86400.0 + local_time_sec END) OVER (ORDER BY line_id ROWS BETWEEN UNBOUNDED PRECEDING AND 1 PRECEDING) AS prev_landing_t,
+         min(CASE WHEN activity = 'landing' THEN local_date_days * 86400.0 + local_time_sec END) OVER (ORDER BY line_id ROWS BETWEEN 1 FOLLOWING AND UNBOUNDED FOLLOWING) AS next_landing_t
+  FROM stats
+  WHERE activity IN ('takeoff', 'landing')
+),
+real_td AS MATERIALIZED (
+  -- real touchdowns, same rule as landing_bounces
+  SELECT line_id AS td_line_id, t AS td_t
+  FROM act
+  WHERE activity = 'landing'
+    AND IFNULL(t - prev_landing_t, 999.0) > {bounce_window_sec}
+),
+real_takeoff AS MATERIALIZED (
+  -- a takeoff with no landing in the next {bounce_window_sec} sec (a long bounce writes a "takeoff" and a "landing" row)
+  SELECT line_id
+  FROM act
+  WHERE activity = 'takeoff'
+    AND IFNULL(next_landing_t - t, 999.0) > {bounce_window_sec}
+),
+td_window AS (
+  -- the rows of a landing end at the next real takeoff or the next real touchdown, and at most {rollout_max_sec} sec after the touchdown
+  SELECT r.td_line_id, r.td_t,
+         min(IFNULL((SELECT min(k.line_id) FROM real_takeoff k WHERE k.line_id > r.td_line_id), 2147483647),
+             IFNULL(lead(r.td_line_id) OVER (ORDER BY r.td_line_id), 2147483647)) AS end_line_id
+  FROM real_td r
+)
+SELECT w.td_line_id, s.line_id, s.lat, s.lon, s.groundspeed * 1.94384 AS gs_kt, s.heading_no_mag AS heading_true, s.onground_any
+FROM td_window w
+JOIN stats s ON s.line_id >= w.td_line_id AND s.line_id < w.end_line_id
+WHERE (s.local_date_days * 86400.0 + s.local_time_sec) - w.td_t <= {rollout_max_sec}
+ORDER BY w.td_line_id, s.line_id
+]]></query>
 
 </stats_sqls>
