@@ -1,18 +1,9 @@
-Installation:
-==================================================================
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!! Pick the X-Plane Main Folder (not any sub folder in it)  
-!!!
-!!! Examples:
-!!! "D:\X-Plane" (Windows)
-!!! or
-!!! "/home/{user}/X-Plane" (Linux or OSX)
-!!! Remember to read the README file in the plugin folder.
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Mission-X Changelog
+===================
 
-v26.10.2-beta-01
+v26.10.2 - release
 =================
-Latest v26.10.2 changes:
+
 . [ui] Added stats screen.
 . [ui] Added ImPlot 3D to the stats screen.
 . [ui] Stats screen can be seen during mission flight.
@@ -21,6 +12,7 @@ Latest v26.10.2 changes:
 . [stats screen] Last 20 flight stats will be stored, and you can see them in the "stats" screen.
 . [lib] Latest fmt library.
 . [gps] Another fix to the GPS.
+. [xpsdk] compiled against the latest stable xpsdk library.
 
 
 v26.10.1-beta-01
