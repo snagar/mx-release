@@ -140,11 +140,14 @@ jobs:
           ## Create target branch
           git checkout -b ${TARGET_BRANCH}
           
-          if [ -d "${TARGET_BRANCH}" ]; then
-            echo "Directory ${TARGET_BRANCH} does exist."
-            git rm -r -f  ${TARGET_BRANCH}/*
-          else 
-            echo "Directory '${TARGET_BRANCH}' doesn't exist."
+          # Check if the release folder exists and clean its tracked contents safely
+          if [ -d "release" ]; then
+            echo "Directory 'release' does exist."
+            # Remove only tracked files inside release/ from git's index and working tree
+            git rm -r -f release/ || true
+          else
+            echo "Directory 'release' doesn't exist yet."
+            mkdir release
           fi
           
           echo -e "Configuring git before pushing branch '${TARGET_BRANCH}' ."
