@@ -1,7 +1,13 @@
 Mission-X Changelog
 ===================
 
-v26.10.2 - release
+v26.10.3 - hotfix
+=================
+. [bug] Fixed wrong LLM header request.
+. [fix] Fuel calculation used Sanitizer dataref which did not work with Falcon 8x.
+
+
+v26.10.2
 =================
 
 . [ui] Added stats screen.
@@ -13,7 +19,6 @@ v26.10.2 - release
 . [lib] Latest fmt library.
 . [gps] Another fix to the GPS.
 . [xpsdk] compiled against the latest stable xpsdk library.
-
 
 v26.10.1-beta-01
 =================
